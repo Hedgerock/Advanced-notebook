@@ -1,0 +1,29 @@
+.App {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 1rem;
+
+    border: 2px solid silver;
+    border-radius: 1rem;
+    background: #716b6b;
+
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    gap: 1rem;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+.search-container {
+    position: relative;
+    margin-left: auto;
+}

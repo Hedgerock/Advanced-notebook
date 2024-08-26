@@ -1,0 +1,52 @@
+.add-subtodo {
+    display: flex;
+    align-items: center;
+
+    padding: .3rem;
+    position: absolute;
+    gap: 1rem;
+
+    top: 25px;
+    right: 8px;
+
+    border: 1px solid silver;
+    border-radius: .7rem;
+}
+
+.add-subtodo__input {
+    border: 1px solid silver;
+    background: transparent;
+    outline: none;
+
+    color: white;
+    border-radius: 1rem;
+    padding: .5rem;
+
+    cursor: default;
+}
+
+.add-subtodo__input::placeholder {
+    color: white;
+}
+
+.add-subtodo__button {
+    border: 1px solid silver;
+    border-radius: .8rem;
+
+    background: transparent;
+    padding: .5rem 1rem;
+    cursor: pointer;
+
+    color: white;
+
+    transition: background .2s, color .2s, border .2s;
+}
+
+.add-subtodo__button:hover {
+    background: #2b2727;
+}
+
+.add-subtodo__button:disabled {
+    opacity: .5;
+    pointer-events: none;
+}

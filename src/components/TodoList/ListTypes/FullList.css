@@ -1,0 +1,12 @@
+.finished-todos {
+    padding: 2rem 0 0 0;
+    margin: 1rem 0 0 0;
+    width: 100%;
+
+    border-top: 3px solid silver;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 2rem;
+}

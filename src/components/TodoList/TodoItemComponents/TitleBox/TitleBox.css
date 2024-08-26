@@ -1,0 +1,74 @@
+.title-box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    max-width: 65%;
+
+    transform: translate(-50%, -50%);
+    background: gray;
+
+    padding: .5rem;
+    border: 2px solid silver;
+    border-radius: .7rem;
+
+    z-index: 500;
+}
+
+.todo-item__title {
+    text-wrap: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: white;
+    cursor: pointer;
+
+    transition: background .2s;
+}
+
+
+.todo-item__title_input {
+    background: gray;
+    padding: .5rem;
+    border: 2px solid silver;
+
+    cursor: default;
+
+    outline: none;
+    border-radius: .7rem;
+}
+
+.selection-box {
+    position: absolute;
+    top: 50%;
+    left: -1.5px;
+    z-index: 50;
+    background: gray;
+
+    transform: translate(-100%, -50%);
+
+    display: flex;
+    align-items: center;
+    gap: .3rem;
+
+    padding: .3rem;
+    border: 2px solid silver;
+    border-right: 0;
+    border-radius: .3rem;
+}
+
+.selection-box__button {
+    background: transparent;
+    border: 1px solid silver;
+    color: white;
+
+    width: 35px;
+    cursor: pointer;
+
+    transition: background .2s;
+}
+
+.selection-box__button:hover {
+    background: #5f5d5d;
+}

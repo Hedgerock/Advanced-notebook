@@ -1,0 +1,33 @@
+.search-box__input {
+    border: 2px solid silver;
+    border-radius: .7rem;
+    background: transparent;
+
+    outline: none;
+
+    padding: .5rem 2rem .5rem .2rem;
+
+    color: white;
+}
+
+.search-box__input::placeholder {
+    color: white;
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 25px;
+    height: 95%;
+    border-left: 1px solid silver;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    transform: translateY(-50%);
+    z-index: 50;
+}
