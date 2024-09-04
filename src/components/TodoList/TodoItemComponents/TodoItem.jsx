@@ -2,15 +2,17 @@
 import { useTodoItemContext } from '../../hooks';
 import { AddSubTodo } from './AddSubTodo';
 import './TodoItem.css'
-import { TodoItemCheckbox } from './TodoItemCheckbox';
 import { TodoItemDeleteButton } from './TodoItemDeleteButton';
 import { TodoValue } from './TododItemChlidren/TodoValue';
 import { TitleBox } from './TitleBox';
+import { TodoItemCheckbox } from './TodoItemCheckbox';
 
 export const TodoItem = () => {
-    const { actualClassName } = useTodoItemContext();
+    const { actualClassName, lastChildClassName } = useTodoItemContext();
+    
     return (
-        <div className= { actualClassName }>
+        <div className= { `${actualClassName} ${ lastChildClassName }` }>
+
             <TodoItemCheckbox />
             
             <TodoValue />

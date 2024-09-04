@@ -1,5 +1,7 @@
-import { useTodoItemContext } from "../../hooks";
-import { getFilteredData } from "./utils";
+
+import { useTodoItemContext } from '../../../hooks';
+import { getFilteredData } from '../utils';
+import './TodoItemDeleteButton.css';
 
 
 export const TodoItemDeleteButton = () => {

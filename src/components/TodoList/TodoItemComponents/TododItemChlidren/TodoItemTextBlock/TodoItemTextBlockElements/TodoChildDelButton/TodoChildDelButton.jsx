@@ -1,6 +1,8 @@
-import { getFilteredData } from "../../../utils";
-import { useTodoItemChildContext } from "../../hooks";
-import { getActualTextData } from "../../utils";
+
+import { getFilteredData } from '../../../../utils';
+import { useTodoItemChildContext } from '../../../hooks';
+import { getActualTextData } from '../../../utils';
+import './TodoChildDelButton.css';
 
 export const TodoChildDelButton = () => {
     const {

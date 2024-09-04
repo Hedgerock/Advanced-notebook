@@ -5,7 +5,7 @@ import { EmptyList, FullList } from './TodoList/ListTypes';
 import { TodoList } from './TodoList/hoc';
 import { useFilteredCoreData, useGetCoreData } from './hooks';
 import { CopyContainerMain } from './СopyContainer';
-import { CopyContainer, Header } from './hoc';
+import { CopyContainer, Header, TodoFormProvider } from './hoc';
 import { SearchContainer } from './hoc/SearchContainer';
 import { SearchBox, SearchIcon } from './SearchBox';
 
@@ -18,7 +18,9 @@ function App() {
       <div className="App">
         <Header>
 
-          <TodoForm />
+          <TodoFormProvider>
+            <TodoForm />
+          </TodoFormProvider>
 
           <SearchContainer>
 

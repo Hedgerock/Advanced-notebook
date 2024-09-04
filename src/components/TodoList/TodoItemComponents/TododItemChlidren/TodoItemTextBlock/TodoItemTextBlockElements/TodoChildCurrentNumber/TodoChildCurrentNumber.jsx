@@ -1,4 +1,6 @@
-import { useTodoItemChildContext } from "../../hooks";
+
+import { useTodoItemChildContext } from '../../../hooks';
+import './TodoChildCurrentNumber.css';
 
 export const TodoChildCurrentNumber = () => {
     const { todoItemChildOrder } = useTodoItemChildContext();

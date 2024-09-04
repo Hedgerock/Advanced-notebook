@@ -1,4 +1,5 @@
-import { useTodoItemChildContext } from "../../hooks"
+import { useTodoItemChildContext } from "../../../hooks";
+import './TodoChildItemP.css';
 
 export const TodoChildItemP = () => {
     const { subtodoText, currentId, setCopyData, copyData, title } = useTodoItemChildContext();

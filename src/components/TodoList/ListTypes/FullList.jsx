@@ -15,16 +15,26 @@ export const FullList = () => {
 
     return (
         <>
-            { unfinishedTodos.map(item =>(
-                <TodoItemParent data = { item } key={ item.id }>
+            { unfinishedTodos.map((item, index) =>(
+                <TodoItemParent 
+                    data = { item }
+                    key={ item.id } 
+                    index = { index } 
+                    fullData = { unfinishedTodos }
+                >
                     <TodoItem />
                 </TodoItemParent>
             )) }
 
             { finishedTodos.length !== 0 && 
                 <div className="finished-todos finshed-todos_item-box">
-                    {finishedTodos.map(item =>(
-                        <TodoItemParent data = { item } key={ item.id }>
+                    {finishedTodos.map((item, index) =>(
+                        <TodoItemParent 
+                            data = { item } 
+                            key={ item.id } 
+                            index = { index }
+                            fullData = { finishedTodos }
+                        >
                             <TodoItem />
                         </TodoItemParent>
                     ))}

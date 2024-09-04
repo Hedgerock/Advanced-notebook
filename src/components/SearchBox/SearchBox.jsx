@@ -7,11 +7,11 @@ export const SearchBox = () => {
     return (
         <div className="search-box">
             <input 
-            className='search-box__input' 
-            type="text" 
-            placeholder='Find your todo'
-            onChange={ e => setSearchParam(e.target.value) }
-            value={ searchParam }
+                className='search-box__input' 
+                type="text" 
+                placeholder='Find your todo'
+                onChange={ e => setSearchParam(e.target.value) }
+                value={ searchParam }
             />
         </div>
     )

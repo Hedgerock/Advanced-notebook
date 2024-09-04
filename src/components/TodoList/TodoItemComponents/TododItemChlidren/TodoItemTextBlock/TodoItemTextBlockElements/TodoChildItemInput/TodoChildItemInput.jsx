@@ -1,5 +1,6 @@
-import { useTodoItemChildContext } from "../../hooks";
-import { getTodoChildUpdatedText } from "../../utils";
+import { useTodoItemChildContext } from "../../../hooks";
+import { getTodoChildUpdatedText } from "../../../utils";
+import './TodoChildItemInput.css';
 
 export const TodoChildItemInput = () => {
     const {

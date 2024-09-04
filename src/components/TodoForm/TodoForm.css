@@ -44,3 +44,18 @@
     opacity: .5;
     pointer-events: none;
 }
+
+@media (max-width: 850px) {
+    .todo-form {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .todo-form__input {
+        width: 100%;
+    }
+
+    .todo-form__add-btn {
+        width: 100%;
+    }
+}

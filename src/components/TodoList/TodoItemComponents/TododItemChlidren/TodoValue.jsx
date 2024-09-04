@@ -9,10 +9,12 @@ export const TodoValue = () => {
     return (
         <div className="todo-text">
             {
-                unfinishedTodos?.map((el) => (
+                unfinishedTodos?.map((el, index) => (
                     <TodoItemChildProvider 
                         key = { el.id } 
                         info = { el }
+                        childrenFullList = { unfinishedTodos }
+                        childIndex = { index }
                     >
                         <TodoItemTextBlock/>
                     </TodoItemChildProvider>
@@ -21,10 +23,12 @@ export const TodoValue = () => {
 
             { finishedTodos.length !== 0 && 
                 <div className="finished-todos finished-todos_item-box">
-                    {finishedTodos?.map((el) => (
+                    {finishedTodos?.map((el, index) => (
                         <TodoItemChildProvider 
                             key = { el.id } 
                             info = { el }
+                            childrenFullList = { finishedTodos }
+                            childIndex = { index }
                         >
                             <TodoItemTextBlock/>
                         </TodoItemChildProvider>

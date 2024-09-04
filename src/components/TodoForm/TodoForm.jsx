@@ -1,40 +1,26 @@
 
-import { useInitNewTodo } from '../hooks';
+import { useTodoFormContext } from '../hooks';
 import './TodoForm.css';
+import { TodoFormButton } from './TodoFormButton';
+import { TodoFormInput } from './TodoFormInput';
 
 export const TodoForm = () => {
-   const { value, setValue, initNewTodo, title, content } = useInitNewTodo();
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter' && content) {
-            initNewTodo();
-        }
-    };
+   const { title, content } = useTodoFormContext();
 
     return (
         <div className="todo-form">
-            <input 
-                className='todo-form__input'
-                type="text" 
-                placeholder='Type here'
-                value={ content }
-                onChange={ e => setValue({ ...value, content: e.target.value }) }
-                onKeyDown={ handleKeyDown }
+
+            <TodoFormInput 
+                inputKey = 'content'
+                inputValue = { content }
             />
-            <input 
-                className='todo-form__input'
-                type="text" 
-                placeholder='Title'
-                value={ title }
-                onChange={ e => setValue({ ...value, title: e.target.value }) }
-                onKeyDown={ handleKeyDown }
+            <TodoFormInput 
+                inputKey = 'title'
+                inputValue = { title}
             />
-            <button
-                className='todo-form__add-btn'
-                onClick={ initNewTodo }
-                disabled = { !content }
-            >Send
-            </button>
+            
+            <TodoFormButton />
+
         </div>
     )
 }

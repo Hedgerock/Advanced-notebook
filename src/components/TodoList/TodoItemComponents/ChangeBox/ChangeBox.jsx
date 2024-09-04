@@ -1,6 +1,6 @@
-import { useTodoItemChildContext } from "./TododItemChlidren/hooks";
-import { checkAllstatuses, getFilteredData, getUpdatedTodo } from "./utils";
-
+import { useTodoItemChildContext } from "../TododItemChlidren/hooks";
+import { checkAllstatuses, getFilteredData, getUpdatedTodo } from "../utils";
+import './ChangeBox.css';
 
 export const ChangeBox = () => {
     const {

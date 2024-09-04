@@ -1,5 +1,7 @@
-import { useTodoItemContext } from "../../hooks";
-import { getUpdatedTextStatus } from "./utils";
+
+import { useTodoItemContext } from '../../../hooks';
+import { getUpdatedTextStatus } from '../utils';
+import './TodoItemCheckbox.css';
 
 export const TodoItemCheckbox = () => {
     const {  

@@ -1,23 +1,18 @@
 import { useState } from "react";
+import { getFilteredSearchData } from "../utils";
 
 export const useFilteredCoreData = ({ todo }) => {
-    const [ searchParam, setSearchParam ] = useState('')
+  const [ searchParam, setSearchParam ] = useState('')
 
-  const filteredTodoTitles = todo.filter(el => {
-    const elementValue = el.title?.toLowerCase();
-    const searchParamValue = searchParam?.toLowerCase().trim();
+  const filteredTodoTitles = getFilteredSearchData({ data: todo, searchParam, key: 'title' })
 
-    return elementValue.includes(searchParamValue)
-  })
+  const filteredTodoItems = todo.filter(el => getFilteredSearchData({ data: el.text, searchParam, key: 'text' }).length)
 
-  const filteredTodoItems = todo.filter(el => el.text.filter(val => {
-      const elementValue = val.text?.toLowerCase();
-      const searchParamValue = searchParam?.toLowerCase();
+  const combinedFilteredTodo = [...filteredTodoTitles, ...filteredTodoItems]
 
-      return elementValue?.includes(searchParamValue)
-  }).length)
-
-  const filteredTodo = filteredTodoTitles.concat(filteredTodoItems).sort((a,b) => b.id - a.id);
+  const filteredTodo = Array.from(new Set(combinedFilteredTodo.map(item => item.id)))
+    .map(id => combinedFilteredTodo.find(item => item.id === id))
+    .sort((a, b) => b.id - a.id)
 
   return { searchParam, setSearchParam, filteredTodo }
 }

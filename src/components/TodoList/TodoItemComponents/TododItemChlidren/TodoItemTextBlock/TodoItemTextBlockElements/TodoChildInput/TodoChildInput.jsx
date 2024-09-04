@@ -1,5 +1,6 @@
-import { useTodoItemChildContext } from "../../hooks";
-import { getUpdatedCheckboxChild } from "../../utils";
+import { useTodoItemChildContext } from "../../../hooks";
+import { getUpdatedCheckboxChild } from "../../../utils";
+import './TodoChildInput.css';
 
 export const TodoChildInput = () => {
     const {

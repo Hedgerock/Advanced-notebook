@@ -27,3 +27,27 @@
     position: relative;
     margin-left: auto;
 }
+
+@media (max-width: 850px) {
+    body {
+        padding: 0;
+    }
+
+    .App {
+        min-height: 100lvh;
+    }
+
+    .header {
+        flex-direction: column-reverse;
+        gap: .5rem;
+    }
+
+    .search-container {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .search-box__input {
+        width: 100%;
+    }
+}

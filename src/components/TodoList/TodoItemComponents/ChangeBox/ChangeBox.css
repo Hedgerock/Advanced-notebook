@@ -1,0 +1,44 @@
+.change-box {
+    position: absolute;
+    top: -28px;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    left: 0;
+}
+
+.todo-item-child__edit-btn {
+    border: 1px solid silver;
+    cursor: pointer;
+
+    transition: background .2s, opacity .2s;
+    opacity: 0;
+
+    background: transparent;
+
+    color: white;
+}
+
+.todo-item-child__edit-btn {
+    border-radius: .6rem;
+    width: 56px;
+    padding: .2rem;
+}
+
+
+.todo-item-child__edit-btn:disabled {
+    color: silver;
+    background: silver;
+    cursor: default;
+    pointer-events: none;
+}
+
+
+.todo-item-text-block:hover .todo-item-child__edit-btn {
+    opacity: 1;
+}
+
+.todo-item-child__edit-btn:hover {
+    background: gray;
+}

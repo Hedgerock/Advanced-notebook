@@ -31,3 +31,9 @@
     transform: translateY(-50%);
     z-index: 50;
 }
+
+@media (max-width: 850px) {
+    .search-box {
+        width: 100%;
+    }
+}

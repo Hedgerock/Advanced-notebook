@@ -6,12 +6,41 @@
 
     width: 48%;
 
-    padding: 7rem .5rem .5rem 1.5rem;
+    padding: 6.5rem .5rem .5rem 1.5rem;
 
     border: 3px solid silver;
     border-radius: .6rem;
 
     position: relative;
+
+    background: #716b6b;
+}
+
+.todo-item:nth-child(odd):not(:last-child)::before,
+.todo-item:nth-child(odd):not(:last-child)::after {
+    content: '';
+    height: 3px;
+    width: 50px;
+
+    background: silver;
+
+    position: absolute;
+    right: 0;
+
+    transform: translateX(100%);
+}
+
+.todo-item:nth-child(odd):not(:last-child)::before {
+    top: 10px;
+}
+
+.todo-item:nth-child(odd):not(:last-child)::after {
+    bottom: 10px;
+}
+
+.todo-item_current-last-child::before,
+.todo-item_current-last-child::after {
+    display: none;
 }
 
 .todo-item_completed {
@@ -35,7 +64,7 @@
     padding: .5rem;
     border: 3px solid silver;
     border-radius: 1rem;
-    max-width: 95%;
+    max-width: 89%;
 
     cursor: pointer;
 
@@ -43,12 +72,6 @@
 
     display: flex;
     flex-wrap: wrap;
-}
-
-.todo-item__input {
-    position: absolute;
-    top: 6px;
-    left: 6px;
 }
 
 .todo-item__text_number {
@@ -70,24 +93,13 @@
     background: gray;
 }
 
-.todo-item__del-btn,
-.todo-item-child__del-btn,
-.change-box {
+.todo-item-child__del-btn {
     position: absolute;
     top: -28px;
 }
 
-.change-box {
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    left: 0;
-}
-
 .todo-item__edit-btn,
-.todo-item__del-btn,
 .todo-item__close-btn,
-.todo-item-child__edit-btn,
 .todo-item-child__del-btn,
 .todo-item-child__close-btn {
     border: 1px solid silver;
@@ -103,14 +115,12 @@
 
 .todo-item__edit-btn,
 .todo-item__close-btn,
-.todo-item-child__edit-btn,
 .todo-item-child__close-btn {
     border-radius: .6rem;
     width: 56px;
     padding: .2rem;
 }
 
-.todo-item__del-btn,
 .todo-item-child__del-btn {
     padding: .2rem 1.5rem;
     position: absolute;
@@ -119,27 +129,22 @@
     font-weight: bold;
 }
 
-.todo-item__edit-btn:disabled,
-.todo-item-child__edit-btn:disabled {
+.todo-item__edit-btn:disabled {
     color: silver;
     background: silver;
     cursor: default;
     pointer-events: none;
 }
 
-.todo-item:hover .todo-item__del-btn,
 .todo-item:hover .todo-item__edit-btn,
 .todo-item:hover .todo-item__close-btn,
 .todo-item-text-block:hover .todo-item-child__del-btn,
-.todo-item-text-block:hover .todo-item-child__edit-btn,
 .todo-item-text-block:hover .todo-item-child__close-btn {
     opacity: 1;
 }
 
-.todo-item__del-btn:hover,
 .todo-item__edit-btn:hover,
 .todo-item__close-btn:hover,
-.todo-item-child__edit-btn:hover,
 .todo-item-child__del-btn:hover,
 .todo-item-child__close-btn:hover {
     background: gray;
@@ -147,4 +152,11 @@
 
 .finished-todos_item-box {
     flex-direction: column;
+}
+
+
+@media (max-width: 850px) {
+    .todo-item {
+        width: 100%;
+    }
 }

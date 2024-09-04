@@ -3,7 +3,7 @@ import TodoItemProvider from '../../../context/todoItemContext';
 import { useChangeValue, useInitNewSubTodo, useTodoContext, useTodoItemState } from "../../hooks";
 import { getTodoData } from "../TodoItemComponents/utils";
 
-export const TodoItemParent = ({ children, data }) => {
+export const TodoItemParent = ({ children, data, index, fullData }) => {
     const { isDone, id, text, title } = data;
     const { setTodo, todo, copyData, setCopyData, currentId } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
@@ -11,6 +11,8 @@ export const TodoItemParent = ({ children, data }) => {
     
     const unfinishedTodos = getTodoData({ data: text, isReversed:false, filteredKey:'status', boolean:false });
     const finishedTodos = getTodoData({ data: text, isReversed:false, filteredKey:'status', boolean:true });
+
+    const lastChildClassName = index === fullData.length - 1 ? 'todo-item_current-last-child' : '';
     
     const { 
         currentVal, 
@@ -51,7 +53,9 @@ export const TodoItemParent = ({ children, data }) => {
                     copyData, 
                     setCopyData,
                     currentId,
-                    title
+                    title,
+                    index,
+                    lastChildClassName
                 }
             }
         >
