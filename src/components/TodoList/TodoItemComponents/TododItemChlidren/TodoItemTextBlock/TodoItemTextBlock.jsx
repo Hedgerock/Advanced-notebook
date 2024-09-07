@@ -10,10 +10,11 @@ import { SwapBox } from "./TodoItemTextBlockElements";
 
 export const TodoItemTextBlock = () => {
     const { changeStatus, lastChildChildren, firstChildChildren } = useTodoItemChildContext();
+    const childrenClassName = `todo-item-text-block ${ firstChildChildren } ${ lastChildChildren }`
 
     return (
         <div 
-            className={ `todo-item-text-block ${ lastChildChildren } ${ firstChildChildren }` } 
+            className={ childrenClassName } 
         >
             <SwapBox />
 

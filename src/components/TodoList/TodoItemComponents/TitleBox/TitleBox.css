@@ -47,7 +47,8 @@
     background: silver;
 }
 
-.todo-item__title {
+.todo-item__title,
+.todo-item__title_input {
     text-wrap: nowrap;
     max-width: 100%;
     overflow: hidden;
@@ -59,16 +60,16 @@
     transition: background .2s;
 }
 
-
 .todo-item__title_input {
+    font-size: 16px;
     background: gray;
-    padding: .5rem;
-    border: 2px solid silver;
 
-    cursor: default;
+    border: 2px solid silver;
+    border-radius: .5rem;
 
     outline: none;
-    border-radius: .7rem;
+
+    padding: 0 .5rem;
 }
 
 .selection-box {

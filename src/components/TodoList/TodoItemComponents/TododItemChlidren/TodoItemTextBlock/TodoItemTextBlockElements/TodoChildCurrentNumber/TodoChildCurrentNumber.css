@@ -1,0 +1,9 @@
+.todo-item__text_number {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    padding: 0;
+
+    justify-content: center;
+    align-items: center;
+}

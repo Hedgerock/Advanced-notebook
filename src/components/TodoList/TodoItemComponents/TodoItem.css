@@ -6,7 +6,7 @@
 
     width: 48%;
 
-    padding: 6.5rem .5rem .5rem 1.5rem;
+    padding: 6.5rem .6rem .5rem .6rem;
 
     border: 3px solid silver;
     border-radius: .6rem;
@@ -56,98 +56,6 @@
     gap: 2rem;
 
     position: relative;
-}
-
-.todo-item__text {
-    color: white;
-    align-self: center;
-    padding: .5rem;
-    border: 3px solid silver;
-    border-radius: 1rem;
-    max-width: 89%;
-
-    cursor: pointer;
-
-    transition: background .1s;
-
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.todo-item__text_number {
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    padding: 0;
-
-    justify-content: center;
-    align-items: center;
-}
-
-.todo-item__text_input {
-    background: none;
-    outline: none;
-}
-
-.todo-item__text:hover {
-    background: gray;
-}
-
-.todo-item-child__del-btn {
-    position: absolute;
-    top: -28px;
-}
-
-.todo-item__edit-btn,
-.todo-item__close-btn,
-.todo-item-child__del-btn,
-.todo-item-child__close-btn {
-    border: 1px solid silver;
-    cursor: pointer;
-
-    transition: background .2s, opacity .2s;
-    opacity: 0;
-
-    background: transparent;
-
-    color: white;
-}
-
-.todo-item__edit-btn,
-.todo-item__close-btn,
-.todo-item-child__close-btn {
-    border-radius: .6rem;
-    width: 56px;
-    padding: .2rem;
-}
-
-.todo-item-child__del-btn {
-    padding: .2rem 1.5rem;
-    position: absolute;
-    right: 0;
-    border-radius: 1rem;
-    font-weight: bold;
-}
-
-.todo-item__edit-btn:disabled {
-    color: silver;
-    background: silver;
-    cursor: default;
-    pointer-events: none;
-}
-
-.todo-item:hover .todo-item__edit-btn,
-.todo-item:hover .todo-item__close-btn,
-.todo-item-text-block:hover .todo-item-child__del-btn,
-.todo-item-text-block:hover .todo-item-child__close-btn {
-    opacity: 1;
-}
-
-.todo-item__edit-btn:hover,
-.todo-item__close-btn:hover,
-.todo-item-child__del-btn:hover,
-.todo-item-child__close-btn:hover {
-    background: gray;
 }
 
 .finished-todos_item-box {
