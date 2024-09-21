@@ -1,0 +1,20 @@
+.deleted-todo-list__element {
+    border: 1px solid silver;
+    padding: .5rem 1.5rem;
+
+    position: relative;
+}
+
+.deleted-todo-list__element::before {
+    content: '';
+
+    width: 34px;
+    height: 2px;
+
+    position: absolute;
+    top: 50%;
+    left: -35px;
+
+    transform: translateY(-50%);
+    background: silver;
+}

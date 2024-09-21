@@ -4,7 +4,6 @@ import './TodoChildInput.css';
 
 export const TodoChildInput = () => {
     const {
-        todo,
         setTodo,
         id,
         subtodoId,
@@ -18,7 +17,7 @@ export const TodoChildInput = () => {
                 type="checkbox" 
                 checked={ status }
                 onChange={() => {
-                    setTodo(getUpdatedCheckboxChild({ data: todo, id, subtodoId, boolean: status }));
+                    setTodo(prev => getUpdatedCheckboxChild({ data: prev, id, subtodoId, boolean: status }));
                 }}
             />
         </>

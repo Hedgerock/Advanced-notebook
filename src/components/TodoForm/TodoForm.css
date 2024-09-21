@@ -4,58 +4,11 @@
     gap: .4rem;
 }
 
-.todo-form__input {
-    border-radius: .6rem;
-
-    padding: .5rem;
-
-    border: 2px solid silver;
-    outline: none;
-    color: white;
-    background: gray;
-
-    cursor: default;
-}
-
-.todo-form__input::placeholder {
-    color: white;
-}
-
-.todo-form__add-btn {
-    color: white;
-    padding: .5rem 1.5rem;
-    background: gray;
-
-    border-radius: .6rem;
-
-    border: 2px solid silver;
-
-    cursor: pointer;
-    transition: all .3s;
-
-}
-
-.todo-form__add-btn:hover {
-    background: #2b2727;
-    border: 2px solid gray;
-}
-
-.todo-form__add-btn:disabled {
-    opacity: .5;
-    pointer-events: none;
-}
-
 @media (max-width: 850px) {
+    
     .todo-form {
         width: 100%;
         flex-direction: column;
     }
-
-    .todo-form__input {
-        width: 100%;
-    }
-
-    .todo-form__add-btn {
-        width: 100%;
-    }
+    
 }

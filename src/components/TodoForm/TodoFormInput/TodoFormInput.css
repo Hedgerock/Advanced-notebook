@@ -1,0 +1,22 @@
+.todo-form__input {
+    border-radius: .6rem;
+
+    padding: .5rem;
+
+    border: 2px solid silver;
+    outline: none;
+    color: white;
+    background: gray;
+
+    cursor: default;
+}
+
+.todo-form__input::placeholder {
+    color: white;
+}
+
+@media (max-width: 850px) {
+    .todo-form__input {
+        width: 100%;
+    }
+}

@@ -11,7 +11,7 @@ export const useInitNewTodo = () => {
 
         setTodo(prev => [...prev, {
             id: myId,
-            text: [{ id: myId + myId, status: false, text: value.content, order: 1 }],
+            text: [{ id: myId + myId, status: false, text: value.content, order: 1, deleted: false }],
             title: value.title || `Todo collection number ${ myId }`,
             isDone: false,
             order: todo.length ? todo.length + 1 : 1

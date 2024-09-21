@@ -1,0 +1,22 @@
+.deleted-todo__title {
+    position: relative;
+
+    border: 1px solid silver;
+
+    text-align: center;
+}
+
+.deleted-todo__title::before {
+    content: '';
+
+    position: absolute;
+    top: 50%;
+    left: -17px;
+
+    width: 17px;
+    height: 2px;
+
+    transform: translateY(-50%);
+
+    background: silver;
+}

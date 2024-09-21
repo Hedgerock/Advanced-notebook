@@ -15,6 +15,10 @@
     z-index: 500;
 }
 
+.title-box_searched {
+    background: #393838;
+}
+
 .title-box::before {
     content: '';
 
@@ -45,31 +49,6 @@
     transform: translate(-50%, 102%);
 
     background: silver;
-}
-
-.todo-item__title,
-.todo-item__title_input {
-    text-wrap: nowrap;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    color: white;
-    cursor: pointer;
-
-    transition: background .2s;
-}
-
-.todo-item__title_input {
-    font-size: 16px;
-    background: gray;
-
-    border: 2px solid silver;
-    border-radius: .5rem;
-
-    outline: none;
-
-    padding: 0 .5rem;
 }
 
 .selection-box {

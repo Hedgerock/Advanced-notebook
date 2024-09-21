@@ -4,7 +4,7 @@ import { AddSubTodo } from './AddSubTodo';
 import './TodoItem.css'
 import { TodoItemDeleteButton } from './TodoItemDeleteButton';
 import { TodoValue } from './TododItemChlidren/TodoValue';
-import { TitleBox } from './TitleBox';
+import { TitleBox, TitleBoxProvider } from './TitleBox';
 import { TodoItemCheckbox } from './TodoItemCheckbox';
 
 export const TodoItem = () => {
@@ -19,7 +19,9 @@ export const TodoItem = () => {
 
             <AddSubTodo />
 
-            <TitleBox />
+            <TitleBoxProvider>
+                <TitleBox />
+            </TitleBoxProvider>
 
             <TodoItemDeleteButton />
         </div>

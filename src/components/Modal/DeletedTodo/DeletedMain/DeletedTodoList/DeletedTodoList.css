@@ -1,0 +1,9 @@
+.deleted-todo-list {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+
+    gap: 2rem;
+
+    padding: .5rem .5rem .5rem 1rem;
+}

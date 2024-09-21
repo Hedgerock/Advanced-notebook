@@ -1,0 +1,17 @@
+.todo-item-text-block__button_up {
+    position: absolute;
+
+    top: -10px;
+    left: 50%;
+
+    transform: translateX(-50%);
+}
+
+.todo-item-text-block__button_down {
+    position: absolute;
+
+    bottom: -10px;
+    left: 50%;
+    
+    transform: translateX(-50%);
+}

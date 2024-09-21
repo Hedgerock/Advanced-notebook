@@ -4,9 +4,12 @@ import { getFilteredSearchData } from "../utils";
 export const useFilteredCoreData = ({ todo }) => {
   const [ searchParam, setSearchParam ] = useState('')
 
-  const filteredTodoTitles = getFilteredSearchData({ data: todo, searchParam, key: 'title' })
+  const undeletedTodos = todo.filter(item => !item.deleted)
+  const deletedTodos = todo.filter(item => item.deleted || item.text.some(el => el.deleted))
 
-  const filteredTodoItems = todo.filter(el => getFilteredSearchData({ data: el.text, searchParam, key: 'text' }).length)
+  const filteredTodoTitles = getFilteredSearchData({ data: undeletedTodos, searchParam, key: 'title' })
+
+  const filteredTodoItems = undeletedTodos.filter(el => getFilteredSearchData({ data: el.text, searchParam, key: 'text' }).length)
 
   const combinedFilteredTodo = [...filteredTodoTitles, ...filteredTodoItems]
 
@@ -14,5 +17,5 @@ export const useFilteredCoreData = ({ todo }) => {
     .map(id => combinedFilteredTodo.find(item => item.id === id))
     .sort((a, b) => b.id - a.id)
 
-  return { searchParam, setSearchParam, filteredTodo }
+  return { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos }
 }

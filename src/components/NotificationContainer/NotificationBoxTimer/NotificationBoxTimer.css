@@ -1,0 +1,11 @@
+.notification-box__timer {
+    position: absolute;
+
+    bottom: 0;
+    left: 10px;
+
+    height: 5px;
+    border-radius: .5rem;
+
+    transition: width .1s;
+}

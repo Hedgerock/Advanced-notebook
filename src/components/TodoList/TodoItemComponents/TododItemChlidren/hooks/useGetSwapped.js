@@ -2,7 +2,7 @@ import { getAdjacentElement, getSwapValue } from "../utils";
 import { useTodoItemChildContext } from "./useTodoItemChildContext";
 
 export const useGetSwapped = () => {
-    const { todo, id: todoId, subtodoId, setTodo, childrenFullList } = useTodoItemChildContext();
+    const { id: todoId, subtodoId, setTodo, childrenFullList } = useTodoItemChildContext();
 
     const currentElChild = childrenFullList.find(el => el.id === subtodoId);
     const currentIndex = childrenFullList.indexOf(currentElChild);
@@ -28,9 +28,9 @@ export const useGetSwapped = () => {
 
     const initMoveUp = () => {
         setTodo(
-            getSwapValue(
+            prev => getSwapValue(
                 {
-                    data: todo,
+                    data: prev,
                     key: 'text', 
                     currentValue: currentElChild, 
                     newValue: prevEl, 
@@ -44,9 +44,9 @@ export const useGetSwapped = () => {
 
     const initMoveDown = () => {
         setTodo(
-            getSwapValue(
+            prev => getSwapValue(
                 {
-                    data: todo,
+                    data: prev,
                     key: 'text', 
                     currentValue: currentElChild, 
                     newValue: nextEl, 

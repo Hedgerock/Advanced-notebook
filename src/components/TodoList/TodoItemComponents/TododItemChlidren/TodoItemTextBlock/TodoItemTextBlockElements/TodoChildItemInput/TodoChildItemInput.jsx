@@ -4,7 +4,6 @@ import './TodoChildItemInput.css';
 
 export const TodoChildItemInput = () => {
     const {
-        todo,
         setTodo,
         id,
         subtodoText,
@@ -16,7 +15,7 @@ export const TodoChildItemInput = () => {
             className='todo-item__text todo-item__text_input'
             type="text" 
             value={ subtodoText } 
-            onChange={ e => setTodo(getTodoChildUpdatedText({ data:todo, id, subtodoId, e }))}
+            onChange={ e => setTodo(prev => getTodoChildUpdatedText({ data:prev, id, subtodoId, e }))}
         />
     )
 }

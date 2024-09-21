@@ -5,7 +5,7 @@ import { getTodoData } from "../TodoItemComponents/utils";
 
 export const TodoItemParent = ({ children, data, index, fullData }) => {
     const { isDone, id, text, title } = data;
-    const { setTodo, todo, copyData, setCopyData, currentId } = useTodoContext();
+    const { setTodo, todo, notificationData, setNotificationData, currentId, initNewNotification, searchParam, setSearchParam } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
     const { subValue, setSubValue, initNewSubTodo } = useInitNewSubTodo();
     
@@ -50,12 +50,15 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     setSubTodo,
                     unfinishedTodos,
                     finishedTodos,
-                    copyData, 
-                    setCopyData,
-                    currentId,
+                    notificationData, 
+                    setNotificationData, 
+                    currentId, 
+                    initNewNotification,
                     title,
                     index,
-                    lastChildClassName
+                    lastChildClassName,
+                    searchParam,
+                    setSearchParam
                 }
             }
         >

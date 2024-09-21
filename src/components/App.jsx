@@ -3,18 +3,40 @@ import TodoContextProvider from '../context/todoContext';
 import { TodoForm } from './TodoForm';
 import { EmptyList, FullList } from './TodoList/ListTypes';
 import { TodoList } from './TodoList/hoc';
-import { useFilteredCoreData, useGetCoreData } from './hooks';
-import { CopyContainerMain } from './СopyContainer';
-import { CopyContainer, Header, TodoFormProvider } from './hoc';
+import { useFilteredCoreData, useGetCoreData, useGetNotificationData } from './hooks';
+import { NotificationContainerMain } from './NotificationContainer';
+import { Header, NotificationContainer, TodoFormProvider } from './hoc';
 import { SearchContainer } from './hoc/SearchContainer';
 import { SearchBox, SearchIcon } from './SearchBox';
+import { useState } from 'react';
+import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
+import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
 
 function App() {
-  const { todo, setTodo, copyData, setCopyData, currentId } = useGetCoreData();
-  const { searchParam, setSearchParam, filteredTodo } = useFilteredCoreData({ todo });
+  const { todo, setTodo } = useGetCoreData();
+  const { notificationData, setNotificationData, currentId, initNewNotification } = useGetNotificationData();
+  const { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos } = useFilteredCoreData({ todo });
+
+  const [ modal, setModal ] = useState(false);
 
   return (
-    <TodoContextProvider value = { { todo, setTodo, copyData, setCopyData, currentId, filteredTodo, searchParam, setSearchParam } }>
+    <TodoContextProvider value = { 
+        { 
+          todo, 
+          setTodo, 
+          notificationData, 
+          setNotificationData,
+          currentId, 
+          initNewNotification,
+          filteredTodo,
+          searchParam, 
+          setSearchParam,
+          modal,
+          setModal,
+          deletedTodos,
+          undeletedTodos
+        } 
+      }>
       <div className="App">
         <Header>
 
@@ -31,6 +53,19 @@ function App() {
 
         </Header>
 
+        { deletedTodos.length !== 0 &&
+          <DeletedTodos>
+            <DeletedTodosValue />
+          </DeletedTodos>
+        }
+
+        { (modal && deletedTodos.length !== 0) && 
+          <Modal>
+            <DeletedTodo />
+            <ModalCloseButton />
+          </Modal>
+        }
+
         <TodoList>
 
             { filteredTodo.length 
@@ -40,10 +75,10 @@ function App() {
 
         </TodoList>
         
-        { copyData.length !== 0 && 
-          <CopyContainer>
-            <CopyContainerMain />
-          </CopyContainer> 
+        { notificationData.length !== 0 && 
+          <NotificationContainer>
+            <NotificationContainerMain />
+          </NotificationContainer> 
         }
       </div>
     </TodoContextProvider>

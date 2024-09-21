@@ -4,7 +4,6 @@ import './ChangeBox.css';
 
 export const ChangeBox = () => {
     const {
-        todo,
         setTodo,
         text,
         id,
@@ -32,9 +31,9 @@ export const ChangeBox = () => {
                     if (!subtodoText) {
                         const updatedText = getFilteredData({ data: text, id: subtodoId })
                         const boolean = checkAllstatuses({ data: updatedText, key: 'status' })
-                        setTodo(updatedText.length
-                            ? getUpdatedTodo({ data: todo, id, newData: updatedText, boolean })
-                            : getFilteredData({ data: todo, id })
+                        setTodo(prev => updatedText.length
+                            ? getUpdatedTodo({ data: prev, id, newData: updatedText, boolean })
+                            : getFilteredData({ data: prev, id })
                         )
                     }
                 } }

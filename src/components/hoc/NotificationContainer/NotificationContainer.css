@@ -1,0 +1,11 @@
+.notification-container {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+
+    width: 250px;
+
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}

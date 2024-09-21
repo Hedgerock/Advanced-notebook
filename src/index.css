@@ -9,5 +9,8 @@ body {
   font-family: sans-serif;
 
   background: #1f1c1c;
+}
 
+li {
+  list-style-type: none;
 }

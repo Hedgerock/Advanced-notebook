@@ -18,6 +18,7 @@ export const useInitNewSubTodo = () => {
                                 id: todo.text.length ? todo.text[todo.text.length - 1].id + 1 : 1,
                                 status: false,
                                 text: subValue,
+                                deleted: false,
                                 order: todo.text.length ? Math.max.apply(null, todo.text.map(item => item.order)) + 1 : 1
                             }
                         ]

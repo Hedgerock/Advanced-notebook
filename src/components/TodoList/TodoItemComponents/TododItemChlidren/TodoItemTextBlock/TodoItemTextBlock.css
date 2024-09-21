@@ -32,3 +32,7 @@
 .todo-item-text-block::after {
     right: 65px;
 }
+
+.todo-item-text-block_searched {
+    background: #393838;
+}

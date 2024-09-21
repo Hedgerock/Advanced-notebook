@@ -1,17 +1,10 @@
 import { useTodoItemContext } from '../../../hooks';
+import { useInitNewSubTodo } from '../hooks';
 import './AddSubTodo.css';
 
 export const AddSubTodo = () => {
-    const { 
-        curEl,
-        currentValId,
-        subValue, 
-        setSubValue, 
-        initNewSubTodo,
-        data
-    } = useTodoItemContext();
-
-    const { text } = data;
+    const { subValue, setSubValue } = useTodoItemContext();
+    const { createSubTodo } = useInitNewSubTodo();
 
     return (
         <div className="add-subtodo">
@@ -23,10 +16,7 @@ export const AddSubTodo = () => {
                 value={ subValue }
             />
             <button
-                onClick={ () => {
-                    initNewSubTodo({ id: currentValId, curEl, text })
-                    setSubValue('');
-                } }
+                onClick={ createSubTodo }
                 disabled = { !subValue }
                 className='add-subtodo__button'
             >send

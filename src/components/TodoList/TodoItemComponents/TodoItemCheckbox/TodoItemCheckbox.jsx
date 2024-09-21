@@ -4,8 +4,7 @@ import { getUpdatedTextStatus } from '../utils';
 import './TodoItemCheckbox.css';
 
 export const TodoItemCheckbox = () => {
-    const {  
-        todo, 
+    const { 
         setTodo, 
         data
     } = useTodoItemContext();
@@ -17,7 +16,7 @@ export const TodoItemCheckbox = () => {
             className='todo-item__input'
             type="checkbox"
             onChange={ () => {
-                setTodo(getUpdatedTextStatus({ todo, id, text, isDone }))
+                setTodo(prev => getUpdatedTextStatus({ todo: prev, id, text, isDone }))
             }}
             checked = { isDone }
         />

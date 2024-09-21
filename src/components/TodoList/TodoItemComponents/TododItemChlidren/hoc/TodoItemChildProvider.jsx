@@ -3,7 +3,7 @@ import { useTodoItemContext } from '../../../../hooks';
 import TICCProvider from '../context/todoItemChildContext'
 
 export const TodoItemChildProvider = ({ children, info, childrenFullList, childIndex }) => {
-    const { data, todo = [], setTodo, copyData, setCopyData, currentId, title } = useTodoItemContext();
+    const { data, todo = [], setTodo, notificationData, setNotificationData, currentId, initNewNotification, title, searchParam, setSearchParam } = useTodoItemContext();
     const { text, id, order: todoItemOrder, isDone } = data
     const [ changeStatus, setChangeStatus ] = useState(false)
     const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status } = info
@@ -33,13 +33,17 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
                 subtodoStatus,
                 todoItemChildOrder,
                 status,
-                copyData, 
-                setCopyData, 
-                currentId,
+                notificationData, 
+                setNotificationData, 
+                currentId, 
+                initNewNotification,
                 title,
                 lastChildChildren,
                 firstChildChildren,
-                childrenFullList
+                childrenFullList,
+                searchParam,
+                setSearchParam,
+                childIndex
             }}
         >
             { children }

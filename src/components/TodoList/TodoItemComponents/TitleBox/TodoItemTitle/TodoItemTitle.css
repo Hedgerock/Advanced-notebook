@@ -1,0 +1,11 @@
+.todo-item__title {
+    text-wrap: nowrap;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    color: white;
+    cursor: pointer;
+
+    transition: background .2s;
+}
