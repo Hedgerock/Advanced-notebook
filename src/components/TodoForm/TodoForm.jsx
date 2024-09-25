@@ -1,23 +1,20 @@
-
-import { useTodoFormContext } from '../hooks';
-import './TodoForm.css';
 import { TodoFormButton } from './TodoFormButton';
-import { TodoFormInput } from './TodoFormInput';
+import { TodoFormInputContent } from './TodoFormInputContent';
+import { TodoFormContent } from './TodoFormContent/TodoFormContent';
+import { TodoFormInputTitle } from './TodoFormInputTitle';
+
+import './TodoForm.css';
 
 export const TodoForm = () => {
-   const { title, content } = useTodoFormContext();
 
     return (
         <div className="todo-form">
 
-            <TodoFormInput 
-                inputKey = 'content'
-                inputValue = { content }
-            />
-            <TodoFormInput 
-                inputKey = 'title'
-                inputValue = { title}
-            />
+            <TodoFormContent>
+                <TodoFormInputContent />
+            </TodoFormContent>
+
+            <TodoFormInputTitle />
             
             <TodoFormButton />
 

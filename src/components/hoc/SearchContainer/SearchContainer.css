@@ -1,6 +1,10 @@
 .search-container {
     position: relative;
     margin-left: auto;
+
+    align-self: flex-start;
+
+    width: 282.5px;
 }
 
 @media (max-width: 850px) {

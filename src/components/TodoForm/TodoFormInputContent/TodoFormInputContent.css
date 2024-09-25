@@ -8,7 +8,13 @@
     color: white;
     background: gray;
 
+    width: 275px;
+
     cursor: default;
+}
+
+.todo-form__input_title {
+    width: 260px;
 }
 
 .todo-form__input::placeholder {

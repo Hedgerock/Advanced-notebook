@@ -1,4 +1,3 @@
-import { ChangeBox } from "../../ChangeBox";
 import { TodoChildInput } from "./TodoItemTextBlockElements/TodoChildInput";
 import './TodoItemTextBlock.css';
 import { useFindChildren, useTodoItemChildContext } from "../hooks";
@@ -7,6 +6,7 @@ import { TodoChildItemInput } from "./TodoItemTextBlockElements/TodoChildItemInp
 import { TodoChildDelButton } from "./TodoItemTextBlockElements/TodoChildDelButton";
 import { TodoChildCurrentNumber } from "./TodoItemTextBlockElements/TodoChildCurrentNumber";
 import { SwapBox } from "./TodoItemTextBlockElements";
+import { ChangeBox } from "../ChangeBox";
 
 export const TodoItemTextBlock = () => {
     const { changeStatus } = useTodoItemChildContext();

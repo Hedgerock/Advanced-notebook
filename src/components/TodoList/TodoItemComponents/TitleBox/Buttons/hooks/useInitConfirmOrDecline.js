@@ -1,7 +1,8 @@
 import { useTitleBoxContext } from "../../../hooks";
 
 export const useInitConfirmOrDecline = () => {
-    const { setEditStatus, titleValue, setTitleValue, updateTitle, setTodo, id, title } = useTitleBoxContext();
+    const { setEditStatus, titleValue, setTitleValue, updateTitle, setTodo, id, title, buttonIcons } = useTitleBoxContext();
+    const { confirm, decline } = buttonIcons
 
     const initConfirm = () => {
 
@@ -16,5 +17,5 @@ export const useInitConfirmOrDecline = () => {
         setTitleValue(title)
     }
 
-    return { initDecline, initConfirm }
+    return { initDecline, initConfirm, confirm, decline }
 }

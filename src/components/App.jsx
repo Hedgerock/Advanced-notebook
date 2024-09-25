@@ -11,6 +11,7 @@ import { SearchBox, SearchIcon } from './SearchBox';
 import { useState } from 'react';
 import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
 import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
+import { buttonIcons } from '../data';
 
 function App() {
   const { todo, setTodo } = useGetCoreData();
@@ -34,7 +35,8 @@ function App() {
           modal,
           setModal,
           deletedTodos,
-          undeletedTodos
+          undeletedTodos,
+          buttonIcons
         } 
       }>
       <div className="App">

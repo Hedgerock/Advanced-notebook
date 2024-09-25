@@ -1,8 +1,10 @@
+import { ButtonIcon } from '../../../../../../ButtonIcon';
 import { useRemoveTodo, useTodoItemChildContext } from '../../../hooks';
 import './TodoChildDelButton.css';
 
 export const TodoChildDelButton = () => {
-    const { subtodoText } = useTodoItemChildContext();
+    const { subtodoText, buttonIcons } = useTodoItemChildContext();
+    const { delete: currentValue } = buttonIcons
     const { initRemove } = useRemoveTodo();
 
     return (
@@ -11,7 +13,7 @@ export const TodoChildDelButton = () => {
             title = { `Delete: ${ subtodoText }` }
             onClick={ initRemove }
         >
-            <i className="fa-solid fa-trash"></i>
+            <ButtonIcon value = { currentValue }/>
         </button>
     )
 }

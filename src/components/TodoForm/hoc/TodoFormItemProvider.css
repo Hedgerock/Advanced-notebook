@@ -1,0 +1,10 @@
+.todo-form-item {
+    display: flex;
+    gap: .5rem;
+
+    position: relative;
+}
+
+.todo-form-item:hover .todo-form-item__button {
+    opacity: 1;
+}

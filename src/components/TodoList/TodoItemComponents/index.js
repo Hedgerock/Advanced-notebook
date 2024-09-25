@@ -1,5 +1,4 @@
 export * from './TodoItem';
-export * from './ChangeBox';
 export * from './AddSubTodo';
 export * from './TitleBox';
 export * from './TodoItemCheckbox';

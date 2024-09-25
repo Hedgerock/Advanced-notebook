@@ -48,9 +48,15 @@
     border: 1px solid silver;
     border-radius: .8rem;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     background: transparent;
     padding: .5rem 1rem;
     cursor: pointer;
+
+    width: 65px;
 
     color: white;
 

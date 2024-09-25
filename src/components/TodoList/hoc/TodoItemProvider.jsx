@@ -5,7 +5,17 @@ import { getTodoData } from "../TodoItemComponents/utils";
 
 export const TodoItemParent = ({ children, data, index, fullData }) => {
     const { isDone, id, text, title } = data;
-    const { setTodo, todo, notificationData, setNotificationData, currentId, initNewNotification, searchParam, setSearchParam } = useTodoContext();
+    const { 
+        setTodo, 
+        todo, 
+        notificationData, 
+        setNotificationData, 
+        currentId, 
+        initNewNotification, 
+        searchParam, 
+        setSearchParam,
+        buttonIcons
+    } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
     const { subValue, setSubValue, initNewSubTodo } = useInitNewSubTodo();
     
@@ -58,7 +68,8 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     index,
                     lastChildClassName,
                     searchParam,
-                    setSearchParam
+                    setSearchParam,
+                    buttonIcons
                 }
             }
         >

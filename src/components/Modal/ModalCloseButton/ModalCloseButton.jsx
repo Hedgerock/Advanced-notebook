@@ -1,14 +1,17 @@
+import { ButtonIcon } from '../../ButtonIcon';
 import { useTodoContext } from '../../hooks'
 import './ModalCloseButton.css';
 
 export const ModalCloseButton = () => {
-    const { setModal } = useTodoContext();
+    const { setModal, buttonIcons } = useTodoContext();
+    const { decline } = buttonIcons;
 
     return (
         <button
             className='modal__close-btn'
             onClick={ () => setModal(false) }
-        >Close
+        >
+            <ButtonIcon value={ decline }/>
         </button>
     )
 }

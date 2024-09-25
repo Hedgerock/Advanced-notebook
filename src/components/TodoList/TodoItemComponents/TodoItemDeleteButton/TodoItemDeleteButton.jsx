@@ -1,11 +1,13 @@
 
+import { ButtonIcon } from '../../../ButtonIcon';
 import { useTodoItemContext } from '../../../hooks';
 import { deletedStatusHandler } from '../../../utils';
 import './TodoItemDeleteButton.css';
 
 
 export const TodoItemDeleteButton = () => {
-    const { setTodo, data } = useTodoItemContext();
+    const { setTodo, data, buttonIcons } = useTodoItemContext();
+    const { delete: currentValue } = buttonIcons
     const { id, title } = data;
 
     return (
@@ -14,7 +16,7 @@ export const TodoItemDeleteButton = () => {
             onClick={ () => setTodo(prev => deletedStatusHandler({ data: prev, id, isDeleted: true })) }
             title = { `Delete: ${ title }` }
             >
-            <i className="fa-solid fa-trash"></i>
+            <ButtonIcon value = { currentValue }/>
         </button>
     )
 }

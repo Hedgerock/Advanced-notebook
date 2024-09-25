@@ -1,10 +1,12 @@
+import { ButtonIcon } from '../../../ButtonIcon';
 import { useTodoItemContext } from '../../../hooks';
 import { useInitNewSubTodo } from '../hooks';
 import './AddSubTodo.css';
 
 export const AddSubTodo = () => {
-    const { subValue, setSubValue } = useTodoItemContext();
+    const { subValue, setSubValue, buttonIcons } = useTodoItemContext();
     const { createSubTodo } = useInitNewSubTodo();
+    const { create } = buttonIcons
 
     return (
         <div className="add-subtodo">
@@ -19,7 +21,7 @@ export const AddSubTodo = () => {
                 onClick={ createSubTodo }
                 disabled = { !subValue }
                 className='add-subtodo__button'
-            >send
+            ><ButtonIcon value = { create }/>
             </button>
         </div>
     )
