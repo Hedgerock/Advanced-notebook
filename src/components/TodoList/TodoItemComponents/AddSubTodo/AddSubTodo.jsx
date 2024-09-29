@@ -1,5 +1,6 @@
 import { ButtonIcon } from '../../../ButtonIcon';
 import { useTodoItemContext } from '../../../hooks';
+import { enterEvent } from '../../../utils';
 import { useInitNewSubTodo } from '../hooks';
 import './AddSubTodo.css';
 
@@ -14,6 +15,7 @@ export const AddSubTodo = () => {
                 type="text"
                 className='add-subtodo__input'
                 onChange={ e => setSubValue(e.target.value) }
+                onKeyDown={ (event) => enterEvent(event, subValue, createSubTodo) }
                 placeholder='Type new subtodo here'
                 value={ subValue }
             />

@@ -4,7 +4,7 @@ export const useInitNewSubTodo = () => {
     const { 
         curEl,
         currentValId,
-        setSubValue, 
+        setSubValue,
         initNewSubTodo,
         data
     } = useTodoItemContext();

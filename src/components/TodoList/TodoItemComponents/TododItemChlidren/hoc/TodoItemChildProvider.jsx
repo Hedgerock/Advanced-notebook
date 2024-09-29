@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTodoItemContext } from '../../../../hooks';
 import TICCProvider from '../context/todoItemChildContext'
 
@@ -19,6 +19,11 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
     const { text, id, order: todoItemOrder, isDone } = data
     const [ changeStatus, setChangeStatus ] = useState(false)
     const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status } = info
+    const [ subTodoValue, setSubTodoValue ] = useState(subtodoText)
+
+    useEffect(() => {
+        setSubTodoValue(subtodoText)
+    }, [subtodoText])
 
     const lastChildChildren = childIndex === childrenFullList.length - 1
         ? 'todo-item-text-block_last-child'
@@ -56,7 +61,9 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
                 searchParam,
                 setSearchParam,
                 childIndex,
-                buttonIcons
+                buttonIcons,
+                subTodoValue, 
+                setSubTodoValue
             }}
         >
             { children }

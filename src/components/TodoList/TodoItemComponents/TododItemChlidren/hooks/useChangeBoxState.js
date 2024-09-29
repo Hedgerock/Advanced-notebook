@@ -5,16 +5,16 @@ import { useTodoItemChildContext } from "./useTodoItemChildContext";
 export const useChangeBoxState = () => {
     const {
         setTodo,
-        text,
         id,
         changeStatus,
         setChangeStatus,
         subtodoId,
         subtodoText,
-        buttonIcons
+        buttonIcons,
+        subTodoValue
     } = useTodoItemChildContext();
 
-    const { confirm, edit } = buttonIcons
+    const { confirm, edit, decline: currentButtonValue } = buttonIcons
 
     const buttonValue = changeStatus 
         ? confirm 
@@ -26,15 +26,30 @@ export const useChangeBoxState = () => {
 
     const initChangeValue = () => {
         setChangeStatus(prev => !prev)
-        if (!subtodoText) {
-            const updatedText = getFilteredData({ data: text, id: subtodoId })
-            const boolean = checkAllstatuses({ data: updatedText, key: 'status' })
-            setTodo(prev => updatedText.length
-                ? getUpdatedTodo({ data: prev, id, newData: updatedText, boolean })
-                : getFilteredData({ data: prev, id })
-            )
-        }
+
+        setTodo(prev => {
+            const newArr = prev.map(item => {
+                return item.id === id
+                    ? {...item, text: item.text.map(el => {
+                        return el.id === subtodoId ? {...el, text: subTodoValue} : {...el}
+                    })}
+                    : {...item}
+            })
+
+            const text = newArr.find(el => el.id === id).text
+
+            if (!subTodoValue) {
+                const updatedText = getFilteredData({ data: text, id: subtodoId })
+                const boolean = checkAllstatuses({ data: updatedText, key: 'status' })
+                
+                return updatedText.length
+                    ? getUpdatedTodo({ data: newArr, id, newData: updatedText, boolean })
+                    : getFilteredData({ data: newArr, id })
+            }
+
+            return newArr
+        })
     }
 
-    return { initChangeValue, currentTitle, buttonValue }
+    return { initChangeValue, currentTitle, buttonValue, currentButtonValue }
 }

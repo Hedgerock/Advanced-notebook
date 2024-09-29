@@ -4,10 +4,10 @@ import { useTodoContext } from '../../hooks';
 import './DeletedTodosProvider.css';
 
 export const DeletedTodosProvider = ({ children, data }) => {
-    const { deletedTodos, setTodo } = useTodoContext(); 
+    const { deletedTodos, setTodo, buttonIcons } = useTodoContext(); 
 
     return (
-        <DeletedTodosContextProvider value={ { data, deletedTodos, setTodo } }>
+        <DeletedTodosContextProvider value={ { data, deletedTodos, setTodo, buttonIcons } }>
             { children }
         </DeletedTodosContextProvider>
     )

@@ -8,6 +8,7 @@ export const TodoFormAddButton = () => {
 
     return (
         <button
+            title = 'Create extra subtodo'
             onClick={ createNewInput }
             className='todo-form__add-btn'
         >

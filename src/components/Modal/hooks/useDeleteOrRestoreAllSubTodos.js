@@ -1,6 +1,7 @@
 import { useDeletedTodosContext } from "../../hooks";
+import { deletedStatusHandler } from "../../utils";
 
-export const useDeleteAllSubTodos = () => {
+export const useDeleteOrRestoreAllSubTodos = () => {
     const { setTodo, data: item } = useDeletedTodosContext();
 
     const deleteAllSubTodos = () => {
@@ -14,5 +15,9 @@ export const useDeleteAllSubTodos = () => {
             .filter(val => val.text.length)) 
     }
 
-    return { deleteAllSubTodos }
+    const initRestore = () => {
+        setTodo(prev => deletedStatusHandler({ data: prev, id: item.id, deleted: false }))
+    }
+
+    return { deleteAllSubTodos, initRestore }
 }

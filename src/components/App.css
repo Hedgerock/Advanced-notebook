@@ -16,6 +16,69 @@
     gap: 1rem;
 }
 
+.deleted-todo-main-part {
+    max-height: 98%;
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    border: 2px solid silver;
+
+    padding: 1.5rem .6rem .6rem .6rem;
+
+    border-radius: 1rem .6rem .6rem 1rem;
+}
+
+.deleted-todo-options {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+
+    position: absolute;
+    top: -25px;
+
+    padding: .2rem .5rem;
+
+    opacity: 0;
+
+    transition: opacity .2s;
+}
+
+.deleted-todo-options_main {
+    top: 5rem;
+    left: 68%;
+}
+
+.deleted-todo-options_current-child,
+.deleted-todo-options_current-all {
+    left: -5px;
+}
+
+.deleted-todo-main-part:hover .deleted-todo-options_main,
+.deleted-todo:hover .deleted-todo-options_current-all,
+.deleted-todo-list__element:hover .deleted-todo-options_current-child {
+    opacity: 1;
+}
+
+.deleted-todo-main-part::-webkit-scrollbar {
+    border-radius: 0 1rem 1rem 0;
+    background: silver;
+    width: 8px;
+}
+
+.deleted-todo-main-part::-webkit-scrollbar-thumb {
+    background: #585656;
+    border-radius: 0 2rem 2rem 0;
+    cursor: pointer;
+}
+
+.deleted-todo-main-part::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
 @media (max-width: 850px) {
     body {
         padding: 0;

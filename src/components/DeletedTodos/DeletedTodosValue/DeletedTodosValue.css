@@ -1,0 +1,9 @@
+.deleted-todos__value {
+    color: white;
+
+    padding: .6rem 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

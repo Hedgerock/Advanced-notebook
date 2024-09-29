@@ -11,6 +11,23 @@ body {
   background: #1f1c1c;
 }
 
+button {
+  outline: none;
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
 li {
   list-style-type: none;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background: silver;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
 }

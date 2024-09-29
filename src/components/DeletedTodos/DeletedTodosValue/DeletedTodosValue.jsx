@@ -1,15 +1,19 @@
+import { ButtonIcon } from '../../ButtonIcon';
 import { useTodoContext } from '../../hooks'
 
 import './DeletedTodosValue.css';
 
 export const DeletedTodosValue = () => {
-    const { setModal } = useTodoContext();
+    const { setModal, buttonIcons } = useTodoContext();
+    const { deletedList } = buttonIcons
 
     return (
-        <button 
+        <button
+            title='Recently deleted todos'
             className="deleted-todos__value"
             onClick={ () => setModal(prev => !prev) }
-        >Recently deleted todos
+        >
+            <ButtonIcon value={ deletedList }/>
         </button >
     )
 }

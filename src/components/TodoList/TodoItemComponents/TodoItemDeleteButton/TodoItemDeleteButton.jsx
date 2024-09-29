@@ -13,7 +13,7 @@ export const TodoItemDeleteButton = () => {
     return (
         <button
             className='todo-item__del-btn'
-            onClick={ () => setTodo(prev => deletedStatusHandler({ data: prev, id, isDeleted: true })) }
+            onClick={ () => setTodo(prev => deletedStatusHandler({ data: prev, id, deleted: true })) }
             title = { `Delete: ${ title }` }
             >
             <ButtonIcon value = { currentValue }/>

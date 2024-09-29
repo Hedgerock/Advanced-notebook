@@ -1,0 +1,15 @@
+.deleted-todo__button {
+    color: white;
+    padding: .1rem 1rem;
+
+    border: 1px solid silver;
+    border-radius: .5rem;
+
+    font-size: .6rem;
+
+    transition: background .2s;
+}
+
+.deleted-todo__button:hover {
+    background: gray;
+}

@@ -10,3 +10,5 @@ export * from './useTodoFormContext';
 export * from './useRemoveNotificationElement';
 export * from './useDeletedTodosContext';
 export * from './useGetNotificationData';
+export * from './useDeletedTodoOptionsContext';
+export * from './useTerminateOrRestoreAllDeletedTodos';

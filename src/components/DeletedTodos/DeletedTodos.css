@@ -1,12 +1,14 @@
 .deleted-todos {
-    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     border: 1px solid silver;
     border-radius: .6rem;
 
     color: white;
 
-    background: gray;
+    align-self: flex-start;
 
-    padding: .5rem;
+    margin-left: 1rem;
 }

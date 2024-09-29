@@ -1,1 +1,1 @@
-export * from './useDeleteAllSubTodos';
+export * from './useDeleteOrRestoreAllSubTodos';

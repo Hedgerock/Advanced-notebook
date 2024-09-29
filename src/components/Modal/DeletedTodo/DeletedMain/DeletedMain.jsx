@@ -1,22 +1,22 @@
 import { DeletedTodoBox } from "./DeletedTodoBox";
-import { DeletedTodoButton } from "./DeletedTodoButton";
 import { DeletedTodoList, DeletedTodoLIstElement } from "./DeletedTodoList";
 import { DeletedTodoTitle } from "./DeletedTodoTitle";
+import { DeletedTodoOptions } from "../../../DeletedTodosOptions";
 
 export const DeletedMain = () => {
     return (
         <>
             <DeletedTodoBox>
 
-            <DeletedTodoTitle />
+                <DeletedTodoTitle />
 
-            <DeletedTodoList>
-                <DeletedTodoLIstElement />
-            </DeletedTodoList>
+                <DeletedTodoList>
+                    <DeletedTodoLIstElement />
+                </DeletedTodoList>
 
             </DeletedTodoBox>
 
-            <DeletedTodoButton />
+            <DeletedTodoOptions type = { 'currentAll' }/>
         </>
     )
 }

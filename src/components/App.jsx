@@ -12,13 +12,15 @@ import { useState } from 'react';
 import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
 import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
 import { buttonIcons } from '../data';
+import { DeletedTodoOptions } from './DeletedTodosOptions';
 
 function App() {
   const { todo, setTodo } = useGetCoreData();
   const { notificationData, setNotificationData, currentId, initNewNotification } = useGetNotificationData();
   const { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos } = useFilteredCoreData({ todo });
 
-  const [ modal, setModal ] = useState(false);
+  const isNotEmpty = deletedTodos.length !== 0;
+  const [ modal, setModal ] = useState(isNotEmpty);
 
   return (
     <TodoContextProvider value = { 
@@ -53,17 +55,20 @@ function App() {
 
           </SearchContainer>
 
+          { isNotEmpty &&
+            <DeletedTodos>
+              <DeletedTodosValue />
+            </DeletedTodos>
+          }
+
         </Header>
 
-        { deletedTodos.length !== 0 &&
-          <DeletedTodos>
-            <DeletedTodosValue />
-          </DeletedTodos>
-        }
-
-        { (modal && deletedTodos.length !== 0) && 
+        { (modal && isNotEmpty) && 
           <Modal>
-            <DeletedTodo />
+            <div className="deleted-todo-main-part">
+              <DeletedTodo />
+              <DeletedTodoOptions type = { 'all' }/>
+            </div>
             <ModalCloseButton />
           </Modal>
         }
