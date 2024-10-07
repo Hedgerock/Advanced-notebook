@@ -1,9 +1,10 @@
 import { useRemoveNotificationElement } from "../hooks";
 import { NotificationBoxTimer } from "./NotificationBoxTimer";
-import { SpanTag } from "./SpanTag";
+import { DivTag } from "./DivTag";
 import { NotificationBox, NotificationTextBox } from "../hoc";
 import { NotificationBoxButton } from "./NotificationBoxButton";
 import { notificationType } from "./data";
+import React from "react";
 
 export const NotificationContainerMain = ({ data }) => {
     const { id, text, title, type } = data;
@@ -16,9 +17,16 @@ export const NotificationContainerMain = ({ data }) => {
 
           <NotificationTextBox>
 
-            <SpanTag>{ introduction } { title }:</SpanTag>
-            <SpanTag>{ text }</SpanTag>
-            <SpanTag>{ end }</SpanTag>
+            <DivTag>{ introduction } { title }:</DivTag>
+            <DivTag>
+              { Array.isArray(text)
+                ? text.map(el => (
+                  <span key={ el.id }>{ el.text }</span>
+                ))
+                : text
+              }
+            </DivTag>
+            <DivTag>{ end }</DivTag>
 
           </NotificationTextBox>
 

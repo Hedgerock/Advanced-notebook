@@ -65,6 +65,7 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     currentId, 
                     initNewNotification,
                     title,
+                    text,
                     index,
                     lastChildClassName,
                     searchParam,

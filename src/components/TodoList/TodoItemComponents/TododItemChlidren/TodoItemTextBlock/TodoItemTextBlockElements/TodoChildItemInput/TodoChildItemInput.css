@@ -4,5 +4,5 @@
 }
 
 .todo-item__text:hover {
-    background: gray;
+    background: var(--currentBgClr);
 }

@@ -3,14 +3,78 @@
 
     padding: .5rem;
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
     outline: none;
-    color: white;
-    background: gray;
+    color: var(--currentTextClr);
+    background: var(--currentBgClr);
 
     width: 275px;
 
     cursor: default;
+}
+
+.todo-form-input-box {
+    position: relative;
+    display: block;
+
+    margin-top: auto;
+}
+
+.todo-form-input-box__button {
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    font-size: .6rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid var(--currentBorderClr);
+    color: var(--currentTextClr);
+    background: var(--currentBgClr);
+
+    position: absolute;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    transition: opacity .2s, background .2s;
+    z-index: 100;
+
+    opacity: 0;
+}
+
+.todo-form-input-box__button:hover {
+    background: var(--currentBorderClr);
+}
+
+.todo-form-input-box__button:disabled {
+    cursor: default;
+}
+
+.todo-form-input-box:hover .todo-form-input-box__button {
+    opacity: 1;
+}
+
+.todo-form-input-box__button_up {
+    top: 0;
+}
+
+.todo-form-input-box__button_down {
+    top: 100%;
+}
+
+.todo-form-input-box__button_create {
+    top: 50%;
+    left: 0;
+}
+
+.todo-form-input-box__button_remove {
+    top: 50%;
+    left: 101.3%;
 }
 
 .todo-form__input_title {
@@ -18,7 +82,7 @@
 }
 
 .todo-form__input::placeholder {
-    color: white;
+    color: var(--currentTextClr);
 }
 
 @media (max-width: 850px) {

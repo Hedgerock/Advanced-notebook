@@ -1,5 +1,6 @@
 export const buttonIcons = {
     create: 'fa-solid fa-plus',
+    remove: 'fa-solid fa-minus',
     delete: 'fa-solid fa-trash',
     deletedList: 'fa-solid fa-trash-can-arrow-up',
     backwards: 'fa-solid fa-right-to-bracket',
@@ -9,4 +10,5 @@ export const buttonIcons = {
     down: 'fa-solid fa-angle-down',
     confirm: 'fa-solid fa-check',
     decline: 'fa-solid fa-xmark',
+    copy: 'fa-solid fa-copy'
 }

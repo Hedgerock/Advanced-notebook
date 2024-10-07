@@ -1,9 +1,11 @@
 .deleted-todo__title {
     position: relative;
 
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
 
     text-align: center;
+
+    border-radius: 1rem;
 }
 
 .deleted-todo__title::before {
@@ -18,5 +20,5 @@
 
     transform: translateY(-50%);
 
-    background: silver;
+    background: var(--currentBorderClr);
 }

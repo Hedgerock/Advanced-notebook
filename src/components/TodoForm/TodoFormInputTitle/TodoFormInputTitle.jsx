@@ -9,7 +9,7 @@ export const TodoFormInputTitle = () => {
         <input 
             className='todo-form__input todo-form__input_title'
             type="text" 
-            placeholder= 'Type here'
+            placeholder= 'Type your todo title'
             value={ title }
             onChange={ e => {
 

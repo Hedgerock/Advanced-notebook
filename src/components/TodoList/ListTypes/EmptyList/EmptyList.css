@@ -5,7 +5,7 @@
 
     flex-direction: column;
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
     border-radius: 1rem;
 
     width: 100%;
@@ -21,7 +21,7 @@
 
     width: 2px;
     height: 35px;
-    background: silver;
+    background: var(--currentBorderClr);
 
     position: absolute;
     top: 0;
@@ -41,7 +41,7 @@
     text-align: center;
 
     /* color: #062490; */
-    color: white;
+    color: var(--currentTextClr);
     font-style: italic;
 
     font-size: 3rem;

@@ -1,14 +1,16 @@
 .notification-box__value {
     display: flex;
+    flex-direction: column;
     width: 100%;
 
+    gap: .5rem;
+
     max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    word-break: break-all;
 }
 
 .notification-box__value:nth-child(2) {
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     padding: .5rem;
 
     border-radius: .6rem;

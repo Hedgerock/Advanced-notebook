@@ -4,13 +4,13 @@
     right: 5px;
     width: 25px;
     height: 95%;
-    border-left: 1px solid silver;
+    border-left: 1px solid var(--currentBorderClr);
     
     display: flex;
     justify-content: center;
     align-items: center;
 
-    color: white;
+    color: var(--currentTextClr);
 
     transform: translateY(-50%);
     z-index: 50;

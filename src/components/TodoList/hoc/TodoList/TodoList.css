@@ -13,5 +13,5 @@
     width: 100%;
     height: 2px;
 
-    background: silver;
+    background: var(--currentBorderClr);
 }

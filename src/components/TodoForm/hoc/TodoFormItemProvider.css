@@ -5,6 +5,14 @@
     position: relative;
 }
 
+.notation-box {
+    position: relative;
+    display: flex;
+
+    flex-direction: column;
+    gap: .5rem;
+}
+
 .todo-form-item:hover .todo-form-item__button {
     opacity: 1;
 }

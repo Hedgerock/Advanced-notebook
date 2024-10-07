@@ -1,4 +1,4 @@
 export * from './NotificationContainerMain';
-export * from './SpanTag';
+export * from './DivTag';
 export * from './NotificationBoxTimer';
 export * from './NotificationBoxButton';

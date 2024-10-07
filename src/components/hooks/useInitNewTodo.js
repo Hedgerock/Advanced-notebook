@@ -1,29 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { uniqueId } from '../../utils/uniqueId'
 import { useTodoContext } from "./useTodoContext";
+import { newTodoInterface, valueInterface } from "../../data";
 
 export const useInitNewTodo = () => {
-    const [value, setValue] = useState({title: '', content: []});
-    const { todo, setTodo } = useTodoContext();
+    const { todo, setTodo, contentInputData } = useTodoContext();
+    const [value, setValue] = useState(valueInterface);
     const myId = uniqueId(todo)
+
+    useEffect(() => {
+
+        setValue(prev => ({...prev, content: contentInputData}))
+
+    }, [contentInputData])
 
     const altTitle = `Todo collection number ${ myId }`
 
     const initNewTodo = () => {
-
-        setTodo(prev => [...prev, {
+        const newVal = newTodoInterface({
             id: myId,
-            text: value.content.map((el, index) => {
-                const newId = myId + myId + index
-                return { id: newId, status: false, text: el.content, order: 1 + index, deleted: false }
-            }),
+            textData: value.content,
             title: value.title || altTitle,
             isDone: false,
-            order: todo.length ? todo.length + 1 : 1,
+            orderData: todo,
             deleted: false
-        }])
+        })
 
-        setValue({title: '', content: []});
+        setTodo(prev => [...prev, {...newVal}])
+        setValue(valueInterface);
     }
 
     return { value, setValue, initNewTodo, title: value.title, content: value.content, altTitle }

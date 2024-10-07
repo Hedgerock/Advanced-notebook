@@ -1,5 +1,5 @@
 .deleted-todos__value {
-    color: white;
+    color: var(--currentTextClr);
 
     padding: .6rem 1rem;
 

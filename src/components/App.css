@@ -2,10 +2,13 @@
     max-width: 1200px;
     margin: 0 auto;
 
-    padding: 1rem;
+    max-height: 97vh;
+    overflow: auto;
 
-    border: 2px solid silver;
-    border-radius: 1rem;
+    padding: 1rem 1rem .5rem 1rem;
+
+    border: 2px solid var(--currentBorderClr);
+    border-radius: .7rem;
     background: #716b6b;
 
     display: flex;
@@ -16,6 +19,21 @@
     gap: 1rem;
 }
 
+.header-right-part {
+    display: flex;
+    margin-left: auto;
+}
+
+.App::-webkit-scrollbar {
+    width: 10px;
+}
+
+.App::-webkit-scrollbar-thumb,
+.App::-webkit-scrollbar
+{
+    border-radius: 0 1rem 1rem 0;
+}
+
 .deleted-todo-main-part {
     max-height: 98%;
     overflow-y: auto;
@@ -24,7 +42,7 @@
     flex-direction: column;
     gap: 1.5rem;
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
 
     padding: 1.5rem .6rem .6rem .6rem;
 
@@ -65,18 +83,18 @@
 
 .deleted-todo-main-part::-webkit-scrollbar {
     border-radius: 0 1rem 1rem 0;
-    background: silver;
+    background: var(--currentBorderClr);
     width: 8px;
 }
 
 .deleted-todo-main-part::-webkit-scrollbar-thumb {
-    background: #585656;
+    background: var(--currentDeletedScrlBarClrThumb);
     border-radius: 0 2rem 2rem 0;
     cursor: pointer;
 }
 
 .deleted-todo-main-part::-webkit-scrollbar-thumb:hover {
-    background: gray;
+    background: var(--currentBgClr);
 }
 
 @media (max-width: 850px) {

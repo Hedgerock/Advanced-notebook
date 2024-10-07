@@ -18,7 +18,7 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
     } = useTodoItemContext();
     const { text, id, order: todoItemOrder, isDone } = data
     const [ changeStatus, setChangeStatus ] = useState(false)
-    const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status } = info
+    const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status, notation } = info
     const [ subTodoValue, setSubTodoValue ] = useState(subtodoText)
 
     useEffect(() => {
@@ -63,7 +63,8 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
                 childIndex,
                 buttonIcons,
                 subTodoValue, 
-                setSubTodoValue
+                setSubTodoValue,
+                notation
             }}
         >
             { children }

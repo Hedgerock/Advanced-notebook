@@ -1,65 +1,42 @@
-import './App.css';
-import TodoContextProvider from '../context/todoContext';
 import { TodoForm } from './TodoForm';
 import { EmptyList, FullList } from './TodoList/ListTypes';
 import { TodoList } from './TodoList/hoc';
-import { useFilteredCoreData, useGetCoreData, useGetNotificationData } from './hooks';
 import { NotificationContainerMain } from './NotificationContainer';
-import { Header, NotificationContainer, TodoFormProvider } from './hoc';
+import { Header,NotificationContainer, TodoFormProvider } from './hoc';
 import { SearchContainer } from './hoc/SearchContainer';
 import { SearchBox, SearchIcon } from './SearchBox';
-import { useState } from 'react';
 import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
 import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
-import { buttonIcons } from '../data';
 import { DeletedTodoOptions } from './DeletedTodosOptions';
+import { useTodoContext } from './hooks';
 
-function App() {
-  const { todo, setTodo } = useGetCoreData();
-  const { notificationData, setNotificationData, currentId, initNewNotification } = useGetNotificationData();
-  const { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos } = useFilteredCoreData({ todo });
+import './App.css';
 
-  const isNotEmpty = deletedTodos.length !== 0;
-  const [ modal, setModal ] = useState(isNotEmpty);
+export const App = () => {
+  const { notificationData, filteredTodo, modal, isNotEmpty } = useTodoContext();
 
   return (
-    <TodoContextProvider value = { 
-        { 
-          todo, 
-          setTodo, 
-          notificationData, 
-          setNotificationData,
-          currentId, 
-          initNewNotification,
-          filteredTodo,
-          searchParam, 
-          setSearchParam,
-          modal,
-          setModal,
-          deletedTodos,
-          undeletedTodos,
-          buttonIcons
-        } 
-      }>
-      <div className="App">
+    <div className="App">
         <Header>
 
           <TodoFormProvider>
             <TodoForm />
           </TodoFormProvider>
 
-          <SearchContainer>
+          <div className="header-right-part">
+            <SearchContainer>
 
-            <SearchBox />
-            <SearchIcon />
+              <SearchBox />
+              <SearchIcon />
 
-          </SearchContainer>
+            </SearchContainer>
 
-          { isNotEmpty &&
-            <DeletedTodos>
-              <DeletedTodosValue />
-            </DeletedTodos>
-          }
+            { isNotEmpty && 
+              <DeletedTodos>
+                <DeletedTodosValue />
+              </DeletedTodos>
+              }
+          </div>
 
         </Header>
 
@@ -87,9 +64,6 @@ function App() {
             <NotificationContainerMain />
           </NotificationContainer> 
         }
-      </div>
-    </TodoContextProvider>
+    </div>
   );
 }
-
-export default App;

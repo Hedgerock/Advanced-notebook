@@ -9,7 +9,11 @@ export const DeletedTodoLIstElement = () => {
         <li
             className="deleted-todo-list__element"
         >   <div className="deleted-todo-list-content">
-                <span>{ el.text }</span>
+                <span 
+                    className='deleted-todo-list-content__value'
+                >
+                    { el.text }
+                </span>
                 <DeletedTodoOptions type = { 'currentChild' }/>
             </div>
         </li>

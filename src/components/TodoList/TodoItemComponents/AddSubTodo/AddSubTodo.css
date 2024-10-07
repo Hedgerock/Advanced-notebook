@@ -18,22 +18,22 @@
 .add-subtodo::after {
     content: '';
     
-    width: 100%;
+    width: 101%;
     height: 2px;
 
     position: absolute;
     bottom: -5px;
     left: 0;
 
-    background: silver;
+    background: var(--currentBorderClr);
 }
 
 .add-subtodo__input {
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     background: transparent;
     outline: none;
 
-    color: white;
+    color: var(--currentTextClr);
     border-radius: 1rem;
     padding: .5rem;
 
@@ -41,11 +41,11 @@
 }
 
 .add-subtodo__input::placeholder {
-    color: white;
+    color: var(--currentTextClr);
 }
 
 .add-subtodo__button {
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     border-radius: .8rem;
 
     display: flex;
@@ -58,13 +58,13 @@
 
     width: 65px;
 
-    color: white;
+    color: var(--currentTextClr);
 
     transition: background .2s, color .2s, border .2s;
 }
 
 .add-subtodo__button:hover {
-    background: #2b2727;
+    background: var(--currentAddBtnBgHov);
 }
 
 .add-subtodo__button:disabled {

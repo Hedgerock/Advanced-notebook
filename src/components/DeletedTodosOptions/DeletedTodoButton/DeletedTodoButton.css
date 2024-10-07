@@ -1,8 +1,8 @@
 .deleted-todo__button {
-    color: white;
+    color: var(--currentTextClr);
     padding: .1rem 1rem;
 
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     border-radius: .5rem;
 
     font-size: .6rem;
@@ -11,5 +11,5 @@
 }
 
 .deleted-todo__button:hover {
-    background: gray;
+    background: var(--currentBgClr);
 }

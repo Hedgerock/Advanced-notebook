@@ -8,12 +8,12 @@
 
     padding: 6.5rem .6rem .5rem .6rem;
 
-    border: 3px solid silver;
+    border: 3px solid var(--currentBorderClr);
     border-radius: .6rem;
 
     position: relative;
 
-    background: #716b6b;
+    background: var(--currentBgMainClr);
 }
 
 .todo-item:nth-child(odd):not(:last-child)::before,
@@ -22,7 +22,7 @@
     height: 3px;
     width: 50px;
 
-    background: silver;
+    background: var(--currentBorderClr);
 
     position: absolute;
     right: 0;
@@ -45,6 +45,10 @@
 
 .todo-item_completed {
     opacity: .8;
+}
+
+.todo-item:hover .todo-item__button {
+    opacity: 1;
 }
 
 .todo-text {

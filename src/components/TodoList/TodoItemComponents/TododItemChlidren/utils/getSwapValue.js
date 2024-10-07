@@ -5,11 +5,11 @@ export const getSwapValue = ({ data, key, currentValue, newValue, todoId, subtod
                 const { id } = el;
 
                 if (id === subtodoId) {
-                    return {...el, [key]: newValue[key]}
+                    return {...el, [key]: newValue[key], notation: newValue.notation}
                 }
 
                 if (id === adjacentId) {
-                    return {...el, [key]: currentValue[key] }
+                    return {...el, [key]: currentValue[key], notation: currentValue.notation }
                 }
 
                 return {...el}

@@ -4,7 +4,7 @@
 }
 
 .todo-item__del-btn {
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     cursor: pointer;
 
     transition: background .2s, opacity .2s;
@@ -12,7 +12,7 @@
 
     background: transparent;
 
-    color: white;
+    color: var(--currentTextClr);
 }
 
 .todo-item__del-btn {
@@ -28,5 +28,5 @@
 }
 
 .todo-item__del-btn:hover {
-    background: gray;
+    background: var(--currentBgClr);
 }

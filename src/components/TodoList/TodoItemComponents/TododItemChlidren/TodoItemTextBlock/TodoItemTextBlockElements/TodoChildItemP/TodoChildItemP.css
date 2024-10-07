@@ -1,15 +1,33 @@
 .todo-item__text {
-    color: white;
+    color: var(--currentTextClr);
     align-self: center;
     padding: .5rem;
-    border: 3px solid silver;
+    border: 3px solid var(--currentBorderClr);
     border-radius: 1rem;
-    max-width: 89%;
+    max-width: 100%;
 
     cursor: pointer;
+
+    word-break: break-all;
 
     transition: background .1s;
 
     display: flex;
     flex-wrap: wrap;
+
+    align-self: flex-start;
+}
+
+.todo-item__text_notation {
+    font-size: .6rem;
+    padding: .1rem .5rem;
+    max-height: 2rem;
+    overflow: hidden;
+
+    /* position: absolute;
+
+    top: -13px;
+    left: 35px;
+
+    transform: translate(-50%, -50%); */
 }

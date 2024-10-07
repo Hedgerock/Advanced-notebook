@@ -1,3 +1,4 @@
+import { todoFormInterface } from "../../../data";
 import { useTodoFormContext } from "../../hooks";
 
 export const useCustomTodoData = () => {
@@ -11,15 +12,29 @@ export const useCustomTodoData = () => {
     const subTodoPosition = isMoreThanOneEl ? '\n ' : '';
 
     const subTodoExpansion = contentInputData
-        .map((item, index) => ` ${ isMoreThanOneEl ? `${ index + 1 }. ` : '' }${ item.content }`)
-        .join('\n ');
+    .map((item, index) => {
+            const a = isMoreThanOneEl ? `${ index + 1 }. ` : '';
+            const b = item.notation.value.some(el => el.text.length > 0) 
+                ? `(${item.notation.value.map(el => el.text).join(', ')})` 
+                : '' 
+            
+            const title = ` ${ a }${ item.content } ${ b }`
 
-    const contentTitle = `Create new todo \n Title: ${ actualTitle } \n Subtodo${ endOfWord }: ${ subTodoPosition }${ subTodoExpansion }`
+            return title
+        })
+    .join('\n ');
+    
+    //Title Decomposition
+    const a = `Create new todo \n`;
+    const b = `Title: ${ actualTitle } \n`;
+    const c = `Subtodo${ endOfWord }: ${ subTodoPosition }${ subTodoExpansion }`;
+
+    const contentTitle = `${ a } ${ b } ${ c }`
 
 
     const initCreatingTodoProcess = () => {
         initNewTodo()
-        setContentInputData([{ id: 1, content: '' }]);
+        setContentInputData([todoFormInterface]);
     }
 
     return { initCreatingTodoProcess, contentTitle, contentInputData, create }

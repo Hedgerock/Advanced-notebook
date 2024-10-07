@@ -4,10 +4,10 @@
     right: 5px;
 
     border-radius: 50%;
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
     background: transparent;
 
-    color: white;
+    color: var(--currentTextClr);
 
     display: flex;
     justify-content: center;

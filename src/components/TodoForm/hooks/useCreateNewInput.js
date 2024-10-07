@@ -8,7 +8,10 @@ export const useCreateNewInput = () => {
 
         setContentInputData(prev => {
             const newId = prev.map(item => item.id).sort((a,b) => b - a)[0] + 1;
-            return [...prev, { id: newId, content: '' }]
+            return [...prev, { id: newId, content: '', notation: {
+                status: false, 
+                value: [{ id: 1, text: '' }] 
+            } }]
         })
 
     }

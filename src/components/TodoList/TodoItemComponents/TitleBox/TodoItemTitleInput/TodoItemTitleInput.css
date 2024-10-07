@@ -4,7 +4,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    color: white;
+    color: var(--currentTextClr);
     cursor: pointer;
 
     transition: background .2s;
@@ -12,9 +12,9 @@
 
 .todo-item__title_input {
     font-size: 16px;
-    background: gray;
+    background: var(--currentBgClr);
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
     border-radius: .5rem;
 
     outline: none;

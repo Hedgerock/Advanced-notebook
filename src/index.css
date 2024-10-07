@@ -4,11 +4,28 @@
   padding: 0;
 }
 
+:root {
+  --currentBgBodyClr: #1f1c1c;
+  --currentBorderClr: silver;
+  --currentTextClr: white;
+
+  --currentAddBtnBgHov: #2b2727;
+
+  --currentSearchedBgClr: #393838;
+
+  --selectionBoxBgHov: #5f5d5d;
+
+  --currentBgClr: gray;
+  --currentBgMainClr: #716b6b;
+
+  --currentDeletedScrlBarClrThumb: #585656;
+}
+
 body {
   padding-top: 1.5rem;
   font-family: sans-serif;
 
-  background: #1f1c1c;
+  background: var(--currentBgBodyClr);
 }
 
 button {
@@ -25,9 +42,9 @@ li {
 
 ::-webkit-scrollbar {
   width: 7px;
-  background: silver;
+  background: var(--currentBorderClr);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: gray;
+  background: var(--currentBgClr);
 }

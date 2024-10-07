@@ -1,11 +1,11 @@
 .todo-form__add-btn {
-    color: white;
+    color: var(--currentTextClr);
     padding: .5rem 1.5rem;
-    background: gray;
+    background: var(--currentBgClr);
 
     border-radius: .6rem;
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
 
     cursor: pointer;
     transition: all .3s;
@@ -13,8 +13,8 @@
 }
 
 .todo-form__add-btn:hover {
-    background: #2b2727;
-    border: 2px solid gray;
+    background: var(--currentAddBtnBgHov);
+    border: 2px solid var(--currentBgClr);
 }
 
 .todo-form__add-btn:disabled {

@@ -4,7 +4,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    color: white;
+    color: var(--currentTextClr);
     cursor: pointer;
 
     transition: background .2s;

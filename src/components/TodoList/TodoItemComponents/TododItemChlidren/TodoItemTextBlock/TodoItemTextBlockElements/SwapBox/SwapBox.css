@@ -11,10 +11,10 @@
     align-items: center;
 
     border-radius: 50%;
-    background: gray;
+    background: var(--currentBgClr);
 
-    color: white;
-    border: 1px solid silver;
+    color: var(--currentTextClr);
+    border: 1px solid var(--currentBorderClr);
 
     outline: none;
 
@@ -22,7 +22,7 @@
 }
 
 .todo-item-text-block__button:hover {
-    background: silver;
+    background: var(--currentBorderClr);
 }
 
 .todo-item-text-block:hover .todo-item-text-block__button {

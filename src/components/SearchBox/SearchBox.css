@@ -4,7 +4,7 @@
 }
 
 .search-box__input {
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
     border-radius: .7rem;
     background: transparent;
 
@@ -12,12 +12,12 @@
 
     padding: .5rem 2rem .5rem .2rem;
 
-    color: white;
+    color: var(--currentTextClr);
     width: 100%;
 }
 
 .search-box__input::placeholder {
-    color: white;
+    color: var(--currentTextClr);
 }
 
 @media (max-width: 850px) {

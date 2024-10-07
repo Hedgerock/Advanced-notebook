@@ -6,9 +6,9 @@
 
     padding: 1rem;
 
-    color: white;
+    color: var(--currentTextClr);
 
-    border: 2px solid silver;
+    border: 2px solid var(--currentBorderClr);
     border-radius: 1rem;
 
     position: relative;

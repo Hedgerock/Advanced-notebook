@@ -9,8 +9,12 @@ import { SwapBox } from "./TodoItemTextBlockElements";
 import { ChangeBox } from "../ChangeBox";
 
 export const TodoItemTextBlock = () => {
-    const { changeStatus } = useTodoItemChildContext();
+    const { changeStatus, notation } = useTodoItemChildContext();
     const { childrenClassName } = useFindChildren();
+
+    const filteredNotation = Array.isArray(notation) 
+        ? notation.filter(el => el.text) 
+        : [{ id: 1, text: notation }].filter(el => el.text);
 
     return (
         <div 
@@ -24,10 +28,29 @@ export const TodoItemTextBlock = () => {
 
             <ChangeBox />
             
-            {!changeStatus
-                ? <TodoChildItemP />
-                : <TodoChildItemInput />
-            }
+            <div className="text-box-container">
+                <div className="notations">
+                    {filteredNotation.length > 0 &&
+                        filteredNotation.map(el => {
+                            const { id, text } = el;
+                            
+                            return (
+                            <span
+                                key = { id }
+                                className="todo-item__text todo-item__text_notation"
+                                title={ `Notation: ${ text }` }
+                            >
+                                { text }
+                            </span>
+                            )
+                        })
+                    }
+                </div>
+                {!changeStatus
+                    ? <TodoChildItemP />
+                    : <TodoChildItemInput />
+                }
+            </div>
 
             <TodoChildDelButton />
         </div>

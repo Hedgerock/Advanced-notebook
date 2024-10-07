@@ -4,9 +4,9 @@
     top: 0;
     right: 0;
 
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
 
-    color: white;
+    color: var(--currentTextClr);
 
     border-radius: 0 1rem 0 0;
 
@@ -16,5 +16,5 @@
 }
 
 .modal__close-btn:hover {
-    background: gray;
+    background: var(--currentBgClr);
 }

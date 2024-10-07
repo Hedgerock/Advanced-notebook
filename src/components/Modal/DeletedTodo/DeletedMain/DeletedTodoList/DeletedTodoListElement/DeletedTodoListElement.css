@@ -1,11 +1,15 @@
 .deleted-todo-list__element {
-    border: 1px solid silver;
+    border: 1px solid var(--currentBorderClr);
+    border-radius: .6rem;
+
     padding: .5rem 1.5rem;
 
     position: relative;
     display: flex;
 
     transition: opacity .2s;
+
+    word-break: break-all;
 
     min-width: 200px;
 }
@@ -35,5 +39,5 @@
     left: -35px;
 
     transform: translateY(-50%);
-    background: silver;
+    background: var(--currentBorderClr);
 }
