@@ -51,14 +51,6 @@
     width: 90%;
 }
 
-.notations {
-    display: flex;
-    align-items: center;
-
-    flex-wrap: wrap;
-    gap: .3rem;
-}
-
 .todo-item-text-block_searched {
     background: var(--currentSearchedBgClr);
 }

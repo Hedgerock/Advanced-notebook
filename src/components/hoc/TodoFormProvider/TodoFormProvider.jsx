@@ -1,16 +1,16 @@
 import TodoFormP from '../../../context/todoFormContext'
-import { useInitNewTodo, useTodoContext } from '../../hooks';
+import { useInitNewData, useTodoContext } from '../../hooks';
 import { checkAllContentValue } from '../../TodoForm/utils';
 import { enterEvent } from '../../utils';
 
 import './TodoFormProvider.css';
 
-export const TodoFormProvider = ({ children }) => {
-    const { value, setValue, initNewTodo, title, content, altTitle } = useInitNewTodo();
-    const { contentInputData, setContentInputData, buttonIcons } = useTodoContext();
+export const TodoFormProvider = ({ children, mainData, setMainData, initDataFunction, isDataWithTitle }) => {
+    const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle });
+    const { buttonIcons } = useTodoContext();
 
     const isDataReady = checkAllContentValue({ 
-        data: contentInputData, 
+        data: mainData, 
         key: ['content', 'notation'] 
     }) 
 
@@ -19,15 +19,16 @@ export const TodoFormProvider = ({ children }) => {
                 { 
                     value, 
                     setValue, 
-                    initNewTodo, 
+                    initNewData, 
                     title, 
                     content, 
                     enterEvent, 
                     altTitle,
-                    contentInputData, 
-                    setContentInputData,
+                    mainData, 
+                    setMainData,
                     buttonIcons,
-                    isDataReady
+                    isDataReady,
+                    isDataWithTitle
                 }
             }>
             { children }

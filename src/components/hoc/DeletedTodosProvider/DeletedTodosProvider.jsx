@@ -7,7 +7,15 @@ export const DeletedTodosProvider = ({ children, data }) => {
     const { deletedTodos, setTodo, buttonIcons } = useTodoContext(); 
 
     return (
-        <DeletedTodosContextProvider value={ { data, deletedTodos, setTodo, buttonIcons } }>
+        <DeletedTodosContextProvider 
+            value={ 
+                { 
+                    data, 
+                    deletedTodos, 
+                    setTodo, 
+                    buttonIcons 
+                } 
+            }>
             { children }
         </DeletedTodosContextProvider>
     )

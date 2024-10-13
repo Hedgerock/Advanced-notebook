@@ -1,12 +1,16 @@
 import { useTodoFormContext } from "../../hooks";
 
 export const useCreateNewInput = () => {
-    const { setContentInputData, buttonIcons } = useTodoFormContext();
+    const { setMainData, buttonIcons, mainData } = useTodoFormContext();
     const { create } = buttonIcons
+
+    const actualClassName = mainData.some(el => el.notation?.status) 
+    ? 'todo-form__add-btn todo-form__add-btn_alternate' 
+    : 'todo-form__add-btn';
 
     const createNewInput = () => {
 
-        setContentInputData(prev => {
+        setMainData(prev => {
             const newId = prev.map(item => item.id).sort((a,b) => b - a)[0] + 1;
             return [...prev, { id: newId, content: '', notation: {
                 status: false, 
@@ -16,5 +20,5 @@ export const useCreateNewInput = () => {
 
     }
 
-    return { createNewInput, create }
+    return { createNewInput, create, actualClassName }
 }

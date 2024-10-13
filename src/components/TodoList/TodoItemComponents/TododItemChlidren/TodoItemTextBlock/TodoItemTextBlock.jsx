@@ -7,14 +7,11 @@ import { TodoChildDelButton } from "./TodoItemTextBlockElements/TodoChildDelButt
 import { TodoChildCurrentNumber } from "./TodoItemTextBlockElements/TodoChildCurrentNumber";
 import { SwapBox } from "./TodoItemTextBlockElements";
 import { ChangeBox } from "../ChangeBox";
+import { Notations } from "./TodoItemTextBlockElements/Notations";
 
 export const TodoItemTextBlock = () => {
-    const { changeStatus, notation } = useTodoItemChildContext();
+    const { changeStatus } = useTodoItemChildContext();
     const { childrenClassName } = useFindChildren();
-
-    const filteredNotation = Array.isArray(notation) 
-        ? notation.filter(el => el.text) 
-        : [{ id: 1, text: notation }].filter(el => el.text);
 
     return (
         <div 
@@ -29,23 +26,7 @@ export const TodoItemTextBlock = () => {
             <ChangeBox />
             
             <div className="text-box-container">
-                <div className="notations">
-                    {filteredNotation.length > 0 &&
-                        filteredNotation.map(el => {
-                            const { id, text } = el;
-                            
-                            return (
-                            <span
-                                key = { id }
-                                className="todo-item__text todo-item__text_notation"
-                                title={ `Notation: ${ text }` }
-                            >
-                                { text }
-                            </span>
-                            )
-                        })
-                    }
-                </div>
+                <Notations />
                 {!changeStatus
                     ? <TodoChildItemP />
                     : <TodoChildItemInput />

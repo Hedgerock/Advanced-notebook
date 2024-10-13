@@ -11,6 +11,13 @@
     width: 275px;
 
     cursor: default;
+
+    transition: border .2s;
+}
+
+.todo-form__input_notation-empty,
+.todo-form__input_empty {
+    border: 2px solid #213145; /* #3e3939 */
 }
 
 .todo-form-input-box {
@@ -75,6 +82,7 @@
 .todo-form-input-box__button_remove {
     top: 50%;
     left: 101.3%;
+    opacity: 1;
 }
 
 .todo-form__input_title {

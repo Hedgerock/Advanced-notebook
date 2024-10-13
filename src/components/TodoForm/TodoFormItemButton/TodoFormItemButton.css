@@ -29,6 +29,7 @@
 
 .todo-form-item__button_updated {
     right: -125%;
+    opacity: 1;
     color: var(--currentTextClr)
 }
 

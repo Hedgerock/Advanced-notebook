@@ -2,7 +2,7 @@ import { useTodoFormContext } from "../../hooks"
 import { useCustomTodoData } from "../hooks";
 
 export const TodoFormInputTitle = () => {
-    const { title, setValue, enterEvent, contentInputData } = useTodoFormContext();
+    const { title, setValue, enterEvent, mainData } = useTodoFormContext();
     const { initCreatingTodoProcess } = useCustomTodoData();
 
     return (
@@ -14,12 +14,12 @@ export const TodoFormInputTitle = () => {
             onChange={ e => {
 
                 setValue(prev => {
-                return {...prev, title: e.target.value}
+                    return {...prev, title: e.target.value}
                 })
             }
             }
 
-            onKeyDown={ (event) => enterEvent(event, contentInputData, initCreatingTodoProcess) }
+            onKeyDown={ (event) => enterEvent(event, mainData, initCreatingTodoProcess) }
         />
     )
 }

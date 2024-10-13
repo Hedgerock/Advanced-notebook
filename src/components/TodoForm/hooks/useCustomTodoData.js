@@ -1,17 +1,17 @@
-import { todoFormInterface } from "../../../data";
+import { initialNotation, todoFormInterface } from "../../../data";
 import { useTodoFormContext } from "../../hooks";
 
 export const useCustomTodoData = () => {
-    const { initNewTodo, title, altTitle, contentInputData, setContentInputData, buttonIcons } = useTodoFormContext();
+    const { initNewData, title, altTitle, mainData, setMainData, buttonIcons, isDataWithTitle } = useTodoFormContext();
     const { create } = buttonIcons
 
     const actualTitle = title || altTitle
-    const isMoreThanOneEl = contentInputData.length > 1
+    const isMoreThanOneEl = mainData.length > 1
 
     const endOfWord = isMoreThanOneEl ? `s` : '';
     const subTodoPosition = isMoreThanOneEl ? '\n ' : '';
 
-    const subTodoExpansion = contentInputData
+    const subTodoExpansion = mainData
     .map((item, index) => {
             const a = isMoreThanOneEl ? `${ index + 1 }. ` : '';
             const b = item.notation.value.some(el => el.text.length > 0) 
@@ -25,17 +25,18 @@ export const useCustomTodoData = () => {
     .join('\n ');
     
     //Title Decomposition
-    const a = `Create new todo \n`;
+    const a = `Create new data \n`;
     const b = `Title: ${ actualTitle } \n`;
     const c = `Subtodo${ endOfWord }: ${ subTodoPosition }${ subTodoExpansion }`;
 
-    const contentTitle = `${ a } ${ b } ${ c }`
+    const contentTitle = `${ a } ${ isDataWithTitle ? b : '' } ${ c }`
 
 
     const initCreatingTodoProcess = () => {
-        initNewTodo()
-        setContentInputData([todoFormInterface]);
+        initNewData();
+        const newId = Math.max.apply(null, mainData.map(el => el.id)) + 1;
+        setMainData([todoFormInterface({ id: newId, content: '', notation: initialNotation })]);
     }
 
-    return { initCreatingTodoProcess, contentTitle, contentInputData, create }
+    return { initCreatingTodoProcess, contentTitle, mainData, create }
 }

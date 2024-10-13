@@ -5,6 +5,7 @@ import { NotificationBox, NotificationTextBox } from "../hoc";
 import { NotificationBoxButton } from "./NotificationBoxButton";
 import { notificationType } from "./data";
 import React from "react";
+import { TodoChildrenList } from "./TodoChildrenList";
 
 export const NotificationContainerMain = ({ data }) => {
     const { id, text, title, type } = data;
@@ -20,9 +21,7 @@ export const NotificationContainerMain = ({ data }) => {
             <DivTag>{ introduction } { title }:</DivTag>
             <DivTag>
               { Array.isArray(text)
-                ? text.map(el => (
-                  <span key={ el.id }>{ el.text }</span>
-                ))
+                ? <TodoChildrenList data = { text }/>
                 : text
               }
             </DivTag>

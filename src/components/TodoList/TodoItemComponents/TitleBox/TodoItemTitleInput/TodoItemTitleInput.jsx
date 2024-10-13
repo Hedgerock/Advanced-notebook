@@ -2,7 +2,7 @@ import { useTitleBoxContext } from '../../hooks';
 import './TodoItemTitleInput.css';
 
 export const TodoItemTitleInput = () => {
-    const { titleValue, setTitleValue,  } = useTitleBoxContext();
+    const { titleValue, setTitleValue } = useTitleBoxContext();
 
     return (
         <input

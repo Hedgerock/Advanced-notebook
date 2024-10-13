@@ -1,29 +1,55 @@
 import TodoFormItemContextProvider from '../../../context/todoFormItemContext';
-import { NotationBox } from '../NotationBox';
 
 import './TodoFormItemProvider.css';
-import { useTodoFormContext } from '../../hooks';
+import { useTodoContext } from '../../hooks';
+import { useEffect, useState } from 'react';
+import { NotationBox } from '../../NotationBox/NotationBox';
 
-export const TodoFormItemProvider = ({ children, data, index }) => {
-    const { contentInputData, setContentInputData, buttonIcons } = useTodoFormContext();
+export const TodoFormItemProvider = ({ children, data, index, setMainData, mainData }) => {
+    const { buttonIcons } = useTodoContext();
     const { status } = data;
 
+    const [notationList, setNotationList] = useState(data.notation.value);
+
+    useEffect(() => {
+        setMainData(prev => {
+            return prev.map(el => {
+                return el.id === data.id
+                    ? {...el, notation: {...el.notation, value: notationList}}
+                    : el
+            })
+        })
+
+    }, [data.id, setMainData, notationList ]);
+    
 
     return (
         <TodoFormItemContextProvider 
             value={ 
                 { 
-                    contentInputData, 
-                    setContentInputData, 
+                    mainData,
+                    setMainData,
                     data, 
                     buttonIcons, 
                     index, 
-                    status
+                    status,
+                    notationList, 
+                    setNotationList,
                 } 
         }>
             <div className="todo-form-item">
                 { children }
-                { data.notation?.status && <NotationBox /> }
+                { data.notation?.status && 
+                    <NotationBox 
+                        data = { data } 
+                        notationList={ notationList } 
+                        setNotationList={ setNotationList }
+                        currentClassName = "notation"
+                        index = { index }
+                        mainData={ mainData }
+                        setMainData={ setMainData }
+                    /> 
+                }
             </div>
         </TodoFormItemContextProvider>
     )

@@ -11,11 +11,12 @@ export const TodoFormInputBoxButtons = ({ children }) => {
     return (
         <>
             { buttons.map(button => {
-                const { id, condition, buttonFunc, buttonModificator, buttonValue } = button;
+                const { id, condition, buttonFunc, buttonModificator, buttonValue, title } = button;
 
                     return (
                         condition &&
                         <TodoFormInputBoxButton
+                            title = { title }
                             key={ id }
                             func = { buttonFunc } 
                             modificator = { buttonModificator }

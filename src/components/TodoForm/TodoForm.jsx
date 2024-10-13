@@ -4,8 +4,10 @@ import { TodoFormContent } from './TodoFormContent/TodoFormContent';
 import { TodoFormInputTitle } from './TodoFormInputTitle';
 
 import './TodoForm.css';
+import { useTodoFormContext } from '../hooks';
 
 export const TodoForm = () => {
+    const { isDataWithTitle } = useTodoFormContext();
 
     return (
         <div className="todo-form">
@@ -14,7 +16,7 @@ export const TodoForm = () => {
                 <TodoFormInputContent />
             </TodoFormContent>
 
-            <TodoFormInputTitle />
+            {isDataWithTitle && <TodoFormInputTitle />}
             
             <TodoFormButton />
 

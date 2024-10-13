@@ -2,6 +2,7 @@ import { useState } from "react";
 import TodoItemProvider from '../../../context/todoItemContext';
 import { useChangeValue, useInitNewSubTodo, useTodoContext, useTodoItemState } from "../../hooks";
 import { getTodoData } from "../TodoItemComponents/utils";
+import { initialNotation, todoFormInterface } from "../../../data";
 
 export const TodoItemParent = ({ children, data, index, fullData }) => {
     const { isDone, id, text, title } = data;
@@ -17,12 +18,18 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
         buttonIcons
     } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
-    const { subValue, setSubValue, initNewSubTodo } = useInitNewSubTodo();
+
+    const maxId = Math.max.apply(null, text.map(item => item.id)) + 1;
+    const [ newSubtodos, setNewSubtodos ] = useState([todoFormInterface({ id: maxId, content: '', notation: initialNotation })])
+
+    const { initNewSubTodo } = useInitNewSubTodo({ newSubtodos, id });
     
     const unfinishedTodos = getTodoData({ data: text, isReversed:false, filteredKey:'status', boolean:false });
     const finishedTodos = getTodoData({ data: text, isReversed:false, filteredKey:'status', boolean:true });
 
     const lastChildClassName = index === fullData.length - 1 ? 'todo-item_current-last-child' : '';
+
+    const [ createSubTodoModal, setCreateSubTodoModal ] = useState(false);
     
     const { 
         currentVal, 
@@ -52,9 +59,7 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     setCurrentVal,
                     curEl, 
                     curTextVal, 
-                    currentValId,
-                    subValue, 
-                    setSubValue, 
+                    currentValId, 
                     initNewSubTodo,
                     subTodo, 
                     setSubTodo,
@@ -70,7 +75,11 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     lastChildClassName,
                     searchParam,
                     setSearchParam,
-                    buttonIcons
+                    buttonIcons,
+                    createSubTodoModal, 
+                    setCreateSubTodoModal,
+                    newSubtodos, 
+                    setNewSubtodos
                 }
             }
         >

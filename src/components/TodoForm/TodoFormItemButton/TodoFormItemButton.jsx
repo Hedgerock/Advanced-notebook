@@ -4,7 +4,7 @@ import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext"
 import './TodoFormItemButton.css';
 
 export const TodoFormItemButton = () => {
-    const { setContentInputData, data, buttonIcons } = useTodoFormItemContext();
+    const { data, buttonIcons, setMainData } = useTodoFormItemContext();
     const { id, notation } = data;
     const { delete: currentValue } = buttonIcons;
 
@@ -15,7 +15,7 @@ export const TodoFormItemButton = () => {
     return (
         <button
             onClick={ () => {
-                setContentInputData(prev => {
+                setMainData(prev => {
                     return prev.filter(val => val.id !== id)
                 })
             } }

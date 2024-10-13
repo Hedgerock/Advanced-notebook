@@ -5,3 +5,53 @@
 
     position: relative;
 }
+
+.todo-form-content_alter::before,
+.todo-form-content_alter-non-notation::before {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 25%;
+
+    height: 98.6%;
+
+    border: 2px solid var(--currentBorderClr);
+
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.todo-form-content_alter::before {
+    width: 40%;
+    transform: translateX(-50%);
+}
+
+.todo-form-content_alter-non-notation::before {
+    width: 87.5%;
+    transform: translateX(-22.5%);
+}
+
+.todo-form-content::after,
+.todo-form-content_alter::after,
+.todo-form-content_alter-non-notation::after
+ {
+    content: '';
+
+    position: absolute;
+    top: 0;
+    left: 25%;
+
+    width: 40%;
+    height: 10rem;
+
+    transform: translate(-50%, -100%);
+
+    border: 2px solid var(--currentBorderClr);
+    border-bottom: 0;
+}
+
+.todo-form-content_alter-non-notation::after {
+    width: 87.5%;
+    transform: translate(-22.5%, -100%);
+}

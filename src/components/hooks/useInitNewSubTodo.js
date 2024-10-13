@@ -1,26 +1,29 @@
-import { useState } from "react"
 import { useTodoContext } from "./useTodoContext";
+import { newTodoTextInterface } from "../../data";
 
-export const useInitNewSubTodo = () => {
-    const [subValue, setSubValue] = useState('');
+export const useInitNewSubTodo = ({ newSubtodos, id }) => {
     const { setTodo } = useTodoContext();
 
-    const initNewSubTodo = ({ curEl }) => {
+    const initNewSubTodo = () => {
         setTodo(prev => {
             return prev.map(todo => {
-                if (todo.id === curEl.id) {
+                if (todo.id === id) {
                     return {
                         ...todo,
                         isDone: false,
                         text: [
                             ...todo.text,
-                            {
-                                id: todo.text.length ? todo.text[todo.text.length - 1].id + 1 : 1,
-                                status: false,
-                                text: subValue,
-                                deleted: false,
-                                order: todo.text.length ? Math.max.apply(null, todo.text.map(item => item.order)) + 1 : 1
-                            }
+                            ...newSubtodos.map((el, index) => {
+                                const { id: idVal, content } = el
+                                return newTodoTextInterface({
+                                    id: idVal,
+                                    status: false,
+                                    text: content,
+                                    deleted: false,
+                                    order: Math.max.apply(null, todo.text.map(item => item.order)) + 1 + index,
+                                    notation: el.notation.value
+                                })
+                            })
                         ]
                     };
                 }
@@ -29,5 +32,5 @@ export const useInitNewSubTodo = () => {
         });
     };
 
-    return { subValue, setSubValue, initNewSubTodo };
+    return { initNewSubTodo };
 };

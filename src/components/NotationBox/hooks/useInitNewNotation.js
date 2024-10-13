@@ -1,11 +1,12 @@
-import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext";
+import { useTodoContext } from "../../hooks";
 
-export const useInitNewNotation = () => {
-    const { notationContainer, buttonIcons, setContentInputData, data } = useTodoFormItemContext();
+
+export const useInitNewNotation = ({ setNotationList, data, setMainData }) => {
+    const { buttonIcons } = useTodoContext();
     const { create } = buttonIcons;
 
     const initNewNotation = () => {
-        setContentInputData(prev => {
+        setMainData(prev => {
             return prev.map(item => {
                 return item.id === data.id
                     ? {...item, notation: {
@@ -18,7 +19,14 @@ export const useInitNewNotation = () => {
                     : item
             })
         })
+
+       /*  setNotationList(prev => {
+            const newId = Math.max.apply(null, prev.map(el => el.id)) + 1;
+            const res = [...prev, { id: newId, text: '' }]
+
+            return res
+        }) */
     }
 
-    return { notationContainer, create, initNewNotation }
+    return { create, initNewNotation }
 }

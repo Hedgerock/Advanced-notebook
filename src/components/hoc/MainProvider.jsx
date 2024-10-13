@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useFilteredCoreData, useGetCoreData, useGetNotificationData } from "../hooks";
 import TodoContextProvider from '../../context/todoContext';
-import { buttonIcons, todoFormInterface } from "../../data";
+import { buttonIcons, initialNotation, todoFormInterface } from "../../data";
 
 export const MainProvider = ({ children }) => {
     const { todo, setTodo } = useGetCoreData();
     const { notificationData, setNotificationData, currentId, initNewNotification } = useGetNotificationData();
     const { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos } = useFilteredCoreData({ todo });
-    const [ contentInputData, setContentInputData ] = useState([todoFormInterface])
+    const [ contentInputData, setContentInputData ] = useState([todoFormInterface({ id: 1, content: '', notation: initialNotation })])
 
     const isNotEmpty = deletedTodos.length !== 0;
     const [ modal, setModal ] = useState(isNotEmpty);

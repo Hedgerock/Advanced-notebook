@@ -1,19 +1,22 @@
+import { useNotationContext } from "../../hooks/useNotationContext";
 import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext";
 
-export const useInitChangeNotation = ({ value, valueIndex }) => {
-    const { index, contentInputData, data, setContentInputData } = useTodoFormItemContext();
 
-    const curSubTodoNum = index + 1;
+export const useInitChangeNotation = () => {
+    const { value, valueIndex, mainIndex } = useNotationContext();
+    const { mainData, setMainData, data } = useTodoFormItemContext();
+
+    const curSubTodoNum = mainIndex + 1;
     const curValueNum = valueIndex + 1;
     
     const curretValuePlaceHolder = data.notation.value.length > 1 ? `(${ curValueNum })` : '';
 
-    const actualPlaceholder = contentInputData.length > 1 
-        ? `Notation for subtodo №${ curSubTodoNum} ${ curretValuePlaceHolder }` 
+    const actualPlaceholder = mainData.length > 1 
+        ? `Notation for subtodo №${ curSubTodoNum } ${ curretValuePlaceHolder }` 
         : `Notation ${ curretValuePlaceHolder }`
 
     const initChangeNotation = (e) => {
-        setContentInputData(prev =>{
+        setMainData(prev =>{
             return prev.map(item => {
                 return item.id === data.id
                     ? {...item, notation: {...item.notation, value: item.notation.value.map(el => {
@@ -28,7 +31,7 @@ export const useInitChangeNotation = ({ value, valueIndex }) => {
     }
 
     const deleteNotation = () => {
-        setContentInputData(prev =>{
+        setMainData(prev =>{
             return prev.map(item => {
                 return item.id === data.id
                     ? {...item, notation: {...item.notation, value: item.notation.value.filter(el => el.id !== value.id)}}

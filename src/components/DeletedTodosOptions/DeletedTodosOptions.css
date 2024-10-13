@@ -1,0 +1,31 @@
+.deleted-todo-options {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
+
+    position: absolute;
+    top: -25px;
+
+    padding: .2rem .5rem;
+
+    opacity: 0;
+
+    transition: opacity .2s;
+}
+
+.deleted-todo-options_main {
+    top: 5rem;
+    left: 68%;
+}
+
+.deleted-todo-options_current-child,
+.deleted-todo-options_current-all {
+    left: -5px;
+}
+
+.deleted-todo-main-part:hover .deleted-todo-options_main,
+.deleted-todo:hover .deleted-todo-options_current-all,
+.deleted-todo-list__element:hover .deleted-todo-options_current-child {
+    opacity: 1;
+}

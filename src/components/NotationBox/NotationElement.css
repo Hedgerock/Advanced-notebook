@@ -1,0 +1,91 @@
+.notation-element,
+.subtodo-notation-element {
+    position: relative;
+}
+
+.notation-element::before {
+    content: "";
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+
+    height: 2px;
+    background: var(--currentBorderClr);
+    width: 11%;
+}
+
+.notation-element_last-element::before {
+    content: '';
+    position: absolute;
+
+    top: 50%;
+    left: 0;
+    transform: translate(-85%, -50%);
+
+    height: 60%;
+    border: 2px solid var(--currentBorderClr);
+
+    background: none;
+
+    width: 3%;
+}
+
+.notation-element__button {
+    position: absolute;
+
+    border: 1px solid var(--currentBorderClr);
+    background: var(--currentBgClr);
+    padding: .3rem;
+
+    border-radius: .5rem;
+
+    color: var(--currentTextClr);
+
+    transform: translate(-50%, -50%);
+}
+
+.notation-element__button_delete {
+    top: 50%;
+    right: -40px;
+}
+
+.notation-element__button_up,
+.notation-element__button_down {
+    width: 15px;
+    height: 15px;
+
+    padding: 0;
+
+    left: 50%;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    font-size: .6rem;
+
+    transform: translateX(-50%);
+
+    transition: opacity .2s;
+
+    opacity: 0;
+}
+
+.notation-element:hover .notation-element__button_up,
+.notation-element:hover .notation-element__button_down {
+    opacity: 1;
+}
+
+.notation-element__button_up {
+    top: -7px;
+}
+
+.notation-element__button_down {
+    bottom: -7px;
+}

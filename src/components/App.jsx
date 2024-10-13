@@ -8,18 +8,24 @@ import { SearchBox, SearchIcon } from './SearchBox';
 import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
 import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
 import { DeletedTodoOptions } from './DeletedTodosOptions';
-import { useTodoContext } from './hooks';
+import { useInitNewTodo, useTodoContext } from './hooks';
 
 import './App.css';
 
 export const App = () => {
-  const { notificationData, filteredTodo, modal, isNotEmpty } = useTodoContext();
+  const { notificationData, filteredTodo, modal, isNotEmpty, contentInputData, setContentInputData } = useTodoContext();
+  const { initNewTodo } = useInitNewTodo();
 
   return (
     <div className="App">
         <Header>
 
-          <TodoFormProvider>
+          <TodoFormProvider 
+            mainData={ contentInputData }
+            setMainData={ setContentInputData }
+            initDataFunction={ initNewTodo }
+            isDataWithTitle = { true }
+          >
             <TodoForm />
           </TodoFormProvider>
 
