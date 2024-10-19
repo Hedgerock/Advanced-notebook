@@ -5,7 +5,7 @@ import { TodoFormAddButton } from "../TodoFormAddButton"
 import './TodoFormContent.css';
 
 export const TodoFormContent = ({ children }) => {
-    const { mainData, setMainData } = useTodoFormContext();
+    const { mainData, setMainData, isCurrentChild } = useTodoFormContext();
     
     const isMoreThanOne = mainData.length >= 1;
     const isNotationBoxExists = mainData.some(el => el.notation.status);
@@ -30,7 +30,7 @@ export const TodoFormContent = ({ children }) => {
 
                 )
             }) }
-            <TodoFormAddButton />
+            { !isCurrentChild && <TodoFormAddButton /> }
         </div>
     )
 }

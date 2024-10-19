@@ -1,6 +1,8 @@
 .todo-item__text_input {
     background: none;
     outline: none;
+
+    border: 3px solid var(--currentProgressTxtClr);
 }
 
 .todo-item__text:hover {

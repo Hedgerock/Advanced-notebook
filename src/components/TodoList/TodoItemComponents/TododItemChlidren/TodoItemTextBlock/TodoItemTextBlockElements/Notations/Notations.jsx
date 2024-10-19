@@ -1,27 +1,41 @@
+import { ButtonIcon } from "../../../../../../ButtonIcon";
 import { useTodoItemChildContext } from "../../../hooks";
+import { NotationsElementProvider } from "./hoc";
+import { NotationsElementButton, NotationElement } from "./NotationsElement";
+
 import './Notations.css';
-
 export const Notations = () => {
-    const { notation } = useTodoItemChildContext();
+    const { notation, buttonIcons, changeStatus, setEditNotationHandler, subtodoText } = useTodoItemChildContext();
+    const { create } = buttonIcons;
+    const filteredNotation = notation.filter(el => el.text);
 
-    const filteredNotation = Array.isArray(notation) 
-        ? notation.filter(el => el.text) 
-        : [{ id: 1, text: notation }].filter(el => el.text);
-
+    const actualText = filteredNotation.length 
+        ? `Edit current ${ subtodoText } notations` 
+        : `Create notations for ${ subtodoText }`
+    
+    const switchHandler = () => {
+        setEditNotationHandler(prev => !prev)
+    }
+    
     return (
         <div className="notations">
-            {filteredNotation.length > 0 &&
+            { changeStatus && 
+                <NotationsElementButton 
+                    func = { switchHandler } 
+                    modificatior = { 'create' } 
+                    title = { actualText }
+                >
+                    <ButtonIcon value = { create }/>
+                </NotationsElementButton>
+            }
+            { filteredNotation.length > 0 &&
                 filteredNotation.map(el => {
-                    const { id, text } = el;
+                    const { id } = el;
                     
                     return (
-                    <span
-                        key = { id }
-                        className="todo-item__text todo-item__text_notation"
-                        title={ `Notation: ${ text }` }
-                    >
-                        { text }
-                    </span>
+                    <NotationsElementProvider key = { id } data = { el }>
+                        <NotationElement />
+                    </NotationsElementProvider>
                     )
                 })
             }

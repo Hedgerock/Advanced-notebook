@@ -5,13 +5,17 @@ import './TodoItemButtonCopy.css';
 
 export const TodoItemButtonCopy = () => {
     const { copy, initCopyTodo } = useInitCopyTodo();
-    const { title } = useTodoItemContext();
+    const { title, isChangable } = useTodoItemContext();
 
     return (
         <button
-            title={ `Copy ${ title } subtodos` }
+            disabled = { !isChangable }
+            title={ isChangable ? `Copy ${ title } subtodos` : 'Copy option is not available' }
             className='todo-item__button todo-item__button_copy'
-            onClick={ initCopyTodo }
+            onClick={ () => {
+                if (!isChangable) return;
+                initCopyTodo()
+            } }
         >
             <ButtonIcon value = { copy } />
         </button>

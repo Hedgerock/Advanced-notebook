@@ -8,13 +8,23 @@
     border-radius: .7rem;
 
     gap: 1rem;
+
+    transition: height .2s;
 }
 
-.todo-item-text-block_with-notation {
-    padding: .2rem .5rem .9rem 2.8rem;
+.todo-item-text-block_new-potential-element {
+    border: 2px solid var(--currentSearchedBgClr);
 }
 
-.todo-item-text-block_with-notation .todo-item__text_number {
+.todo-item-text-block_first-child {
+    padding-top: .2rem;
+}
+
+.todo-item-text-block_with-notations:not(:first-child) {
+    padding: .85rem .5rem .9rem 2.8rem;
+}
+
+.todo-item-text-block_with-notations .todo-item__text_number {
     align-self: flex-end;
 }
 
@@ -53,4 +63,36 @@
 
 .todo-item-text-block_searched {
     background: var(--currentSearchedBgClr);
+}
+
+.notation-editor-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+
+    width: 1100px;
+    height: 600px;
+    max-height: 100%;
+    overflow-y: auto;
+
+    background: var(--currentBgMainClr);
+
+    border: 2px solid var(--currentBorderClr);
+
+    z-index: 800;
+}
+
+.todo-item-text-block_edit-variant {
+    position: absolute;
+    top: 4rem;
+    left: 75%;
+
+    width: 35%;
+
+    transform: translateX(-50%);
 }

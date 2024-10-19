@@ -5,7 +5,15 @@ import { enterEvent } from '../../utils';
 
 import './TodoFormProvider.css';
 
-export const TodoFormProvider = ({ children, mainData, setMainData, initDataFunction, isDataWithTitle }) => {
+export const TodoFormProvider = ({ 
+        children, 
+        mainData, 
+        setMainData, 
+        initDataFunction, 
+        isDataWithTitle, 
+        isCurrentChild = false,
+        isCleanAfterCreation = true
+    }) => {
     const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle });
     const { buttonIcons } = useTodoContext();
 
@@ -28,7 +36,9 @@ export const TodoFormProvider = ({ children, mainData, setMainData, initDataFunc
                     setMainData,
                     buttonIcons,
                     isDataReady,
-                    isDataWithTitle
+                    isDataWithTitle,
+                    isCurrentChild,
+                    isCleanAfterCreation
                 }
             }>
             { children }

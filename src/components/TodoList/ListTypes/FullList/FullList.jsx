@@ -24,6 +24,7 @@ export const FullList = () => {
                     key={ item.id } 
                     index = { index } 
                     fullData = { unfinishedTodos }
+                    isChangable = { true }
                 >
                     <TodoItem />
                 </TodoItemParent>
@@ -37,6 +38,7 @@ export const FullList = () => {
                             key={ item.id } 
                             index = { index }
                             fullData = { finishedTodos }
+                            isChangable = { true }
                         >
                             <TodoItem />
                         </TodoItemParent>

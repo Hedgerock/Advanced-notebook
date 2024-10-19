@@ -1,10 +1,9 @@
 import { useState } from "react";
 import TodoItemProvider from '../../../context/todoItemContext';
-import { useChangeValue, useInitNewSubTodo, useTodoContext, useTodoItemState } from "../../hooks";
+import { useChangeValue, useGetPresentationAndNewSubtodoData, useInitNewSubTodo, useTodoContext, useTodoItemState } from "../../hooks";
 import { getTodoData } from "../TodoItemComponents/utils";
-import { initialNotation, todoFormInterface } from "../../../data";
 
-export const TodoItemParent = ({ children, data, index, fullData }) => {
+export const TodoItemParent = ({ children, data, index, fullData, isChangable }) => {
     const { isDone, id, text, title } = data;
     const { 
         setTodo, 
@@ -19,8 +18,13 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
     } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
 
-    const maxId = Math.max.apply(null, text.map(item => item.id)) + 1;
-    const [ newSubtodos, setNewSubtodos ] = useState([todoFormInterface({ id: maxId, content: '', notation: initialNotation })])
+    const { 
+        newSubtodos, 
+        setNewSubtodos, 
+        presentationData, 
+        setPresentationData,
+        maxId
+    } = useGetPresentationAndNewSubtodoData({ data, index });
 
     const { initNewSubTodo } = useInitNewSubTodo({ newSubtodos, id });
     
@@ -70,8 +74,10 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     currentId, 
                     initNewNotification,
                     title,
+                    id,
                     text,
                     index,
+                    fullData,
                     lastChildClassName,
                     searchParam,
                     setSearchParam,
@@ -79,7 +85,11 @@ export const TodoItemParent = ({ children, data, index, fullData }) => {
                     createSubTodoModal, 
                     setCreateSubTodoModal,
                     newSubtodos, 
-                    setNewSubtodos
+                    setNewSubtodos,
+                    isChangable,
+                    presentationData, 
+                    setPresentationData,
+                    maxId
                 }
             }
         >

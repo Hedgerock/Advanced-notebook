@@ -12,12 +12,13 @@ export const TodoItem = () => {
     const { 
         actualClassName, 
         lastChildClassName,
+        isChangable
     } = useTodoItemContext();
 
     return (
         <div className= { `${actualClassName} ${ lastChildClassName }` }>
 
-            <TodoItemCheckbox />
+            { isChangable && <TodoItemCheckbox /> }
             
             <TodoValue />
 

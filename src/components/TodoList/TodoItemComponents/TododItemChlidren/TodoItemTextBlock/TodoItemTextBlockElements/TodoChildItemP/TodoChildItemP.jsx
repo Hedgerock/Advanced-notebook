@@ -2,14 +2,17 @@ import { useGetSubTodoCopied, useTodoItemChildContext } from "../../../hooks";
 import './TodoChildItemP.css';
 
 export const TodoChildItemP = () => {
-    const { subtodoText } = useTodoItemChildContext();
+    const { subtodoText, isChangable } = useTodoItemChildContext();
     const { initCopy } = useGetSubTodoCopied();
 
     return (
         <p
             className='todo-item__text'
-            title = { `Copy: ${ subtodoText }` }
-            onClick={ e => initCopy({ e }) } 
+            title = { isChangable ? `Copy: ${ subtodoText }` : subtodoText }
+            onClick={ e => {
+                if (!isChangable) return;
+                initCopy({ e })
+            } } 
         >
         { subtodoText }
         </p>

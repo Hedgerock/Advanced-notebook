@@ -6,16 +6,19 @@ import './TodoItemTitle.css';
 export const TodoItemTitle = () => {
     const { editStatus, setEditStatus } = useTitleBoxContext();
 
-    const { data } = useTodoItemContext();
+    const { data, isChangable } = useTodoItemContext();
     const { title, id } = data
     const currentTitle = title || `Todo collection number ${ id }`;
 
     return (
         <h3
-            title={ `Edit title: ${ currentTitle }` }
+            title={ isChangable ? `Edit title: ${ currentTitle }` : 'Title edition is not available' }
             className="todo-item__title"
             contentEditable = { editStatus }
-            onClick={ () => setEditStatus(true) }
+            onClick={ () => {
+                if (!isChangable) return;
+                setEditStatus(true)
+            } }
         >{ currentTitle }
         </h3>
     )

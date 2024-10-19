@@ -3,5 +3,70 @@
     align-items: center;
 
     flex-wrap: wrap;
-    gap: .3rem;
+    gap: .1rem;
+
+    transition: gap .3s;
+}
+
+.notations-element {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.notations-element:hover .notations__btn {
+    opacity: 1;
+    z-index: 1;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.notations:hover {
+    gap: 1.5rem;
+}
+
+.notations__btn {
+    border-radius: 50%;
+    border: 2px solid var(--currentBorderClr);
+    color: var(--currentTextClr);
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: .5rem;
+
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    transform: translateY(-50%);
+
+    transition: top .3s;
+}
+
+.notations__btn_create {
+    position: static;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0);
+}
+
+.notations__btn:hover {
+    background: var(--currentAddBtnBgHov);
+}
+
+.notations-element:hover .notations__btn_left {
+    left: -1.2rem;
+}
+
+.notations-element:hover .notations__btn_right {
+    left: 100%;
 }

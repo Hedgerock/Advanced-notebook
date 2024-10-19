@@ -18,14 +18,11 @@
     background: transparent;
 
     color: var(--currentTextClr);
-}
 
-.todo-item-child__edit-btn {
     border-radius: .6rem;
     width: 56px;
     padding: .2rem;
 }
-
 
 .todo-item-child__edit-btn:disabled {
     color: var(--currentBorderClr);

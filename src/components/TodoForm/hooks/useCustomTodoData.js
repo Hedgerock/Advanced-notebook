@@ -2,7 +2,7 @@ import { initialNotation, todoFormInterface } from "../../../data";
 import { useTodoFormContext } from "../../hooks";
 
 export const useCustomTodoData = () => {
-    const { initNewData, title, altTitle, mainData, setMainData, buttonIcons, isDataWithTitle } = useTodoFormContext();
+    const { initNewData, title, altTitle, mainData, setMainData, buttonIcons, isDataWithTitle, isCleanAfterCreation } = useTodoFormContext();
     const { create } = buttonIcons
 
     const actualTitle = title || altTitle
@@ -35,7 +35,10 @@ export const useCustomTodoData = () => {
     const initCreatingTodoProcess = () => {
         initNewData();
         const newId = Math.max.apply(null, mainData.map(el => el.id)) + 1;
-        setMainData([todoFormInterface({ id: newId, content: '', notation: initialNotation })]);
+        
+        if (isCleanAfterCreation) {
+            setMainData([todoFormInterface({ id: newId, content: '', notation: initialNotation })]);
+        }
     }
 
     return { initCreatingTodoProcess, contentTitle, mainData, create }
