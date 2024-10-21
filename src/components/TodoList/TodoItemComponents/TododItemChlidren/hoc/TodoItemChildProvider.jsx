@@ -39,8 +39,8 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
 
     useEffect(() => {
         const currentNotation = Array.isArray(notation) 
-            ? { status: true, value: notation.map(el => ({ id: el.id, text: el.text })) } 
-            : { ...initialNotation, status: true }
+            ? { status: true, value: notation.length ? notation : initialNotation.value } 
+            : { value: initialNotation.value, status: true }
 
         setNotations(prev => ([{...prev[0], content: subtodoText, notation: currentNotation}]))
     }, [notation, subtodoText])

@@ -12,7 +12,7 @@ export const NotationElement = () => {
     const { nonActiveEdition } = buttonsBox
 
     return (
-        <div className="notations-element">
+        <div className={`notations-element`}>
             { !isEdit && 
                 <BoxButtons data = { nonActiveEdition }/>
             }

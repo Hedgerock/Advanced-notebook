@@ -5,15 +5,22 @@ import { NotificationContainerMain } from './NotificationContainer';
 import { Header,NotificationContainer, TodoFormProvider } from './hoc';
 import { SearchContainer } from './hoc/SearchContainer';
 import { SearchBox, SearchIcon } from './SearchBox';
-import { DeletedTodos, DeletedTodosValue } from './DeletedTodos';
 import { DeletedTodo, Modal, ModalCloseButton } from './Modal';
 import { DeletedTodoOptions } from './DeletedTodosOptions';
 import { useInitNewTodo, useTodoContext } from './hooks';
+import { ModalBox, ModalBoxValue } from './ModalValues';
+import { SearchByNotesElement } from './SearchByNotes/SearchByNotesElement';
 
 import './App.css';
+import { ModalBoxesList } from './ModalValues/hoc';
+import { SearchByNotesList } from './SearchByNotes/hoc';
 
 export const App = () => {
-  const { notificationData, filteredTodo, modal, isNotEmpty, contentInputData, setContentInputData } = useTodoContext();
+  const { 
+    filteredTodo, 
+    contentInputData, 
+    setContentInputData, 
+  } = useTodoContext();
   const { initNewTodo } = useInitNewTodo();
 
   return (
@@ -37,39 +44,38 @@ export const App = () => {
 
             </SearchContainer>
 
-            { isNotEmpty && 
-              <DeletedTodos>
-                <DeletedTodosValue />
-              </DeletedTodos>
-              }
+            <ModalBoxesList>
+              <ModalBox>
+                <ModalBoxValue />
+              </ModalBox>
+            </ModalBoxesList>
           </div>
-
         </Header>
 
-        { (modal && isNotEmpty) && 
-          <Modal>
-            <div className="deleted-todo-main-part">
-              <DeletedTodo />
-              <DeletedTodoOptions type = { 'all' }/>
-            </div>
-            <ModalCloseButton />
-          </Modal>
-        }
+        <SearchByNotesList>
+          <SearchByNotesElement />
+        </SearchByNotesList>
+
+        <Modal>
+          <div className="deleted-todo-main-part">
+            <DeletedTodo />
+            <DeletedTodoOptions type = { 'all' }/>
+          </div>
+          <ModalCloseButton />
+        </Modal>
 
         <TodoList>
 
-            { filteredTodo.length 
-                ? <FullList />
-                : <EmptyList />
-            }
+          { filteredTodo.length 
+              ? <FullList />
+              : <EmptyList />
+          }
 
         </TodoList>
         
-        { notificationData.length !== 0 && 
-          <NotificationContainer>
+        <NotificationContainer>
             <NotificationContainerMain />
-          </NotificationContainer> 
-        }
+        </NotificationContainer> 
     </div>
   );
 }

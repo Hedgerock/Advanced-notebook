@@ -1,10 +1,11 @@
+import { useTodoContext } from '../hooks';
 import './Modal.css';
 
 export const Modal = ({ children }) => {
+    const { modal, isNotEmpty } = useTodoContext();
 
-    return (
-        <div className="modal">
-            { children }
-        </div>
-    )
+    return (modal && isNotEmpty) &&
+    <div className="modal">
+        { children }
+    </div>
 }

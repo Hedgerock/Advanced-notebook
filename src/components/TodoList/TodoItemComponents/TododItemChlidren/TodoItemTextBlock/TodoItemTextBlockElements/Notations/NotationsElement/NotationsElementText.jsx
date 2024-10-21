@@ -2,11 +2,11 @@ import { useNotationsElementContext } from "../../../../../../../TodoForm/hooks/
 
 
 export const NotationsElementText = () => {
-    const { text } = useNotationsElementContext();
+    const { text, isActive } = useNotationsElementContext();
 
     return (
         <span
-            className="todo-item__text todo-item__text_notation"
+            className={`todo-item__text todo-item__text_notation${ isActive ? '-active' : '' }`}
             title={ `Notation: ${ text }` }
         >
             { text }

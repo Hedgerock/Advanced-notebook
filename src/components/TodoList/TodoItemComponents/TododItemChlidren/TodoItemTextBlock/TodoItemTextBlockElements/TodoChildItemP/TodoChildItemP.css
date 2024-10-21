@@ -18,7 +18,8 @@
     align-self: flex-start;
 }
 
-.todo-item__text_notation {
+.todo-item__text_notation,
+.todo-item__text_notation-active {
     font-size: .6rem;
     padding: .1rem .5rem;
     max-height: 2rem;
@@ -27,10 +28,16 @@
     outline: none;
     margin: 0 .3rem;
 
+    transition: border .2s;
+
     /* position: absolute;
 
     top: -13px;
     left: 35px;
 
     transform: translate(-50%, -50%); */
+}
+
+.todo-item__text_notation-active {
+    border: 3px solid #3b3b7f;
 }

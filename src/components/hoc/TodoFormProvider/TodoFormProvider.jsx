@@ -15,7 +15,7 @@ export const TodoFormProvider = ({
         isCleanAfterCreation = true
     }) => {
     const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle });
-    const { buttonIcons } = useTodoContext();
+    const { buttonIcons, allNotations, setAllNotations } = useTodoContext();
 
     const isDataReady = checkAllContentValue({ 
         data: mainData, 
@@ -38,7 +38,7 @@ export const TodoFormProvider = ({
                     isDataReady,
                     isDataWithTitle,
                     isCurrentChild,
-                    isCleanAfterCreation
+                    isCleanAfterCreation,
                 }
             }>
             { children }

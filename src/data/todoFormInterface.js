@@ -10,5 +10,5 @@ export const todoFormInterface = ({ id, content, notation }) => {
 
 export const initialNotation = {
     status: false, 
-    value: [{ id: 1, text: '' }] 
+    value: [{ id: 1, text: '', isActive: false }] 
 }

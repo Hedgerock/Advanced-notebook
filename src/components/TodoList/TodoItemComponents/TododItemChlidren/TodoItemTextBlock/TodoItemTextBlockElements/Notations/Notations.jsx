@@ -1,21 +1,14 @@
 import { ButtonIcon } from "../../../../../../ButtonIcon";
 import { useTodoItemChildContext } from "../../../hooks";
-import { NotationsElementProvider } from "./hoc";
+import { FilteredNotationsList } from "./hoc";
 import { NotationsElementButton, NotationElement } from "./NotationsElement";
 
 import './Notations.css';
+import { useGetFilteredNotations } from "./hooks/useGetFilteredNotations";
 export const Notations = () => {
-    const { notation, buttonIcons, changeStatus, setEditNotationHandler, subtodoText } = useTodoItemChildContext();
+    const { buttonIcons, changeStatus } = useTodoItemChildContext();
     const { create } = buttonIcons;
-    const filteredNotation = notation.filter(el => el.text);
-
-    const actualText = filteredNotation.length 
-        ? `Edit current ${ subtodoText } notations` 
-        : `Create notations for ${ subtodoText }`
-    
-    const switchHandler = () => {
-        setEditNotationHandler(prev => !prev)
-    }
+    const { filteredNotation, actualText, switchHandler } = useGetFilteredNotations();
     
     return (
         <div className="notations">
@@ -29,15 +22,9 @@ export const Notations = () => {
                 </NotationsElementButton>
             }
             { filteredNotation.length > 0 &&
-                filteredNotation.map(el => {
-                    const { id } = el;
-                    
-                    return (
-                    <NotationsElementProvider key = { id } data = { el }>
-                        <NotationElement />
-                    </NotationsElementProvider>
-                    )
-                })
+                <FilteredNotationsList data = { filteredNotation }>
+                    <NotationElement />
+                </FilteredNotationsList>
             }
         </div>
     )

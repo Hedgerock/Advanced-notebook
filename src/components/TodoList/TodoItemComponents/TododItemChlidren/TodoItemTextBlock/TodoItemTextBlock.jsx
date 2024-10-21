@@ -21,7 +21,6 @@ export const TodoItemTextBlock = () => {
     const { destination } = useMoveToChild();
     const { initCloseModal, updateCurrentSubTodo } = useUpdateCurrentSubTodo();
 
-
     return (
         <>
             <div 

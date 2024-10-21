@@ -1,4 +1,4 @@
-import { todoFormInterface } from "../../../../../data";
+import { initialNotation, todoFormInterface } from "../../../../../data";
 import { useTodoItemChildContext } from "./useTodoItemChildContext";
 
 export const useUpdateCurrentSubTodo = () => {
@@ -51,7 +51,7 @@ export const useUpdateCurrentSubTodo = () => {
                 id: subtodoId, 
                 content: subtodoText, 
                 notation: { 
-                    value: notation, 
+                    value: notation.length ? notation : initialNotation.value, 
                     status: true 
                 } 
             }
