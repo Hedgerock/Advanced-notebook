@@ -1,9 +1,23 @@
+import { useEffect } from "react";
 import { initialNotation, todoFormInterface } from "../../../data";
-import { useTodoFormContext } from "../../hooks";
+import { useTodoContext, useTodoFormContext } from "../../hooks";
 
 export const useCustomTodoData = () => {
-    const { initNewData, title, altTitle, mainData, setMainData, buttonIcons, isDataWithTitle, isCleanAfterCreation } = useTodoFormContext();
-    const { create } = buttonIcons
+    const { 
+        initNewData, 
+        title, 
+        altTitle, 
+        mainData, 
+        setMainData, 
+        buttonIcons, 
+        isDataWithTitle, 
+        isCleanAfterCreation,
+        mainId,
+        isNotChildElement
+    } = useTodoFormContext();
+
+    const { create } = buttonIcons;
+    const { setContentInputData } = useTodoContext();
 
     const actualTitle = title || altTitle
     const isMoreThanOneEl = mainData.length > 1
@@ -30,6 +44,18 @@ export const useCustomTodoData = () => {
     const c = `Subtodo${ endOfWord }: ${ subTodoPosition }${ subTodoExpansion }`;
 
     const contentTitle = `${ a } ${ isDataWithTitle ? b : '' } ${ c }`
+
+    useEffect(() => {
+        if (!isNotChildElement) {
+            setContentInputData(prev => {
+                return prev.map(el => {
+                    return el.id === mainId
+                        ? { ...el, currentTodoText: `${ b } ${ c }` }
+                        : el
+                })
+            })
+        }
+    }, [ isNotChildElement, setContentInputData, mainId, b, c ])
 
 
     const initCreatingTodoProcess = () => {

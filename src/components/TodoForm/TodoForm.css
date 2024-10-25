@@ -4,6 +4,10 @@
     gap: .4rem;
 }
 
+.todo-form_extended {
+    width: 85%;
+}
+
 @media (max-width: 850px) {
     
     .todo-form {

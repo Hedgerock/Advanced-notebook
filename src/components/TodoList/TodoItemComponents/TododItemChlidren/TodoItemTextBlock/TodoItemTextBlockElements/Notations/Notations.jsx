@@ -5,13 +5,16 @@ import { NotationsElementButton, NotationElement } from "./NotationsElement";
 
 import './Notations.css';
 import { useGetFilteredNotations } from "./hooks/useGetFilteredNotations";
+
 export const Notations = () => {
     const { buttonIcons, changeStatus } = useTodoItemChildContext();
     const { create } = buttonIcons;
     const { filteredNotation, actualText, switchHandler } = useGetFilteredNotations();
+
+    const notationClassName = `notations ${ changeStatus ? 'notations_editable' : '' }`
     
     return (
-        <div className="notations">
+        <div className={ notationClassName }>
             { changeStatus && 
                 <NotationsElementButton 
                     func = { switchHandler } 

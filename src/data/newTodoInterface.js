@@ -1,6 +1,6 @@
 import { newTodoTextInterface } from "./newTodoTextInterface";
 
-export const newTodoInterface = ({ id, textData, title, isDone, orderData, deleted }) => {
+export const newTodoInterface = ({ id, textData, title, isDone, orderData, deleted, elIndex = 0 }) => {
     const arr = orderData.map(val => val.order);
     const maxOrder = Math.max.apply(null, arr);
 
@@ -21,7 +21,7 @@ export const newTodoInterface = ({ id, textData, title, isDone, orderData, delet
         text: textVal,
         title,
         isDone,
-        order: orderData.length ? maxOrder + 1 : 1,
+        order: orderData.length ? maxOrder + 1 + elIndex : 1,
         deleted
     }
 }

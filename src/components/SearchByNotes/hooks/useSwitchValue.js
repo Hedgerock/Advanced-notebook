@@ -15,7 +15,7 @@ export const useSwitchValue = () => {
                     return {...x, notation: x.notation?.map(notate => {
                         const curNotation = notate.text?.toLowerCase();
                         return curNotation === title?.toLowerCase()
-                            ? {...notate, isActive: notate.isActive ? !notate.isActive : true}
+                            ? {...notate, isActive: !notate.isActive}
                             : notate
                         })
                     }

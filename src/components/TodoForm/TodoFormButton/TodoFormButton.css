@@ -22,6 +22,10 @@
     pointer-events: none;
 }
 
+.todo-form__add-btn_form-btn {
+    margin-top: 1.1rem;
+}
+
 @media (max-width: 850px) {
 
     .todo-form__add-btn {

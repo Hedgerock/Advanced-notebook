@@ -1,0 +1,120 @@
+.todo-form-box {
+    display: flex;
+    flex-direction: column;
+    min-width: 60%;
+    gap: 1.5rem;
+    
+    position: relative;
+
+}
+
+.todo-form-box_extended {
+    width: 85%;
+}
+
+.todo-form-container {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    position: relative;
+}
+
+.todo-form-container_extended {
+    padding: 1rem;
+    border: 2px solid var(--currentBorderClr);
+}
+
+.todo-form-container__current-button {
+    padding: .3rem;
+    border: 2px solid var(--currentBorderClr);
+    color: var(--currentTextClr);
+    background: var(--currentBgMainClr);
+
+    position: absolute;
+    right: -26px;
+    transform: translateX(-50%);
+    opacity: 0;
+
+    transition: opacity .2s;
+}
+
+.todo-form-container:hover .todo-form-container__current-button,
+.todo-form-container__current-button:hover
+ {
+    opacity: 1;
+}
+
+.todo-form-container__current-button_up {
+    top: -2px;
+}
+
+.todo-form-container__current-button_delete {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.todo-form-container__current-button_down {
+    bottom: -2px;
+}
+
+.todo-form-box__title {
+    color: var(--currentTextClr);
+    font-style: italic;
+    width: 100%;
+    text-overflow: ellipsis;
+}
+
+.todo-form-box_info {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--currentBorderClr);
+    padding-bottom: .5rem;
+
+    position: relative;
+
+    width: 94.7%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.todo-form-box-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.todo-form-box-buttons_extended {
+    flex-direction: column;
+
+    position: absolute;
+    top: 50%;
+    right: -150px;
+
+    background: gray;
+    border: 2px solid var(--currentBorderClr);
+    border-radius: 1.5rem;
+    padding: 1rem;
+
+    transform: translateY(-50%);
+}
+
+.todo-form-box-buttons__current-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid var(--currentBorderClr);
+    padding: 1rem;
+    border-radius: 1rem;
+    color: var(--currentTextClr);
+
+    transition: opacity .2s;
+}
+
+.todo-form-box-buttons__current-button:disabled {
+    opacity: .6;
+    pointer-events: none;
+}

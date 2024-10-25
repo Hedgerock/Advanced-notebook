@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import TodoFormP from '../../../context/todoFormContext'
 import { useInitNewData, useTodoContext } from '../../hooks';
 import { checkAllContentValue } from '../../TodoForm/utils';
@@ -12,15 +13,29 @@ export const TodoFormProvider = ({
         initDataFunction, 
         isDataWithTitle, 
         isCurrentChild = false,
-        isCleanAfterCreation = true
+        isCleanAfterCreation = true,
+        isNotChildElement = true,
+        mainId = null
     }) => {
-    const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle });
-    const { buttonIcons, allNotations, setAllNotations } = useTodoContext();
+    const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle, mainId, isNotChildElement });
+    const { buttonIcons, setContentInputData } = useTodoContext();
 
     const isDataReady = checkAllContentValue({ 
         data: mainData, 
         key: ['content', 'notation'] 
     }) 
+
+    useEffect(() => {
+        if (!isNotChildElement) {
+            setContentInputData(prev => {
+                return prev.map(el => {
+                    return el.id === mainId
+                        ? {...el, isReady: !isDataReady}
+                        : el
+                })
+            })
+        }
+    }, [isDataReady, isNotChildElement, mainId, setContentInputData, mainData])
 
     return (
         <TodoFormP value = {
@@ -39,6 +54,8 @@ export const TodoFormProvider = ({
                     isDataWithTitle,
                     isCurrentChild,
                     isCleanAfterCreation,
+                    isNotChildElement,
+                    mainId
                 }
             }>
             { children }

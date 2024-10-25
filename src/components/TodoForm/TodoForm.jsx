@@ -7,7 +7,7 @@ import './TodoForm.css';
 import { useTodoFormContext } from '../hooks';
 
 export const TodoForm = () => {
-    const { isDataWithTitle } = useTodoFormContext();
+    const { isDataWithTitle, isNotChildElement } = useTodoFormContext();
 
     return (
         <div className="todo-form">
@@ -18,7 +18,7 @@ export const TodoForm = () => {
 
             {isDataWithTitle && <TodoFormInputTitle />}
             
-            <TodoFormButton />
+            { isNotChildElement && <TodoFormButton /> }
 
         </div>
     )

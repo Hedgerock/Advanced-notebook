@@ -12,7 +12,7 @@ export const TodoFormButton = () => {
     return (
         <button
             title={ contentTitle }
-            className='todo-form__add-btn'
+            className='todo-form__add-btn todo-form__add-btn_form-btn'
             onClick={ initCreatingTodoProcess }
             disabled = { isDataReady }
         > 

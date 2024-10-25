@@ -8,6 +8,10 @@
     transition: gap .3s;
 }
 
+.notations_editable:hover {
+    gap: 1.5rem;
+}
+
 .notations-element {
     position: relative;
 
@@ -22,10 +26,6 @@
 
     top: 50%;
     transform: translateY(-50%);
-}
-
-.notations:hover {
-    gap: 1.5rem;
 }
 
 .notations__btn {
