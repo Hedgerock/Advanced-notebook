@@ -2,26 +2,18 @@ import TodoFormItemContextProvider from '../../../context/todoFormItemContext';
 
 import './TodoFormItemProvider.css';
 import { useTodoContext } from '../../hooks';
-import { useEffect, useState } from 'react';
 import { NotationBox } from '../../NotationBox/NotationBox';
+import { useGetTodoFormItemProviderData } from '../hooks';
+import { TotalElementsBox } from '../TotalElementsBox';
 
 export const TodoFormItemProvider = ({ children, data, index, setMainData, mainData }) => {
     const { buttonIcons } = useTodoContext();
     const { status } = data;
-
-    const [notationList, setNotationList] = useState(data.notation.value);
-
-    useEffect(() => {
-        setMainData(prev => {
-            return prev.map(el => {
-                return el.id === data.id
-                    ? {...el, notation: {...el.notation, value: notationList}}
-                    : el
-            })
-        })
-
-    }, [data.id, setMainData, notationList ]);
     
+    const { 
+        notationList, 
+        setNotationList, 
+    } = useGetTodoFormItemProviderData({ data, setMainData });
 
     return (
         <TodoFormItemContextProvider 
@@ -34,7 +26,7 @@ export const TodoFormItemProvider = ({ children, data, index, setMainData, mainD
                     index, 
                     status,
                     notationList, 
-                    setNotationList,
+                    setNotationList
                 } 
         }>
             <div className="todo-form-item">
@@ -50,6 +42,7 @@ export const TodoFormItemProvider = ({ children, data, index, setMainData, mainD
                         setMainData={ setMainData }
                     /> 
                 }
+                <TotalElementsBox data = { data } setData = { setMainData } currentValue={ data.count.value }/>
             </div>
         </TodoFormItemContextProvider>
     )

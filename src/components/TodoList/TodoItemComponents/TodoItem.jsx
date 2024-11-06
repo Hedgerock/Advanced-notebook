@@ -7,12 +7,14 @@ import { TodoValue } from './TododItemChlidren/TodoValue';
 import { TitleBox, TitleBoxProvider } from './TitleBox';
 import { TodoItemCheckbox } from './TodoItemCheckbox';
 import { TodoItemButtonCopy } from './TodoItemButtonCopy';
+import { ButtonIcon } from '../../ButtonIcon';
 
 export const TodoItem = () => {
     const { 
         actualClassName, 
         lastChildClassName,
-        isChangable
+        isChangable,
+        buttonIcons
     } = useTodoItemContext();
 
     return (

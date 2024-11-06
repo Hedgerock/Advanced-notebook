@@ -27,15 +27,28 @@
     font-size: 1.5rem;
 }
 
+.todo-form-item__button_inactive-notation {
+    right: -75%;
+}
+
+.todo-form-item__button_updated-single,
+.todo-form-item__button_inactive-notation-through-the-active {
+    right: -180%;
+}
+
 .todo-form-item__button_updated {
     right: -125%;
     opacity: 1;
-    color: var(--currentTextClr)
 }
 
-.todo-form-item__button_updated-single {
-    right: -115%;
-    color: var(--currentTextClr)
+.todo-form-input-box_last-element .todo-form-item__button_updated,
+.todo-form-input-box_counted .todo-form-item__button_updated:last-child {
+    right: -190%;
+}
+
+
+.todo-form-item__button_updated-single-counted {
+    right: -245%;
 }
 
 .todo-form-item__button:hover {

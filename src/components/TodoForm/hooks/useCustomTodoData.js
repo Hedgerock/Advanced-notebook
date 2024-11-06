@@ -60,7 +60,7 @@ export const useCustomTodoData = () => {
 
     const initCreatingTodoProcess = () => {
         initNewData();
-        const newId = Math.max.apply(null, mainData.map(el => el.id)) + 1;
+        const newId = Date.now() + 1;
         
         if (isCleanAfterCreation) {
             setMainData([todoFormInterface({ id: newId, content: '', notation: initialNotation })]);

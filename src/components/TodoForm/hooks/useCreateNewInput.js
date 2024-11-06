@@ -11,11 +11,14 @@ export const useCreateNewInput = () => {
     const createNewInput = () => {
 
         setMainData(prev => {
-            const newId = prev.map(item => item.id).sort((a,b) => b - a)[0] + 1;
-            return [...prev, { id: newId, content: '', notation: {
-                status: false, 
-                value: [{ id: 1, text: '' }] 
-            } }]
+            const newId = Date.now();
+            return [...prev, { id: newId, content: '', 
+                notation: {
+                    status: false, 
+                    value: [{ id: 1, text: '', count: { status: false, value: 1, derivative: 1 }, isActive: false }] 
+                },
+                count: { status: false, value: 1 }
+            }]
         })
 
     }

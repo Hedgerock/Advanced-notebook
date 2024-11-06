@@ -65,6 +65,11 @@
     flex-direction: column;
 }
 
+.todo-item__button.todo-item__button_calculate {
+    opacity: 1;
+    top: 50px;
+    left: 45px;
+}
 
 @media (max-width: 850px) {
     .todo-item {

@@ -6,7 +6,7 @@
     gap: .5rem;
 
     max-width: 100%;
-    word-break: break-all;
+    word-break:normal;
 }
 
 .notification-box__value:nth-child(2) {

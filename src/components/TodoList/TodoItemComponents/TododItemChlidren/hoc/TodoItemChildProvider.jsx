@@ -22,7 +22,7 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
     const { text, id, order: todoItemOrder, isDone } = data
     const [ changeStatus, setChangeStatus ] = useState(false);
     const [ editNotationHandler, setEditNotationHandler ] = useState(false);
-    const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status, notation } = info
+    const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status, notation, count } = info
     const [ subTodoValue, setSubTodoValue ] = useState(subtodoText)
 
 
@@ -91,7 +91,8 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
                 setEditNotationHandler,
                 myNotations,
                 notations,
-                setNotations
+                setNotations,
+                count
             }}
         >
             { children }

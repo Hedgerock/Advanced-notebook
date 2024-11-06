@@ -23,7 +23,16 @@
 }
 
 .todo-form__add-btn_form-btn {
-    margin-top: 1.1rem;
+    align-self: flex-end;
+    margin-left: 1.2rem;
+}
+
+.todo-form__add-btn_form-btn-notated {
+    position: absolute;
+    top: -25px;
+    left: 95%;
+
+    transform: translate(-50%, -50%);
 }
 
 @media (max-width: 850px) {

@@ -16,6 +16,14 @@
     width: 11%;
 }
 
+.notation-element_last-element-specific-last-child .notation-element__button_delete {
+    right: -220px;
+}
+
+.notation-element_last-element-specific-first-child .total-elements-box_notation-last-element {
+    left: 199%;
+}
+
 .notation-element_last-element::before {
     content: '';
     position: absolute;

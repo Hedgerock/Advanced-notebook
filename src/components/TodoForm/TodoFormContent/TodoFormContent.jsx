@@ -1,16 +1,12 @@
-import { useTodoFormContext } from "../../hooks"
 import { TodoFormItemProvider } from "../hoc"
+import { useGetTodoFormContentData } from "../hooks";
 import { TodoFormAddButton } from "../TodoFormAddButton"
 
 import './TodoFormContent.css';
 
 export const TodoFormContent = ({ children }) => {
-    const { mainData, setMainData, isCurrentChild } = useTodoFormContext();
+    const { currentClassName,  mainData, setMainData, isCurrentChild } = useGetTodoFormContentData();
     
-    const isMoreThanOne = mainData.length >= 1;
-    const isNotationBoxExists = mainData.some(el => el.notation.status);
-
-    const currentClassName = `todo-form-content ${ isMoreThanOne ? `todo-form-content_alter${ isNotationBoxExists ? "" : "-non-notation" }` : '' }`
     
     return (
         <div className={ currentClassName }>

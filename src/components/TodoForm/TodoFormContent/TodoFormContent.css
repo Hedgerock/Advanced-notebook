@@ -1,7 +1,7 @@
 .todo-form-content {
     display: flex;
     flex-direction: column;
-    gap: .8rem;
+    gap: 1.5rem;
 
     padding-top: 1rem;
     border-top: 2px solid var(--currentBorderClr);
@@ -15,7 +15,7 @@
 
     position: absolute;
     top: 0;
-    left: 25%;
+    left: 19%;
 
     height: 98.6%;
 
@@ -26,12 +26,12 @@
 }
 
 .todo-form-content_alter:first-child::before {
-    width: 40%;
+    width: 30.5%;
     transform: translateX(-50%);
 }
 
 .todo-form-content_alter-non-notation::before {
-    width: 87.5%;
+    width: 42.5%;
     transform: translateX(-22.5%);
 }
 

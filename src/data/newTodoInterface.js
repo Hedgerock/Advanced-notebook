@@ -11,8 +11,9 @@ export const newTodoInterface = ({ id, textData, title, isDone, orderData, delet
             status: false,
             text: el.content, 
             order: 1 + index,
-            deleted: false,
-            notation: el.notation.value
+            deleted: false, 
+            notation: el.notation.value,
+            count: el.count
         })
     })
 
@@ -22,6 +23,7 @@ export const newTodoInterface = ({ id, textData, title, isDone, orderData, delet
         title,
         isDone,
         order: orderData.length ? maxOrder + 1 + elIndex : 1,
-        deleted
+        deleted,
+        count: textData.count
     }
 }

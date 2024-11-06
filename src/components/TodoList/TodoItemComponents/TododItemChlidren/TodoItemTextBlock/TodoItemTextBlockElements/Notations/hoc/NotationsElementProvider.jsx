@@ -6,8 +6,8 @@ import { useTodoItemChildContext } from '../../../../hooks';
 import { useTodoItemContext } from '../../../../../../../hooks'
 
 export const NotationsElementProvider = ({ data, children }) => {
-    const { id, text, isActive = false } = data;
-    const { buttonIcons, setTodo, subtodoId } = useTodoItemChildContext();
+    const { id, text, isActive = false, count: notationCount } = data;
+    const { buttonIcons, setTodo, subtodoId, count } = useTodoItemChildContext();
     const { id: parentId } = useTodoItemContext();
     const [isEdit, setIsEdit] = useState(false);
     const [editNotation, setEditNotation] = useState(text);
@@ -25,6 +25,8 @@ export const NotationsElementProvider = ({ data, children }) => {
             setData: setTodo,
             parentId: subtodoId,
             mainParentId: parentId,
+            count,
+            notationCount
        }}>
 
         { children }

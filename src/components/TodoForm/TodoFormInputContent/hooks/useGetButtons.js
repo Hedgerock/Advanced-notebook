@@ -1,4 +1,4 @@
-import { useTodoContext, useTodoFormContext } from "../../../hooks";
+import { useTodoContext } from "../../../hooks";
 import { useTodoFormItemContext } from "../../../hooks/useTodoForItemContext";
 import { useChangeInputValue } from "../../hooks";
 
@@ -32,8 +32,12 @@ export const useGetButtons = () => {
         const a = content || `subtodo ${ index + 1 }`;
         const b = currentStatus ? `${ spaceText } ${ length } notation${ endOfWord }` : "";
 
+        if (modifcator === "non-counted") {
+            return `Count subtodo: ${ a }`
+        }
+
         if (modifcator === 'remove') {
-            return `Remove ${ length } notation${ endOfWord } from ${ a }`
+            return `Remove ${ length } notation${ endOfWord } and ${ a }`
         }
 
         return `Move ${ a } ${ modifcator } ${ b }`

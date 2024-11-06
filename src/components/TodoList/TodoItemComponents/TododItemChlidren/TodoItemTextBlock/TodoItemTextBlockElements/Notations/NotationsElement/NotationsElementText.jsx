@@ -2,14 +2,15 @@ import { useNotationsElementContext } from "../../../../../../../TodoForm/hooks/
 
 
 export const NotationsElementText = () => {
-    const { text, isActive } = useNotationsElementContext();
+    const { text, isActive, count, notationCount } = useNotationsElementContext();
 
     return (
-        <span
+        <div
             className={`todo-item__text todo-item__text_notation${ isActive ? '-active' : '' }`}
             title={ `Notation: ${ text }` }
         >
-            { text }
-        </span>
+            <span>{ text }</span>
+            <span>{ count?.status && `${ count.value} x ${ notationCount.value } = ${ notationCount.derivative }` }</span>
+        </div>
     )
 }

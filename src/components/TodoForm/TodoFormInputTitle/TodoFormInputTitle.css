@@ -1,0 +1,27 @@
+.todo-form__input_title,
+.todo-form__input_title-with-notations,
+.todo-form__input_title-as-child {
+    width: 260px;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.todo-form__input_title {
+    left: 100%;
+    top: 65%;
+}
+
+.todo-form__input_title-as-child {
+    top: 0;
+}
+
+.todo-form__input_title-as-child,
+.todo-form__input_title-with-notations {
+    left: 50%;
+}
+
+
+.todo-form__input_title-with-notations {
+    top: -25px;
+}

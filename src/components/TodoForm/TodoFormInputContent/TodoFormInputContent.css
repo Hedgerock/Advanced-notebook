@@ -79,16 +79,19 @@
     left: 0;
 }
 
+.todo-form-input-box__button_count,
+.todo-form-input-box__button_non-counted
+{
+    top: 0;
+    left: 10%;
+}
+
 .todo-form-input-box__button_remove {
     top: 50%;
     left: 101.3%;
     opacity: 1;
 }
 
-.todo-form__input_title {
-    width: 260px;
-    margin-top: 1.1rem;
-}
 
 .todo-form__input::placeholder {
     color: var(--currentTextClr);

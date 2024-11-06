@@ -1,19 +1,16 @@
 import { useState } from "react";
-import { useFilteredCoreData, useGetAllnotations, useGetCoreData, useGetNotificationData } from "../hooks";
+import { useFilteredCoreData, useGetAllnotations, useGetContentInputData, useGetCoreData, useGetNotificationData } from "../hooks";
 import TodoContextProvider from '../../context/todoContext';
-import { buttonIcons, initialNotation, todoFormInterface } from "../../data";
+import { buttonIcons } from "../../data";
 
 export const MainProvider = ({ children }) => {
     const { todo, setTodo } = useGetCoreData();
     const { notificationData, setNotificationData, currentId, initNewNotification } = useGetNotificationData();
     const { searchParam, setSearchParam, filteredTodo, undeletedTodos, deletedTodos } = useFilteredCoreData({ todo });
-    const initialData = [todoFormInterface({ id: Date.now() + 1, content: '', notation: initialNotation })];
-    const [ contentInputData, setContentInputData ] = useState([{ id: Date.now(), contentValue: initialData, isReady: false, title: '', currentTodoText: ''  }])
+    const { setDefaultData, contentInputData, setContentInputData } = useGetContentInputData();
     const isNotEmpty = deletedTodos.length !== 0;
     const [ modal, setModal ] = useState(isNotEmpty);
-    const { allNotations, isSearchByNote, setIsSearchByNote } = useGetAllnotations({ filteredTodo })
-
-    console.log(contentInputData);
+    const { allNotations, isSearchByNote, setIsSearchByNote } = useGetAllnotations({ filteredTodo });
 
     return (
         <TodoContextProvider value = { 
@@ -37,7 +34,8 @@ export const MainProvider = ({ children }) => {
               setContentInputData,
               allNotations, 
               isSearchByNote, 
-              setIsSearchByNote
+              setIsSearchByNote,
+              setDefaultData
             } 
         }>
             { children }

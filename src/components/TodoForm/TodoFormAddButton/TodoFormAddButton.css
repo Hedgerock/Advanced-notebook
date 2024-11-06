@@ -10,7 +10,7 @@
     position: absolute;
 
     bottom: -10px;
-    left: 50%;
+    left: 31.5%;
 
     transform: translateX(-50%);
 
@@ -20,7 +20,11 @@
 }
 
 .todo-form-content .todo-form__add-btn_alternate {
-    left: 25%;
+    left: 19%;
+}
+
+.todo-form-content .todo-form__add-btn_alter {
+    left: 50%;
 }
 
 .todo-form-content:hover .todo-form__add-btn {

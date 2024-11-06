@@ -3,7 +3,7 @@ import { useTodoContext } from "../../hooks";
 import { checkFormForNotations } from "../../utils";
 
 export const useInitNewChild = () => {
-    const { contentInputData, setContentInputData, todo, setTodo } = useTodoContext();
+    const { contentInputData, setContentInputData, todo, setTodo, setDefaultData } = useTodoContext();
 
     const initNewData = () => {
 
@@ -35,9 +35,8 @@ export const useInitNewChild = () => {
                 })
             })]
         })
-        const initialData = [todoFormInterface({ id: Date.now(), content: '', notation: initialNotation })];
-        setContentInputData([{ id: Date.now(), contentValue: initialData, isReady: false, title: '', currentTodoText: ''  }])
-
+        
+        setDefaultData();
     }
 
     const actualTitle = contentInputData.map(el => el.currentTodoText).join('\n\n');

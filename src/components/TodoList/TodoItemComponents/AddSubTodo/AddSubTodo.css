@@ -79,3 +79,54 @@
 .creation-box-input__creation-inp:hover {
     background: var(--currentBgClr);
 }
+
+.count-container {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+
+    color: var(--currentTextClr);
+}
+
+.count-box ul {
+    padding-left: 1rem;
+}
+
+.count-box-header {
+    border: 1px solid var(--currentBorderClr);
+}
+
+.count-box li {
+    border: 1px solid var(--currentBorderClr);
+}
+
+.count-box li {
+    margin-top: -1px;
+}
+
+.count-box-header,
+.list-box {
+    display: flex;
+
+    align-items: center;
+
+    gap: 1rem;
+    padding: .3rem;
+}
+
+.count {
+    margin-left: auto;
+}
+
+.list-box {
+    justify-content: space-between;
+}
+
+.count-total-box {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 1rem;
+}

@@ -1,9 +1,10 @@
-export const newTodoTextInterface = ({ id, status, text, order, deleted, notation }) => {
+export const newTodoTextInterface = ({ id, status, text, order, deleted, notation, count }) => {
 
     return { 
         id, 
         status, 
-        text, 
+        text,
+        count, 
         order, 
         deleted, 
         notation

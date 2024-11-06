@@ -22,13 +22,9 @@ export const useNotationBoxButtons = () => {
                 ? {...item, notation: {
                     ...item.notation, value: item.notation.value
                         .map(el => {
-                            if ( el.id === prevVal?.id) {
-                                return {...el, text: value.text}
-                            }
+                            if ( el.id === prevVal.id) return value;
 
-                            if (el.id === value.id) {
-                                return { ...el, text: prevVal?.text }
-                            }
+                            if (el.id === value.id) return prevVal;
 
                             return el
                         }
@@ -48,13 +44,9 @@ export const useNotationBoxButtons = () => {
                 ? {...item, notation: {
                     ...item.notation, value: item.notation.value
                         .map(el => {
-                            if (el.id === value.id) {
-                                return { ...el, text: nextVal?.text }
-                            }
+                            if (el.id === value.id) return nextVal;
                         
-                            if (el.id === nextVal?.id) {
-                                return {...el, text: value.text};
-                            }
+                            if (el.id === nextVal.id) return value;
 
                             return el
                         }

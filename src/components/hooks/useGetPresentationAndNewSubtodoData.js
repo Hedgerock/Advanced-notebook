@@ -17,7 +17,8 @@ export const useGetPresentationAndNewSubtodoData = ({ data, index }) => {
                 text: el.content,
                 deleted: false,
                 order: newOrder,
-                notation: el.notation.value
+                notation: el.notation.value,
+                count: { status: false, count: 1 }
             }));
     
             const updatedText = prev.text.map(val => {

@@ -14,7 +14,7 @@ export const useInitNewTodo = () => {
             title: value.title || altTitle,
             isDone: false,
             orderData: todo,
-            deleted: false
+            deleted: false,
         })
 
         setTodo(prev => [...prev, {...newVal}])

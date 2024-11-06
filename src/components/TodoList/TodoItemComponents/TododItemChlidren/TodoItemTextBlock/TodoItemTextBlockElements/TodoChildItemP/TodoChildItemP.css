@@ -13,10 +13,12 @@
     transition: background .1s;
 
     display: flex;
+    gap: 3rem;
     flex-wrap: wrap;
 
     align-self: flex-start;
 }
+
 
 .todo-item__text_notation,
 .todo-item__text_notation-active {

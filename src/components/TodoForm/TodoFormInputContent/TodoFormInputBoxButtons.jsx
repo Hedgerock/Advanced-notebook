@@ -1,33 +1,19 @@
-import { ButtonIcon } from "../../ButtonIcon";
+import { ButtonsList } from "../ButtonsList";
 import { useChangeInputValue } from "../hooks";
 import { TodoFormItemButton } from "../TodoFormItemButton";
 import { useGetButtons } from "./hooks";
-import { TodoFormInputBoxButton } from "./TodoFormInputBoxButton"
 
-export const TodoFormInputBoxButtons = ({ children }) => {
+export const TodoFormInputBoxButtons = ({ children, data }) => {
     const { index } = useChangeInputValue();
     const { buttons } = useGetButtons();
 
     return (
         <>
-            { buttons.map(button => {
-                const { id, condition, buttonFunc, buttonModificator, buttonValue, title } = button;
-
-                    return (
-                        condition &&
-                        <TodoFormInputBoxButton
-                            title = { title }
-                            key={ id }
-                            func = { buttonFunc } 
-                            modificator = { buttonModificator }
-                        >
-                            <ButtonIcon value={ buttonValue }/>
-                        </TodoFormInputBoxButton>
-                    )
-                })
-            }
+            <ButtonsList data = { buttons } />
             
-            { index !== 0 && <TodoFormItemButton /> }
+            { index !== 0 && 
+                <TodoFormItemButton /> 
+            }
 
             { children }
         </>

@@ -6,7 +6,7 @@ export const useChangeInputValue = () => {
     const { setValue, enterEvent, isDataReady } = useTodoFormContext();
     const { initCreatingTodoProcess } = useCustomTodoData();
     const { data, index, mainData, setMainData } = useTodoFormItemContext();
-    const { id, content: inputValue, notation } =  data
+    const { id, content: inputValue } =  data
 
     const prevIndex = index - 1;
     const nextIndex = index + 1;
@@ -38,15 +38,12 @@ export const useChangeInputValue = () => {
     const initPrevVal = () => {
         setMainData(prev => {
             return prev.map((item, ind) => {
-                if (item.id === prevVal?.id) {
-                    return {...item, content: inputValue, notation };
-                }
 
-                if (item.id === data.id) {
-                    return {...item, content: prevVal.content, notation: prevVal.notation }
-                }
-                
-                return {...item};
+                if (item.id === prevVal?.id) return data;
+
+                if (item.id === id) return prevVal;
+
+                return item;
             })
         })
     }
@@ -54,13 +51,11 @@ export const useChangeInputValue = () => {
     const initNextVal = () => {
         setMainData(prev => {
             return prev.map((item) => {
-                if (item.id === data.id) {
-                    return {...item, content: nextVal.content, notation: nextVal.notation }
-                }
-                if (item.id === nextVal?.id) {
-                    return {...item, content: inputValue, notation };
-                }
-                return {...item};
+                if (item.id === id) return nextVal;
+
+                if (item.id === nextVal?.id) return data;
+
+                return item;
             })
         })
     }
@@ -71,10 +66,20 @@ export const useChangeInputValue = () => {
             return prev.map(item => {
                 const newStatus = !item.notation.status;
 
-                return item.id === data.id
+                return item.id === id
                     ? {...item, notation: {
                         ...item.notation,
-                        value: !newStatus ? [{id: 1, text: ''}] : item.notation.value, 
+                        value: !newStatus 
+                        ? [{
+                            id: 1, 
+                            text: '', 
+                            isActive: false, 
+                            count: { 
+                                status: false, 
+                                value: 1,
+                                derivative: 1 * item.count.value
+                            }}] 
+                        : item.notation.value, 
                         status: newStatus
                     }}
                     : item
@@ -105,6 +110,6 @@ export const useChangeInputValue = () => {
         initNextVal, 
         index, 
         notationHandler, 
-        initDeleteOption 
+        initDeleteOption,
     }
 }

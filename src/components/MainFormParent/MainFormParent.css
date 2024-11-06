@@ -24,6 +24,29 @@
 .todo-form-container_extended {
     padding: 1rem;
     border: 2px solid var(--currentBorderClr);
+    border-radius: 1rem;
+
+    position: relative;
+}
+
+.todo-form-container_extended:not(:first-child)::before,
+.todo-form-container_extended:not(:first-child)::after {
+    content: '';
+    position: absolute;
+    top: -.82rem;
+
+    transform: translateY(-50%);
+    width: 2px;
+    height: 1.7rem;
+    background: var(--currentBorderClr);
+}
+
+.todo-form-container_extended:not(:first-child)::before {
+    left: 25px;
+}
+
+.todo-form-container_extended:not(:first-child)::after {
+    right: 25px;
 }
 
 .todo-form-container__current-button {

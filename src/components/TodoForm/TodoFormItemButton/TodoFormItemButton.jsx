@@ -1,24 +1,14 @@
 import { ButtonIcon } from "../../ButtonIcon";
-import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext"
+import { useGetTodoFormItemButtonData } from "../hooks";
 
 import './TodoFormItemButton.css';
 
 export const TodoFormItemButton = () => {
-    const { data, buttonIcons, setMainData } = useTodoFormItemContext();
-    const { id, notation } = data;
-    const { delete: currentValue } = buttonIcons;
-
-    const actualClassName = notation?.status 
-        ? `todo-form-item__button todo-form-item__button_updated${ data.notation.value.length === 1 ? '-single' : '' }` 
-        : 'todo-form-item__button'
+    const { actualClassName, currentValue, deleteSubTodo } = useGetTodoFormItemButtonData();
 
     return (
         <button
-            onClick={ () => {
-                setMainData(prev => {
-                    return prev.filter(val => val.id !== id)
-                })
-            } }
+            onClick={ deleteSubTodo }
             className= { actualClassName }
         >
             <ButtonIcon value = { currentValue }/>

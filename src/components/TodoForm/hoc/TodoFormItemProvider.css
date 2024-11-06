@@ -4,7 +4,3 @@
 
     position: relative;
 }
-
-.todo-form-item:hover .todo-form-item__button {
-    opacity: 1;
-}

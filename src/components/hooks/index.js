@@ -17,3 +17,5 @@ export * from './useGetPresentationAndNewSubtodoData';
 export * from './useGetAllNotations';
 export * from './useGetModalBoxes';
 export * from './useModalBoxesContext';
+export * from './useGetContentInputData';
+export * from './useValidateData';

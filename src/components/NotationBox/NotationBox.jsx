@@ -33,7 +33,7 @@ export const NotationBox = ({ data, notationList, setNotationList, currentClassN
             
             }
             <button 
-                className='todo-form__add-btn'
+                className='todo-form__add-btn todo-form__add-btn_alter'
                 title='Create new notation'
                 onClick={ initNewNotation }
             >

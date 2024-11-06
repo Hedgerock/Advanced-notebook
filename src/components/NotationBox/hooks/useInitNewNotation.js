@@ -12,8 +12,10 @@ export const useInitNewNotation = ({ setNotationList, data, setMainData }) => {
                     ? {...item, notation: {
                         ...item.notation, 
                         value: [...item.notation.value, { 
-                            id: Math.max.apply(null, item.notation.value.map(el => el.id)) + 1, 
-                            text: '' 
+                            id: Date.now(), 
+                            text: '',
+                            isActive: false,
+                            count: { status: false, value: 1, derivative: 1 * data.count.value }
                         }]
                     }}
                     : item

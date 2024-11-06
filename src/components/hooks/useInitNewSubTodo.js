@@ -21,7 +21,8 @@ export const useInitNewSubTodo = ({ newSubtodos, id }) => {
                                     text: content,
                                     deleted: false,
                                     order: Math.max.apply(null, todo.text.map(item => item.order)) + 1 + index,
-                                    notation: el.notation.value
+                                    notation: el.notation.value,
+                                    count: el.count
                                 })
                             })
                         ]

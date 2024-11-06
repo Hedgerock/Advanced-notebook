@@ -11,5 +11,8 @@ export const buttonIcons = {
     down:           'fa-solid fa-angle-down',
     confirm:        'fa-solid fa-check',
     decline:        'fa-solid fa-xmark',
-    copy:           'fa-solid fa-copy'
+    copy:           'fa-solid fa-copy',
+    calculate:      'fa-solid fa-calculator',
+    on:             'fa-solid fa-toggle-on',
+    off:            'fa-solid fa-toggle-off'
 }

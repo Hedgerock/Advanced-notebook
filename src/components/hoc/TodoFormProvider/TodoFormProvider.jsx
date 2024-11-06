@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
 import TodoFormP from '../../../context/todoFormContext'
-import { useInitNewData, useTodoContext } from '../../hooks';
-import { checkAllContentValue } from '../../TodoForm/utils';
+import { useInitNewData, useTodoContext, useValidateData } from '../../hooks';
 import { enterEvent } from '../../utils';
 
 import './TodoFormProvider.css';
@@ -11,31 +9,25 @@ export const TodoFormProvider = ({
         mainData, 
         setMainData, 
         initDataFunction, 
-        isDataWithTitle, 
+        isDataWithTitle = true, 
         isCurrentChild = false,
         isCleanAfterCreation = true,
         isNotChildElement = true,
         mainId = null
     }) => {
-    const { value, setValue, initNewData, title, content, altTitle } = useInitNewData({ mainData, initDataFunction, isDataWithTitle, mainId, isNotChildElement });
-    const { buttonIcons, setContentInputData } = useTodoContext();
 
-    const isDataReady = checkAllContentValue({ 
-        data: mainData, 
-        key: ['content', 'notation'] 
-    }) 
+    const { 
+        value, 
+        setValue, 
+        initNewData, 
+        title, 
+        content, 
+        altTitle 
+    } = useInitNewData({ mainData, initDataFunction, isDataWithTitle, mainId, isNotChildElement });
 
-    useEffect(() => {
-        if (!isNotChildElement) {
-            setContentInputData(prev => {
-                return prev.map(el => {
-                    return el.id === mainId
-                        ? {...el, isReady: !isDataReady}
-                        : el
-                })
-            })
-        }
-    }, [isDataReady, isNotChildElement, mainId, setContentInputData, mainData])
+    const { buttonIcons } = useTodoContext();
+    const { isDataReady } = useValidateData({ mainData, isNotChildElement, mainId })
+    const isNotated = mainData.some(el => el.notation.status);
 
     return (
         <TodoFormP value = {
@@ -55,7 +47,8 @@ export const TodoFormProvider = ({
                     isCurrentChild,
                     isCleanAfterCreation,
                     isNotChildElement,
-                    mainId
+                    mainId,
+                    isNotated
                 }
             }>
             { children }
