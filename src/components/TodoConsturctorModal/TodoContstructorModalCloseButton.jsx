@@ -1,8 +1,8 @@
-import { ButtonIcon } from "../../../ButtonIcon";
-import { useTodoItemContext } from "../../../hooks";
+import { ButtonIcon } from "../ButtonIcon";
+import { useTodoContext } from "../hooks";
 
-export const SubtodoModalCloseBtn = ({ closeFunc }) => {
-    const { buttonIcons } = useTodoItemContext();
+export const TodoContstructorModalCloseButton = ({ closeFunc }) => {
+    const { buttonIcons } = useTodoContext();
     const { decline } = buttonIcons;
     return (
         <button

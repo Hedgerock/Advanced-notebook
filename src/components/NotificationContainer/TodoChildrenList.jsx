@@ -2,11 +2,11 @@ export const TodoChildrenList = ({ data }) => {
 
     return (
         data.map(el => (
-            <span 
+            <div
                 key={ el.id }
             >
                 { el.text }
-            </span>
+            </div>
         ))
     )
 }

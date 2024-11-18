@@ -42,7 +42,12 @@ export const TodoFormItemProvider = ({ children, data, index, setMainData, mainD
                         setMainData={ setMainData }
                     /> 
                 }
-                <TotalElementsBox data = { data } setData = { setMainData } currentValue={ data.count.value }/>
+                <TotalElementsBox 
+                    data = { data } 
+                    setData = { setMainData } 
+                    currentValue={ data.count.value }
+                    status={ data.count.status }
+                />
             </div>
         </TodoFormItemContextProvider>
     )

@@ -39,9 +39,9 @@ export const useChangeInputValue = () => {
         setMainData(prev => {
             return prev.map((item, ind) => {
 
-                if (item.id === prevVal?.id) return data;
+                if (ind === prevIndex) return data;
 
-                if (item.id === id) return prevVal;
+                if (ind === index) return prevVal;
 
                 return item;
             })
@@ -50,10 +50,10 @@ export const useChangeInputValue = () => {
 
     const initNextVal = () => {
         setMainData(prev => {
-            return prev.map((item) => {
-                if (item.id === id) return nextVal;
+            return prev.map((item, ind) => {
+                if (ind === index) return nextVal;
 
-                if (item.id === nextVal?.id) return data;
+                if (ind === nextIndex) return data;
 
                 return item;
             })
@@ -71,7 +71,7 @@ export const useChangeInputValue = () => {
                         ...item.notation,
                         value: !newStatus 
                         ? [{
-                            id: 1, 
+                            id: Date.now(), 
                             text: '', 
                             isActive: false, 
                             count: { 

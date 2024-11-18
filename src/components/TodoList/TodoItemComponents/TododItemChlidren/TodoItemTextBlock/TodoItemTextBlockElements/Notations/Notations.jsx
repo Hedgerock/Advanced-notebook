@@ -25,7 +25,10 @@ export const Notations = () => {
                 </NotationsElementButton>
             }
             { filteredNotation.length > 0 &&
-                <FilteredNotationsList data = { filteredNotation }>
+                <FilteredNotationsList 
+                    data = { filteredNotation }
+                    isChangable = { true }
+                >
                     <NotationElement />
                 </FilteredNotationsList>
             }

@@ -29,10 +29,10 @@ export const useCustomTodoData = () => {
     .map((item, index) => {
             const a = isMoreThanOneEl ? `${ index + 1 }. ` : '';
             const b = item.notation.value.some(el => el.text.length > 0) 
-                ? `(${item.notation.value.map(el => el.text).join(', ')})` 
+                ? `(${item.notation.value.map(el => `${ el.text }${ el.count.status ? `: ${el.count.value}` : '' }`).join(', ')})` 
                 : '' 
             
-            const title = ` ${ a }${ item.content } ${ b }`
+            const title = ` ${ a }${ item.content }${ item.count.status ? `: ${item.count.value}` : '' } ${ b }`.split(' ').filter(v => v).join(' ')
 
             return title
         })

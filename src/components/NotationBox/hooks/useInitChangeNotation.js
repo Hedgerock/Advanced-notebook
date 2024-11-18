@@ -1,9 +1,11 @@
+import { useTodoContext } from "../../hooks";
 import { useNotationContext } from "../../hooks/useNotationContext";
 import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext";
 
 
 export const useInitChangeNotation = () => {
     const { value, valueIndex, mainIndex } = useNotationContext();
+    const { allNotations } = useTodoContext();
     const { mainData, setMainData, data } = useTodoFormItemContext();
 
     const curSubTodoNum = mainIndex + 1;
@@ -16,12 +18,13 @@ export const useInitChangeNotation = () => {
         : `Notation ${ curretValuePlaceHolder }`
 
     const initChangeNotation = (e) => {
+        const currentElement = allNotations.find(val => val.title.toLowerCase() === e.target.value.toLowerCase())
         setMainData(prev =>{
             return prev.map(item => {
                 return item.id === data.id
                     ? {...item, notation: {...item.notation, value: item.notation.value.map(el => {
                         return el.id === value.id
-                            ? {...el, text: e.target.value}
+                            ? {...el, text: e.target.value, isActive: currentElement ? currentElement.status : false}
                             : el
                         })
                     }}

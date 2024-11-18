@@ -6,7 +6,7 @@ import './ChangeBox.css';
 
 export const ChangeBox = () => {
     const { initChangeValue, currentTitle, buttonValue, currentButtonValue,  } = useChangeBoxState();
-    const { changeStatus, setChangeStatus, subtodoText, setSubTodoValue } = useTodoItemChildContext();
+    const { changeStatus, setChangeStatus, subtodoText, setSubTodoValue, count } = useTodoItemChildContext();
 
     return (
         <div className="change-box">
@@ -24,7 +24,7 @@ export const ChangeBox = () => {
                     title = 'Decline changes'
                     onClick={ () => {
                         setChangeStatus(false);
-                        setSubTodoValue(subtodoText);
+                        setSubTodoValue({ text: subtodoText, count });
                     } }
                 >
                     <ButtonIcon value={ currentButtonValue }/>

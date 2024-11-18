@@ -1,4 +1,6 @@
 import { useTodoItemChildContext } from "../hooks";
+import { FilteredNotationsList } from "./TodoItemTextBlockElements/Notations/hoc";
+import { NotationElement } from "./TodoItemTextBlockElements/Notations/NotationsElement";
 
 export const TodoItemTextBlockModal = () => {
     const { myNotations } = useTodoItemChildContext();
@@ -8,16 +10,22 @@ export const TodoItemTextBlockModal = () => {
 
             <div className="text-box-container">
                 <div className="notations">
-                    { myNotations.notation.value.map(el => (
-                        <span 
-                            key = { el.id } 
-                            className="todo-item__text todo-item__text_notation"
-                        >
-                            { el.text }
-                        </span>
-                    )) }
+                    <FilteredNotationsList 
+                        data = { myNotations.notation.value }
+                        parentValue = { myNotations }
+                    >
+                        <NotationElement />
+                    </FilteredNotationsList>
                 </div>
-                <span className="todo-item__text">{ myNotations.content }</span>
+                <div className="todo-item-text-box">
+
+                    <span className="todo-item__text">{ myNotations.content }</span>
+                    { myNotations.count.status && 
+                    <span className="todo-item__text">
+                        <b> Total: { myNotations.count.value }</b>
+                    </span>}
+
+                </div>
             </div>
 
         </div>

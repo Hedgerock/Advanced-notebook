@@ -2,26 +2,31 @@ import { useEffect, useState } from "react";
 import { useTodoContext } from "./useTodoContext";
 
 export const useRemoveNotificationElement = ({ data }) => {
-    const { id } = data
-
+    const { id } = data;
     const { setNotificationData } = useTodoContext();
-    const [ curPercent, setCurPercent ] = useState(0);
-    const [ curInterval, setCurrentInterval ] = useState(0);
+    const [curPercent, setCurPercent] = useState(0);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (curPercent >= 100) {
-                setNotificationData(prev => prev.filter(el => el.id !== id))
-                return
-            }
+        let start;
+        const duration = 3500;
 
-            setCurPercent(Math.floor((curInterval / 3500) * 100))
+        const step = (timestamp) => {
+            if (!start) start = timestamp;
+            
+            const progress = timestamp - start;
 
-            setCurrentInterval(prev => prev + 10)
-        }, 10)
+            const newPercent = Math.floor((progress / duration) * 100, 100);
+            setCurPercent(newPercent);
 
-        return () => clearInterval(interval)
-    }, [ curInterval, setCurrentInterval, id, curPercent, setNotificationData])
+            newPercent < 100
+                ? requestAnimationFrame(step)
+                : setNotificationData((prev) => prev.filter((el) => el.id !== id));
+        };
 
-    return { curPercent }
-}
+        requestAnimationFrame(step);
+
+        return () => cancelAnimationFrame(step);
+    }, [id, setNotificationData]);
+
+    return { curPercent };
+};

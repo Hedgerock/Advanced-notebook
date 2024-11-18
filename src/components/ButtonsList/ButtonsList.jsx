@@ -1,14 +1,14 @@
-import { ButtonIcon } from "../../ButtonIcon";
-import { TodoFormInputBoxButton } from "../TodoFormInputContent";
+import { ButtonIcon } from "../ButtonIcon";
+import { CurrentButton } from "./CurrentButton";
 
 export const ButtonsList = ({ data, currentClassName }) => {
 
-    return  data.map(button => {
+    return data.map(button => {
         const { id, condition, buttonFunc, buttonModificator, buttonValue, title } = button;
 
             return (
                 condition &&
-                <TodoFormInputBoxButton
+                <CurrentButton
                     currentClassName={ currentClassName }
                     title = { title }
                     key={ id }
@@ -16,7 +16,8 @@ export const ButtonsList = ({ data, currentClassName }) => {
                     modificator = { buttonModificator }
                 >
                     <ButtonIcon value={ buttonValue }/>
-                </TodoFormInputBoxButton>
+                </CurrentButton>
             )
-    })
+        }
+    )
 }

@@ -9,6 +9,7 @@ export const useUpdateCurrentSubTodo = () => {
         notation,
         subtodoText,
         setTodo,
+        count,
         subtodoId,
         myNotations,
         id
@@ -22,7 +23,7 @@ export const useUpdateCurrentSubTodo = () => {
                 return item.id === id
                     ? { ...item, text: item.text.map(el => {
                         return el.id === subtodoId
-                            ? { ...el, text: myNotations.content, notation: myNotations.notation.value }
+                            ? { ...el, text: myNotations.content, notation: myNotations.notation.value, count: myNotations.count }
                             : el
                     }) }
                     : item
@@ -36,7 +37,8 @@ export const useUpdateCurrentSubTodo = () => {
                 notation: { 
                     value: myNotations.notation.value, 
                     status: true 
-                } 
+                },
+                count: myNotations.count
             }
         )])
 
@@ -53,7 +55,8 @@ export const useUpdateCurrentSubTodo = () => {
                 notation: { 
                     value: notation.length ? notation : initialNotation.value, 
                     status: true 
-                } 
+                },
+                count: { status: count?.status ? count.status : false, value: count?.value ? count.value : 1 }
             }
         )])
 

@@ -2,8 +2,9 @@ import { useState } from "react";
 import TodoItemProvider from '../../../context/todoItemContext';
 import { useChangeValue, useGetPresentationAndNewSubtodoData, useInitNewSubTodo, useTodoContext, useTodoItemState } from "../../hooks";
 import { getTodoData } from "../TodoItemComponents/utils";
+import { useGetCalculations } from "../hooks";
 
-export const TodoItemParent = ({ children, data, index, fullData, isChangable }) => {
+export const TodoItemParent = ({ children, data, index, fullData, isChangable = true, isSingleNotation = false }) => {
     const { isDone, id, text, title } = data;
     const { 
         setTodo, 
@@ -14,7 +15,8 @@ export const TodoItemParent = ({ children, data, index, fullData, isChangable })
         initNewNotification, 
         searchParam, 
         setSearchParam,
-        buttonIcons
+        buttonIcons,
+        allNotations
     } = useTodoContext();
     const [ changeStatus, setChangeStatus ] = useState(false);
 
@@ -24,7 +26,7 @@ export const TodoItemParent = ({ children, data, index, fullData, isChangable })
         presentationData, 
         setPresentationData,
         maxId
-    } = useGetPresentationAndNewSubtodoData({ data, index });
+    } = useGetPresentationAndNewSubtodoData({ data, index, todo });
 
     const { initNewSubTodo } = useInitNewSubTodo({ newSubtodos, id });
     
@@ -34,6 +36,7 @@ export const TodoItemParent = ({ children, data, index, fullData, isChangable })
     const lastChildClassName = index === fullData.length - 1 ? 'todo-item_current-last-child' : '';
 
     const [ createSubTodoModal, setCreateSubTodoModal ] = useState(false);
+    const { filteredSubTodos, calcObject } = useGetCalculations({ text });
     
     const { 
         currentVal, 
@@ -89,7 +92,11 @@ export const TodoItemParent = ({ children, data, index, fullData, isChangable })
                     isChangable,
                     presentationData, 
                     setPresentationData,
-                    maxId
+                    maxId,
+                    filteredSubTodos, 
+                    calcObject,
+                    allNotations,
+                    isSingleNotation
                 }
             }
         >

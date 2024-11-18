@@ -6,3 +6,5 @@ export * from './useGetSubTodoCopied';
 export * from './useChangeBoxState';
 export * from './useMoveToChild';
 export * from './useUpdateCurrentSubTodo';
+export * from './useGetNewCount';
+export * from './useGetMyNotations';

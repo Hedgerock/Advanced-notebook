@@ -3,10 +3,10 @@ import './TodoItemTextBlock.css';
 import { useFindChildren, useMoveToChild, useTodoItemChildContext, useUpdateCurrentSubTodo } from "../hooks";
 import { SwapBox, TodoChildCurrentNumber, TodoChildDelButton, TodoChildItemInput, TodoChildItemP, Notations  } from "./TodoItemTextBlockElements";
 import { ChangeBox } from "../ChangeBox";
-import { TodoItemModal } from "../../TodoItemModal";
 import { TodoFormProvider } from "../../../../hoc";
 import { TodoForm } from "../../../../TodoForm";
 import { TodoItemTextBlockModal } from "./TodoItemTextBlockModal";
+import { TodoContstructorModal } from "../../../../TodoConsturctorModal";
 
 export const TodoItemTextBlock = () => {
     const { 
@@ -20,6 +20,7 @@ export const TodoItemTextBlock = () => {
     const { childrenClassName } = useFindChildren();
     const { destination } = useMoveToChild();
     const { initCloseModal, updateCurrentSubTodo } = useUpdateCurrentSubTodo();
+    const isNotSingleNotation = notations[0].notation.value.length > 1
 
     return (
         <>
@@ -45,7 +46,7 @@ export const TodoItemTextBlock = () => {
                 <TodoChildDelButton />
             </div>
             { editNotationHandler &&
-                <TodoItemModal 
+                <TodoContstructorModal
                     closeFunc = { initCloseModal } 
                     currentText={ `This is edition modal of the "${ subtodoText }" notations` }
                 >
@@ -60,9 +61,11 @@ export const TodoItemTextBlock = () => {
                         <TodoForm />
                     </TodoFormProvider>
 
-                    <TodoItemTextBlockModal />
+                    { isNotSingleNotation && 
+                        <TodoItemTextBlockModal /> 
+                    }
 
-                </TodoItemModal>
+                </TodoContstructorModal>
             }
         </>
     )

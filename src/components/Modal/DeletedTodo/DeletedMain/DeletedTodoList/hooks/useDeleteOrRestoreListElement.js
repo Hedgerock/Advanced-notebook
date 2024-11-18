@@ -9,7 +9,7 @@ export const useDeleteOrRestoreListElement = () => {
         setTodo(prev => {
             const newArr = prev.map(item => {
                 return item.id === parent.id
-                    ? {...item, text: item.text.map(el => {
+                    ? {...item, isDone: item.text.every(el => el.status), text: item.text.map(el => {
                         return el.id === data.id
                             ? {...el, deleted: false }
                             : {...el}
@@ -32,7 +32,7 @@ export const useDeleteOrRestoreListElement = () => {
         setTodo(prev => {
             const newArr = prev.map(item => {
                 return item.id === parent.id
-                    ? {...item, text: item.text.filter(el => el.id !== data.id)}
+                    ? {...item, text: item.text.filter(el => el.id !== data.id).map((el, index) => ({...el, order: index + 1}))}
                     : {...item}
             })
 

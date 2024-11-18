@@ -15,8 +15,11 @@ export const useRemoveTodo = () => {
 
     const initRemove = () => {
         setTodo(prev => {
-            const updatedArr = prev.map(item => item.id === id
-                ? {...item, text: changeDeletedStatus({ data: item.text, id: subtodoId, boolean: true })}
+            const updatedArr = prev.map((item,) => item.id === id
+                ? {...item, 
+                    text: changeDeletedStatus({ data: item.text, id: subtodoId, boolean: true }), 
+                    isDone: item.text.filter(el => el.id !== subtodoId).every(v => v.status) 
+                }
                 : {...item}
             )
     

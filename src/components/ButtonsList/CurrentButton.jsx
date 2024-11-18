@@ -1,4 +1,4 @@
-export const TodoFormInputBoxButton = ({ func, modificator, children, currentClassName, title }) => {
+export const CurrentButton = ({ func, modificator, children, currentClassName, title }) => {
     const actualClassName = `todo-form-input-box__button todo-form-input-box__button_${ modificator }`
     
     return (

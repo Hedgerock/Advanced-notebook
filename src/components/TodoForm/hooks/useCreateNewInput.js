@@ -15,7 +15,7 @@ export const useCreateNewInput = () => {
             return [...prev, { id: newId, content: '', 
                 notation: {
                     status: false, 
-                    value: [{ id: 1, text: '', count: { status: false, value: 1, derivative: 1 }, isActive: false }] 
+                    value: [{ id: newId + 1, text: '', count: { status: false, value: 1, derivative: 1 }, isActive: false }] 
                 },
                 count: { status: false, value: 1 }
             }]

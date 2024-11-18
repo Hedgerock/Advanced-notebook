@@ -10,7 +10,10 @@ export const TotalElementsBox = ({
     modificator = null, 
     childId = null,
     isLastElement = false,
-    currentValue = null
+    currentValue = null,
+    status,
+    isExistedTodo = false,
+    parentId = null
 }) => {
 
     const { 
@@ -18,29 +21,30 @@ export const TotalElementsBox = ({
         actualClassName, 
         calcHandler, 
         counterHandler, 
-        isCounted, 
         incrementer, 
         decrementer, 
-        curCount
-    } = useGetTotalElementsBoxData({ setData, data, modificator, childId, currentValue });
+    } = useGetTotalElementsBoxData({ setData, data, modificator, childId, currentValue, status, isExistedTodo, parentId });
 
     const { on, off } = buttonIcons;
-    const actualValue = isCounted ? on : off;
-    const actualParentClassName = `total-elements-box ${ modificator ? `total-elements-box_${ modificator }${ isLastElement ? `-last-element`: '' }` : 'total-elements-box_parent' }`;
+    const actualValue = status ? on : off;
+    const a = isLastElement ? `-last-element`: '';
+    const b = modificator ? `total-elements-box_${ modificator }${ a }` : 'total-elements-box_parent';
+    const actualParentClassName = `total-elements-box ${ b }`;
+    const currentTitle = modificator ? 'Notation counter' : 'Parent counter';
 
     return (
-        <div className={ actualParentClassName }>
+        <div className={ actualParentClassName } title= { currentTitle }>
             <div className={ actualClassName }>
                 <AdjacentButtons 
                     incrementer = { incrementer } 
                     decrementer = { decrementer } 
-                    isCounted = { isCounted }
+                    isCounted = { status }
                     buttonIcons={ buttonIcons }
                 >
                     <input 
                         className="total-elements__input" 
                         type="number"
-                        value={ curCount }
+                        value={ currentValue }
                         onChange={ counterHandler }
                     />
                 </AdjacentButtons>

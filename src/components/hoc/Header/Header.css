@@ -2,9 +2,7 @@
     display: flex;
     align-items: flex-start;
     position: relative;
-}
 
-.header_alternate {
     flex-direction: column-reverse;
 
     gap: .8rem;

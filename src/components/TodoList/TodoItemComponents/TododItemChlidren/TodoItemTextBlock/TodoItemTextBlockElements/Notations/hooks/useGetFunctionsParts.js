@@ -1,4 +1,4 @@
-import { useNotationsElementContext } from "../../../../../../../TodoForm/hooks/useNotationsElementContext";
+import { useNotationsElementContext } from "../../../../../../../TodoForm/hooks";
 
 export const useGetFunctionsParts = () => {
     const { 
@@ -6,9 +6,9 @@ export const useGetFunctionsParts = () => {
         mainParentId, 
         id, 
         editNotation, 
-        setIsEdit, 
+        setIsEdit,
+        allNotations
     } = useNotationsElementContext();
-
 
     const editionProcessHandler = () => {
         setIsEdit(prev => !prev)
@@ -39,9 +39,12 @@ export const useGetFunctionsParts = () => {
     }
 
     const editNotationText = ({ data }) => {
+        const currentEditNotation = editNotation[0].toUpperCase() + editNotation.slice(1).toLowerCase();
+        const isOnList = allNotations.find(el => el.title === currentEditNotation);
+
         return data.map(n => {
             return n.id === id
-                ? {...n, text: editNotation}
+                ? {...n, text: editNotation, isActive: isOnList ? isOnList.status : n.isActive }
                 : n
         })
     }

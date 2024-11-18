@@ -1,29 +1,39 @@
 import { useEffect, useState } from "react";
 import { initialNotation, todoFormInterface } from "../../data";
+import { useTodoContext } from "./useTodoContext";
 
 export const useGetPresentationAndNewSubtodoData = ({ data, index }) => {
-    const { text } = data;
-
-    const maxId = Math.max.apply(null, text.map(item => item.id)) + 1;
+    const { todo } = useTodoContext();
+    const maxId = Date.now();
     const [ newSubtodos, setNewSubtodos ] = useState([todoFormInterface({ id: maxId, content: '', notation: initialNotation })])
     const [ presentationData, setPresentationData ] = useState(data);
-    const newOrder = Math.max(...presentationData.text.map(item => item.order)) + 1;
+    const newOrder = data.text.length + 1
+
+    useEffect(() => {
+        setPresentationData(data)
+    }, [data])
 
     useEffect(() => {
         setPresentationData(prev => {
-            const newData = newSubtodos.map(el => ({
+            const newData = newSubtodos.map((el, index) => ({
                 id: el.id,
                 status: false,
                 text: el.content,
                 deleted: false,
-                order: newOrder,
+                order: newOrder + index,
                 notation: el.notation.value,
-                count: { status: false, count: 1 }
+                count: { status: el.count?.status, value: el.count?.value }
             }));
     
             const updatedText = prev.text.map(val => {
                 const newItem = newData.find(el => el.id === val.id);
-                return newItem ? { ...val, text: newItem.text, notation: newItem.notation } : val;
+                return newItem 
+                    ? { ...val, 
+                        text: newItem.text, 
+                        notation: newItem.notation, 
+                        count: { status: newItem.count.status, value: newItem.count.value } 
+                    } 
+                    : val;
             });
     
             const newItems = newData.filter(el => !prev.text.some(val => val.id === el.id));
@@ -36,7 +46,7 @@ export const useGetPresentationAndNewSubtodoData = ({ data, index }) => {
                 text: filteredText
             };
         });
-    }, [newSubtodos, index, data, newOrder]);
+    }, [newSubtodos, index, data, newOrder, todo]);
 
     return { newSubtodos, setNewSubtodos, presentationData, setPresentationData, maxId }
 }

@@ -1,94 +1,72 @@
-import { useEffect, useState } from "react";
+import { useGetActions } from "./useGetActions";
 
-export const useGetCounted = ({ data, setData, modificator, childId, currentValue }) => {
-    const [ curCount, setCurCount ] = useState(currentValue);
-    const [ isCounted, setIsCounted ] = useState(data.count.status)
-
-    useEffect(() => {
-        setData(prev => {
-            return prev.map(el => {
-
-                if (!modificator) {
-                    return el.id === data.id
-                        ? {...el, count: {...el.count, status: isCounted}, notation: {...el.notation, value: el.notation.value.map(val => {
-                            return {...val, count: {...val.count, status: isCounted, value: 1 }}
-                            }
-                        )}}
-                        : el
-                }
-
-                return el.id === data.id
-                    ? {...el, notation: {...el.notation, value: el.notation.value.map(val => {
-                        return val.id === childId
-                            ? {...val, count: {...val.count, status: isCounted}}
-                            : val
-                        }
-                    )}}
-                : el
-
-            })
-        })
-
-    }, [isCounted, data.id, setData, childId, modificator])
-
-    useEffect(() => {
-        setData(prev => {
-            return prev.map(el => {
-               if (!modificator) {
-                return el.id === data.id
-                    ? {...el, count: {...el.count, value: curCount}, notation: {...el.notation, value: el.notation.value.map(val => {
-                        return {...val, count: {...val.count, derivative: curCount * val.count.value}}
-                        }
-                    )} }
-                    : el
-                }
-
-                return el.id === data.id
-                    ? {...el, notation: {...el.notation, value: el.notation.value.map(val => {
-                        return val.id === childId
-                            ? {...val, count: {...val.count, value: curCount, derivative: curCount * data.count.value}}
-                            : val
-                        }
-                    )}}
-                    : el
-            })
-        })
-    }, [curCount, data.id, setData, modificator, childId, data.count.value ])
+export const useGetCounted = ({ data, setData, modificator, childId, currentValue, status, isExistedTodo, parentId }) => {
+    const { changeValue } = useGetActions({ data, modificator, childId })
 
     const incrementer = () => {
-        if (!isCounted) return;
+        if (!status) return;
+        const newValue = currentValue + 1;
 
-        setCurCount(prev => {
-            return prev + 1;
-        })
+        if (isExistedTodo) {
+            setData(prev => ({...prev, value: newValue}))
+            return;
+        }
+
+        setData(prev => changeValue({
+                currentData: prev, 
+                newValue, 
+                key: 'changeCount'
+            })
+        );
     }
     
     const decrementer = () => {
-        if (!isCounted) return;
+        if (!status) return;
+        const decrementer = currentValue - 1
+        const newValue = decrementer <= 0 ? 1 : decrementer;
 
-        setCurCount(prev => {
-            const res = prev - 1;
-            return res <= 0 ? 1 : res
-        })
+        if (isExistedTodo) {
+            setData(prev => ({...prev, value: newValue}))
+            return;
+        }
+
+        setData(prev => changeValue({
+            currentData: prev, 
+            newValue, 
+            key:'changeCount'
+        }));
     }
 
     const counterHandler = (e) => {
-        if (!isCounted) return;
+        if (!status) return;
+        const newValue = Number(e.target.value) <= 0 ? 1 : Number(e.target.value);
 
-        const curVal = e.target.value.length ? e.target.value : 1;
-        setCurCount(+curVal)
+        if (isExistedTodo) {
+            setData(prev => ({...prev, value: newValue}))
+            return;
+        }
+
+        setData(prev => changeValue({
+            currentData: prev, 
+            newValue, 
+            key: 'changeCount'
+        }));
     }
 
     const calcHandler = () => {
+        const newValue = !status;
 
-        setIsCounted(prev => {
-            return !prev
-        });
-
-        if (isCounted) {
-            setCurCount(1);
+        if (isExistedTodo) {
+            setData({status: newValue, value: 1})
+            return;
         }
+
+        setData(prev => changeValue({
+            currentData: prev, 
+            newValue, 
+            key:'changeStatus'
+        }));
     }
 
-    return { curCount, setCurCount, isCounted, setIsCounted, incrementer, decrementer, counterHandler, calcHandler }
+    return { incrementer, decrementer, counterHandler, calcHandler }
 }

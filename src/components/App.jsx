@@ -15,20 +15,16 @@ import { ModalBoxesList } from './ModalValues/hoc';
 import { SearchByNotesList } from './SearchByNotes/hoc';
 import { MainFormParent } from './MainFormParent';
 
-
 export const App = () => {
   const { 
     filteredTodo
   } = useTodoContext();
 
-
-
   return (
     <div className="App">
         <Header>
-
           <MainFormParent />
-
+          
           <div className="header-right-part">
             
             <SearchContainer>

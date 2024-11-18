@@ -1,4 +1,3 @@
-
 import { ButtonIcon } from '../../../ButtonIcon';
 import { useTodoItemContext } from '../../../hooks';
 import { deletedStatusHandler } from '../../../utils';

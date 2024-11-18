@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useTodoItemContext } from '../../../../hooks';
 import TICCProvider from '../context/todoItemChildContext'
-import { initialNotation, todoFormInterface } from '../../../../../data';
+
+import { useGetMyNotations } from '../hooks';
 
 export const TodoItemChildProvider = ({ children, info, childrenFullList, childIndex }) => {
     const { 
@@ -17,33 +18,26 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
         setSearchParam,
         buttonIcons,
         isChangable,
-        curEl
+        curEl,
+        allNotations
     } = useTodoItemContext();
     const { text, id, order: todoItemOrder, isDone } = data
     const [ changeStatus, setChangeStatus ] = useState(false);
     const [ editNotationHandler, setEditNotationHandler ] = useState(false);
     const { text:subtodoText, id:subtodoId, status:subtodoStatus, order:todoItemChildOrder, status, notation, count } = info
-    const [ subTodoValue, setSubTodoValue ] = useState(subtodoText)
 
-
-    const actualNotation = Array.isArray(notation) ? notation : initialNotation.value
-    const currentNotation = { status: true, value: actualNotation };
-
-    const [ notations, setNotations ] = useState([todoFormInterface({ id: subtodoId, content: subtodoText, notation: currentNotation })])
-
-    const myNotations = notations[0];
-
+    const [ subTodoValue, setSubTodoValue ] = useState({ text: subtodoText, count })
     useEffect(() => {
-        setSubTodoValue(subtodoText)
-    }, [subtodoText])
+        setSubTodoValue({text: subtodoText, count})
+    }, [subtodoText, count])
 
-    useEffect(() => {
-        const currentNotation = Array.isArray(notation) 
-            ? { status: true, value: notation.length ? notation : initialNotation.value } 
-            : { value: initialNotation.value, status: true }
 
-        setNotations(prev => ([{...prev[0], content: subtodoText, notation: currentNotation}]))
-    }, [notation, subtodoText])
+    const { 
+        notations, 
+        setNotations, 
+        myNotations, 
+        actualNotation 
+    } = useGetMyNotations({ notation, subTodoValue, subtodoId, subtodoText, count })
 
     const lastChildChildren = childIndex === childrenFullList.length - 1
         ? 'todo-item-text-block_last-child'
@@ -92,7 +86,10 @@ export const TodoItemChildProvider = ({ children, info, childrenFullList, childI
                 myNotations,
                 notations,
                 setNotations,
-                count
+                count,
+                allNotations,
+                data,
+                info
             }}
         >
             { children }

@@ -6,9 +6,7 @@ export const getUpdatedTextStatus = ({ todo, id, text, isDone }) => {
         const newVal = !isDone
         return (
             item.id === id
-                ? { ...item, isDone: newVal, text: newVal 
-                    ? initSubTodoStatus({ arr:text, boolean:true })
-                    : initSubTodoStatus({ arr:text, boolean:false })
+                ? { ...item, isDone: newVal, text: initSubTodoStatus({ arr:text, boolean: newVal})
                 }
                 : { ...item }
         )

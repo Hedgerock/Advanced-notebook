@@ -1,10 +1,10 @@
-export const todoFormInterface = ({ id, content, notation }) => {
+export const todoFormInterface = ({ id, content, notation, count = { status: false, value: 1 } }) => {
 
     return {
         id: id, 
         content, 
         notation,
-        count: { status: false, value: 1 }
+        count
     }
     
 }

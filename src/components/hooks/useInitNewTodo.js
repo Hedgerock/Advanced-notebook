@@ -1,10 +1,9 @@
 import { newTodoInterface } from "../../data"
-import { uniqueId } from "../../utils/uniqueId";
 import { useTodoContext } from "./useTodoContext"
 
 export const useInitNewTodo = () => {
     const { setTodo, todo } = useTodoContext();
-    const myId = uniqueId(todo)
+    const myId = Date.now();
     const altTitle = `Todo collection number ${ myId }`
 
     const initNewTodo = (value) => {

@@ -46,6 +46,18 @@
     opacity: .8;
 }
 
+.todo-item_for-presentation {
+    width: 39%;
+    position: sticky;
+    opacity: 1;
+    top: 0;
+}
+
+.todo-item_for-presentation-with-active-single-notation {
+    width: 28%;
+    opacity: 1;
+}
+
 .todo-item:hover .todo-item__button {
     opacity: 1;
 }
@@ -63,6 +75,7 @@
 
 .finished-todos_item-box {
     flex-direction: column;
+    opacity: .8;
 }
 
 .todo-item__button.todo-item__button_calculate {

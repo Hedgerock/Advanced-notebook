@@ -3,7 +3,7 @@ import { useTodoContext } from "../../hooks";
 
 export const useUpdateData = ({ data, setData, index }) => {
     const { contentInputData, setContentInputData } = useTodoContext();
-
+    
     const [ curData, setCurData ] = useState(data.contentValue);
 
     useEffect(() => {
@@ -16,6 +16,9 @@ export const useUpdateData = ({ data, setData, index }) => {
         })
     }, [curData, data.id, setData])
 
+    const prevIndex = index - 1;
+    const nextIndex = index + 1;
+
     const prevElement = contentInputData[index - 1];
     const nextElement = contentInputData[index + 1];
 
@@ -23,13 +26,10 @@ export const useUpdateData = ({ data, setData, index }) => {
 
         setContentInputData(prev => {
             return prev.map((el, curIndex) => {
-                if (index === curIndex) {
-                    return prevElement
-                }
+                if (index === curIndex) return prevElement
                 
-                if (index - 1 === curIndex) {
-                    return data
-                }
+                if (prevIndex === curIndex) return data
+
                 return el
             })
         })
@@ -48,13 +48,9 @@ export const useUpdateData = ({ data, setData, index }) => {
 
         setContentInputData(prev => {
             return prev.map((el, curIndex) => {
-                if (index === curIndex) {
-                    return nextElement
-                }
+                if (index === curIndex) return nextElement
                 
-                if (index + 1 === curIndex) {
-                    return data
-                }
+                if (nextIndex === curIndex) return data
 
                 return el
             })

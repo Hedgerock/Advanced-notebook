@@ -26,12 +26,15 @@ export const useChangeBoxState = () => {
 
     const initChangeValue = () => {
         setChangeStatus(prev => !prev)
+        const actualValue = subTodoValue.count?.value || 1;
 
         setTodo(prev => {
             const newArr = prev.map(item => {
                 return item.id === id
                     ? {...item, text: item.text.map(el => {
-                        return el.id === subtodoId ? {...el, text: subTodoValue} : {...el}
+                        return el.id === subtodoId ? {...el, text: subTodoValue.text, status: false, count: subTodoValue.count, notation: el.notation.map(val => {
+                            return {...val, count: {...val.count, derivative: actualValue * val.count?.value}}
+                        })} : {...el}
                     })}
                     : {...item}
             })

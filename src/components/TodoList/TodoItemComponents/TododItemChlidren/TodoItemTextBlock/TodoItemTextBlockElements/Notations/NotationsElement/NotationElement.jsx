@@ -7,7 +7,7 @@ import { NotationsElementText } from "./NotationsElementText";
 
 
 export const NotationElement = () => {
-    const { isEdit } = useNotationsElementContext();
+    const { isEdit, isChangable } = useNotationsElementContext();
     const { buttonsBox } = useGetButtonsBox();
     const { changeStatus } = useTodoItemChildContext();
 
@@ -15,11 +15,11 @@ export const NotationElement = () => {
 
     return (
         <div className={`notations-element`}>
-            { (!isEdit && changeStatus) && 
+            { (!isEdit && changeStatus && isChangable) && 
                 <BoxButtons data = { nonActiveEdition }/>
             }
             {
-                !isEdit 
+                !isEdit
                     ? <NotationsElementText />
                     : <NotationsElementEditBox />
             }

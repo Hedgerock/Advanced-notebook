@@ -14,5 +14,6 @@ export const buttonIcons = {
     copy:           'fa-solid fa-copy',
     calculate:      'fa-solid fa-calculator',
     on:             'fa-solid fa-toggle-on',
-    off:            'fa-solid fa-toggle-off'
+    off:            'fa-solid fa-toggle-off',
+    main:           'fa-solid fa-crown'
 }

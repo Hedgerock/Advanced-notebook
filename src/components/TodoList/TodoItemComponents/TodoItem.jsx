@@ -7,32 +7,52 @@ import { TodoValue } from './TododItemChlidren/TodoValue';
 import { TitleBox, TitleBoxProvider } from './TitleBox';
 import { TodoItemCheckbox } from './TodoItemCheckbox';
 import { TodoItemButtonCopy } from './TodoItemButtonCopy';
-import { ButtonIcon } from '../../ButtonIcon';
+import { TodoItemModals } from './TodoItemModals/TodoItemModals';
+import { useGetTodoItemButtons } from '../hooks';
 
 export const TodoItem = () => {
     const { 
         actualClassName, 
         lastChildClassName,
         isChangable,
-        buttonIcons
+        isSingleNotation
     } = useTodoItemContext();
 
+    const { modalData, buttons, calcModal } = useGetTodoItemButtons();
+
+    const notationClassName = isSingleNotation
+     ? 'todo-item_for-presentation-with-active-single-notation' 
+     : 'todo-item_for-presentation' 
+
+    const presentationClassName = !isChangable ? notationClassName : '';
+    const currentClassName = `${actualClassName} ${ lastChildClassName } ${ presentationClassName }`.split(' ').filter(el => el).join(' ')
+
     return (
-        <div className= { `${actualClassName} ${ lastChildClassName }` }>
+        <>
+            <div className= { currentClassName }>
 
-            { isChangable && <TodoItemCheckbox /> }
-            
-            <TodoValue />
+                { isChangable && <TodoItemCheckbox /> }
 
-            <AddSubTodo />
+                <TodoValue />
 
-            <TitleBoxProvider>
-                <TitleBox />
-            </TitleBoxProvider>
+                <AddSubTodo buttons = { buttons }/>
 
-            <TodoItemButtonCopy />
+                <TitleBoxProvider>
+                    <TitleBox />
+                </TitleBoxProvider>
 
-            <TodoItemDeleteButton />
-        </div>
+                <TodoItemButtonCopy />
+
+                <TodoItemDeleteButton />
+                
+            </div>
+
+            <TodoItemModals
+                modalData={ modalData } 
+                calcModal={ calcModal }
+            />
+        </>
+
+        
     )
 }

@@ -90,9 +90,16 @@
 .todo-item-text-block_edit-variant {
     position: absolute;
     top: 4rem;
-    left: 75%;
+    left: 80%;
 
     width: 35%;
 
     transform: translateX(-50%);
+}
+
+.todo-item-text-box {
+    display: flex;
+    align-items: center;
+
+    gap: .5rem;
 }

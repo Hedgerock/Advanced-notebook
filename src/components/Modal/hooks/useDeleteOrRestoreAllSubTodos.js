@@ -9,7 +9,7 @@ export const useDeleteOrRestoreAllSubTodos = () => {
         setTodo(prev => prev
             .map(el => (
                 el.id === item.id
-                ? { ...el, text: el.text.filter(value => !value.deleted )}
+                ? { ...el, text: el.text.filter(value => !value.deleted ).map((el, index) => ({...el, order: index + 1}))}
                 : { ...el }
             ))
             .filter(val => val.text.length)) 

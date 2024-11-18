@@ -1,7 +1,7 @@
 import { useTodoItemChildContext } from "../../../../hooks";
 
 export const useGetFilteredNotations = () => {
-    const { notation, setEditNotationHandler, subtodoText } = useTodoItemChildContext();
+    const { notation, setEditNotationHandler, subtodoText, status } = useTodoItemChildContext();
 
     const filteredNotation = notation.filter(el => el.text);
     const actualText = filteredNotation.length 
@@ -9,6 +9,7 @@ export const useGetFilteredNotations = () => {
         : `Create notations for ${ subtodoText }`
     
     const switchHandler = () => {
+        if (status) return;
         setEditNotationHandler(prev => !prev)
     }
 

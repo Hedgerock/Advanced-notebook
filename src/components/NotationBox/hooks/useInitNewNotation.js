@@ -15,19 +15,12 @@ export const useInitNewNotation = ({ setNotationList, data, setMainData }) => {
                             id: Date.now(), 
                             text: '',
                             isActive: false,
-                            count: { status: false, value: 1, derivative: 1 * data.count.value }
+                            count: { status: item.count.status, value: 1, derivative: 1 * item.count.value }
                         }]
                     }}
                     : item
             })
         })
-
-       /*  setNotationList(prev => {
-            const newId = Math.max.apply(null, prev.map(el => el.id)) + 1;
-            const res = [...prev, { id: newId, text: '' }]
-
-            return res
-        }) */
     }
 
     return { create, initNewNotation }

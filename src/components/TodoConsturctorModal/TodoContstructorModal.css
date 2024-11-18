@@ -2,7 +2,7 @@
     border-radius: 0 1rem 0 0;
 }
 
-.create-subtodo-modal {
+.todo-constructor-modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -16,7 +16,9 @@
     width: 1350px;
     height: 600px;
 
-    z-index: 1000;
+    padding: 0 0 1rem 0;
+
+    z-index: 2000;
 
     border: 2px solid var(--currentBorderClr);
     border-radius: 1rem;
@@ -32,7 +34,7 @@
     height: 100%;
 }
 
-.create-subtodo-modal-header {
+.todo-constructor-modal-header {
     display: flex;
     align-items: center;
 
@@ -44,16 +46,17 @@
     background: var(--currentBgClr);
 }
 
-.create-subtodo-modal-form-box {
+.todo-constructor-modal-form-box {
     display: flex;
+    justify-content: space-between;
     max-height: 100%;
     height: 100%;
     overflow-y: auto;
 
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 1rem;
 }
 
-.create-subtodo-modal-header__title {
+.todo-constructor-modal-header__title {
     display: inline-flex;
     vertical-align: center;
 
@@ -63,19 +66,43 @@
     margin-right: auto;
 }
 
-.create-subtodo-modal-form-box .todo-item {
+/* .todo-constructor-modal-form-box .todo-item {
     position: fixed;
     top: 11%;
     right: 1rem;
     width: 50%;
 
     height: 450px;
+} */
+
+
+.todo-constructor-modal-form-box .todo-form__add-btn_form-btn-notated {
+    top: 47px;
+    left: 3%;
 }
 
-.create-subtodo-modal-form-box .todo-text {
+.todo-constructor-modal-form-box .todo-form__add-btn_form-btn {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+.todo-constructor-modal-form-box .todo-text {
     border: 1px solid var(--currentBorderClr);
     padding: 2rem 0;
     max-height: 100%;
     height: 100%;
     overflow-y: auto;
+}
+
+.modal-layout {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100lvw;
+    height: 100lvh;
+
+    background: linear-gradient(rgba(0,0,0, .5), rgba(0,0,0, .5));
+
+    z-index: 1000;
 }

@@ -9,7 +9,7 @@ export const MainFormChild = ({ data, setData, index }) => {
     const { initNewTodo } = useInitNewTodo();
     const { buttons, curData, setCurData } = useGetChildButtons({ data, setData, index })
 
-    const actualClassName = `todo-form-container ${ contentInputData.length > 1 ? 'todo-form-container_extended': '' }`
+    const actualClassName = `todo-form-container ${ contentInputData.length > 1 ? 'todo-form-container_extended': '' } ${ !data.isReady && contentInputData.length > 1 ? 'todo-form-container_unfinished' : '' }`.split(' ').filter(el => el).join(' ')
 
     return (
         <div className={ actualClassName }>

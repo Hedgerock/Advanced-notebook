@@ -2,22 +2,22 @@ import { useGetSubTodoCopied, useTodoItemChildContext } from "../../../hooks";
 import './TodoChildItemP.css';
 
 export const TodoChildItemP = () => {
-    const { subtodoText, isChangable, count } = useTodoItemChildContext();
+    const { subTodoValue, isChangable, count } = useTodoItemChildContext();
     const { initCopy } = useGetSubTodoCopied();
 
     return (
         <div
             className={`todo-item__text`}
-            title = { isChangable ? `Copy: ${ subtodoText }` : subtodoText }
+            title = { isChangable ? `Copy: ${ subTodoValue.text }` : subTodoValue.text }
             onClick={ e => {
                 if (!isChangable) return;
                 initCopy({ e })
             } } 
         >
-            <span>{ subtodoText }</span> 
+            <span>{ subTodoValue.text }</span> 
             { count?.status && 
                 <span>
-                    <b> Total: { count.value }</b>
+                    <b> Total: { subTodoValue.count.value }</b>
                 </span>}
         </div>
     )

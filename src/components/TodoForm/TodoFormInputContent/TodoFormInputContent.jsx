@@ -2,7 +2,7 @@ import { useChangeInputValue } from "../hooks";
 
 import './TodoFormInputContent.css';
 import { TodoFormInputBoxButtons } from "./TodoFormInputBoxButtons";
-import { useTodoFormItemContext } from "../../hooks/useTodoForItemContext";
+import { useGetParentAndChildClassName } from "./hooks";
 
 export const TodoFormInputContent = () => {
     const { 
@@ -12,17 +12,13 @@ export const TodoFormInputContent = () => {
         actualTitle,
     } = useChangeInputValue();
 
-    const { data, index, mainData } = useTodoFormItemContext();
-    const isValueOpened = data.notation.status ? data.notation.value.every(el => el.text.length > 0) : true;
-
-    const isElementReady = isValueOpened && data.content.length > 0;
-    const isCountedAndLastElement = data.count.status && mainData.length - 1 === index;
+    const { parentClassName, childClassName } = useGetParentAndChildClassName();
 
     return (
-        <div className={`todo-form-input-box ${ isCountedAndLastElement ? 'todo-form-input-box_last-element' : '' }`}>
+        <div className={ parentClassName }>
             <TodoFormInputBoxButtons>
                 <input 
-                    className={ `todo-form__input ${ isElementReady ? '' : 'todo-form__input_empty' }` }
+                    className={ childClassName }
                     type="text" 
                     placeholder= { actualTitle }
                     value={ inputValue }
