@@ -23,7 +23,7 @@ export const useLayoutSetup = () => {
             case '/React-todo-list/not_found_page': 
                 document.title = 'Page not found'; 
                 break; 
-            default: document.title = `Todo ${ actualPathname || 'My todos' } page`; 
+            default: document.title = actualPathname ? `Todo ${ actualPathname } page` : 'My todos'; 
         }
 
     }, [location, actualPathname]);
