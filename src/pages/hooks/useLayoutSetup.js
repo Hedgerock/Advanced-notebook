@@ -6,8 +6,13 @@ export const useLayoutSetup = () => {
     const pathname = location.pathname.split('/').pop().replaceAll("_", " ")?.toLowerCase();
     const actualPathname = pathname[0]?.toUpperCase() + pathname.slice(1);
 
-    const myHeaderTitle = pathname === 'react-todo-list' ? "HEADER" : pathname?.toUpperCase();
-    const myFooterTitle = pathname === 'react-todo-list' ? "FOOTER" : pathname?.toUpperCase();
+    const myHeaderTitle = pathname === 'react-todo-list' || !pathname.trim().length 
+        ? "HEADER" 
+        : pathname?.toUpperCase();
+        
+    const myFooterTitle = pathname === 'react-todo-list' || !pathname.trim().length 
+        ? "FOOTER" 
+        : pathname?.toUpperCase();
 
     useEffect(() => {
         
