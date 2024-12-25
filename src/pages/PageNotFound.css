@@ -1,0 +1,51 @@
+.page-not-found {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 500px;
+    height: 500px;
+
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    border: 2px solid silver;
+    background: gray;
+
+    transform: translate(-50%, -50%);
+}
+
+.page-not-found::before,
+.page-not-found::after {
+    color: white;
+    font-size: 1.8rem;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+.page-not-found::before {
+    content: 'Page that you are looking for not found';
+}
+
+.page-not-found::after {
+    content: 'Click on picture to return to the main page';
+}
+
+.page-not-found__src {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+
+    object-fit: contain;
+
+    transition: transform .2s;
+
+}
+
+.page-not-found__src:hover {
+    transform: scale(1.1);
+}

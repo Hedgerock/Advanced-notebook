@@ -1,0 +1,32 @@
+.application-skeleton {
+    display: flex;
+    flex-direction: column;
+    height: 100lvh;
+    gap: .1rem;
+}
+
+
+.application-skeleton-header, 
+.application-skeleton-footer {
+    border: 2px solid silver;
+    background: gray;
+    height: 4dvb;
+
+    color: white;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main {
+    height: 91lvh;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.application-skeleton-footer {
+    margin-top: auto;
+}

@@ -1,0 +1,165 @@
+.todo-lists-factory {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    border: 2px solid silver;
+    background: gray;
+    width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.todo-lists-factory-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 1.5rem;
+
+    border-bottom: 2px solid silver;
+}
+
+.todo-lists-factory-header__title,
+.todo-lists-factory-header__button {
+    color: white;
+    border: 1px solid silver;
+    padding: .3rem;
+    border-radius: .25rem;
+}
+
+.todo-lists-factory-header__button {
+    font-size: 1.7rem;
+}
+
+.list-of-todo-lists {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+    gap: .1rem;
+
+    flex-wrap: wrap;
+
+    padding: 0 1.5rem .5rem 1.5rem;
+}
+
+
+.list-of-todo-lists-item {
+    display: flex;
+    align-items: center;
+
+    border: 2px solid silver;
+    width: 33%;
+
+    height: 175px;
+    position: relative;
+
+    transition: background .2s, color .2s;
+}
+
+.options {
+    background: white;
+
+    display: flex;
+    flex-direction: column;
+    border-left: 2px solid white;
+    gap: 2rem;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 100%;
+}
+
+.options__button {
+    display: flex;
+    align-items: center;
+    color: gray;
+    font-size: 1.2rem;
+    border: 2px solid gray;
+    width: 100%;
+    padding: .5rem;
+    margin-right: -2px;
+}
+
+.options__button:disabled {
+    opacity: .5;
+}
+
+.list-of-todo-lists-item:hover {
+    background: silver;
+    border: 2px solid white;
+}
+
+.list-of-todo-lists-item:hover .list-of-todo-lists-item__link {
+    color: gray;
+}
+
+.list-of-todo-lists-item__link {
+    display: flex;
+
+    font-size: 1.4rem;
+    width: 100%;
+    height: 100%;
+
+    justify-content: center;
+    align-items: center;
+
+    word-break: normal;
+    overflow-y: hidden;
+    text-overflow: ellipsis;
+}
+
+.content {
+    display: flex;
+
+    width: 100%;
+}
+
+.content__input {
+    padding: .3rem;
+    border: 2px solid silver;
+    height: 2rem;
+    outline: none;
+    width: 100%;
+
+    border-radius: .4rem;
+
+    margin-right: 1rem;
+}
+
+.content-label {
+    display: flex;
+    width: 30%;
+    position: relative;
+}
+
+.content__button {
+    border: 2px solid gray;
+    padding: .4rem;
+    color: white;
+    height: 2rem;
+}
+
+.content__button:disabled {
+    opacity: .7;
+}
+
+.content__input_warning {
+    border: 2px solid #2a2525;
+}
+
+.content__warning-span {
+    color: #2a2525;
+    font-weight: bold;
+
+    position: absolute;
+
+    transform: translateY(50%);
+
+    top: 2rem;
+    left: 0;
+}

@@ -1,11 +1,17 @@
-.notification-container {
+.wrapper {
     position: fixed;
-    bottom: 10px;
+    bottom: 40px;
     right: 10px;
+    max-height: 90lvh;
+    overflow-y: hidden;
 
     width: 250px;
 
+}
+
+.notification-container {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: .5rem;
 }

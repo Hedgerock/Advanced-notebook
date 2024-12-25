@@ -1,8 +1,7 @@
+import { buttonIcons } from "../../data";
 import { ButtonIcon } from "../ButtonIcon";
-import { useTodoContext } from "../hooks";
 
 export const TodoContstructorModalCloseButton = ({ closeFunc }) => {
-    const { buttonIcons } = useTodoContext();
     const { decline } = buttonIcons;
     return (
         <button

@@ -24,7 +24,6 @@
 }
 
 body {
-  padding-top: 1.5rem;
   font-family: sans-serif;
 
   background: var(--currentBgBodyClr);
@@ -36,6 +35,11 @@ button {
   border: none;
 
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: white;
 }
 
 li {

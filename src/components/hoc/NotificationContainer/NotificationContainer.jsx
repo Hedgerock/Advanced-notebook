@@ -11,11 +11,13 @@ export const NotificationContainer = ({ children }) => {
     const { notificationData } = useTodoContext();
 
     return !!notificationData.length && 
-    <div className="notification-container">
-        {notificationData.map(el => (
+    <div className="wrapper">
+        <div className="notification-container">
+            {notificationData.map(el => (
             <DataWrapper key = { el.id } data={el}>
                 {children}
             </DataWrapper>
-        ))}
+            ))}
+        </div>
     </div>
 }
