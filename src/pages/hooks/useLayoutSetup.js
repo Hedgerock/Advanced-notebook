@@ -3,11 +3,11 @@ import { useLocation } from "react-router-dom";
 
 export const useLayoutSetup = () => {
     const location = useLocation();
-    const pathname = location.pathname.split('/').pop().replaceAll("_", " ").toLowerCase();
-    const actualPathname = pathname[0].toUpperCase() + pathname.slice(1);
+    const pathname = location.pathname.split('/').pop().replaceAll("_", " ")?.toLowerCase();
+    const actualPathname = pathname[0]?.toUpperCase() + pathname.slice(1);
 
-    const myHeaderTitle = pathname === 'react-todo-list' ? "HEADER" : pathname.toUpperCase();
-    const myFooterTitle = pathname === 'react-todo-list' ? "FOOTER" : pathname.toUpperCase();
+    const myHeaderTitle = pathname === 'react-todo-list' ? "HEADER" : pathname?.toUpperCase();
+    const myFooterTitle = pathname === 'react-todo-list' ? "FOOTER" : pathname?.toUpperCase();
 
     useEffect(() => {
         
