@@ -1,6 +1,6 @@
 import { TodoChildInput } from "./TodoItemTextBlockElements/TodoChildInput";
 import './TodoItemTextBlock.css';
-import { useFindChildren, useMoveToChild, useTodoItemChildContext, useUpdateCurrentSubTodo } from "../hooks";
+import { useFindChildren, useTodoItemChildContext, useUpdateCurrentSubTodo } from "../hooks";
 import { SwapBox, TodoChildCurrentNumber, TodoChildDelButton, TodoChildItemInput, TodoChildItemP, Notations  } from "./TodoItemTextBlockElements";
 import { ChangeBox } from "../ChangeBox";
 import { TodoFormProvider } from "../../../../hoc";
@@ -18,16 +18,12 @@ export const TodoItemTextBlock = () => {
         subtodoText,
     } = useTodoItemChildContext();
     const { childrenClassName } = useFindChildren();
-    const { destination } = useMoveToChild();
     const { initCloseModal, updateCurrentSubTodo } = useUpdateCurrentSubTodo();
     const isNotSingleNotation = notations[0].notation.value.length > 1
 
     return (
         <>
-            <div 
-                className={ childrenClassName }
-                ref = { destination }
-            >
+            <div className={ childrenClassName }>
                 <SwapBox />
 
                 { isChangable && <TodoChildInput/> }
