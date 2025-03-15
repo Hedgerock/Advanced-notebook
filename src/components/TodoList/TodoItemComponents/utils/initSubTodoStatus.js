@@ -1,3 +1,3 @@
 export const initSubTodoStatus = ({ arr, boolean }) => {
-    return arr.map(el => ({...el, status: boolean}))
+    return arr.filter(el => !el.deleted).map(el => ({...el, status: boolean}))
 }

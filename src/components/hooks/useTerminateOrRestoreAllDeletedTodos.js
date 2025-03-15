@@ -20,7 +20,9 @@ export const useTerminateOrRestoreAllDeletedTodos = () => {
         setTodo(prev => {
             return prev.map(item => {
                 return {...item, isDone: false, deleted: false, text: item.text.map(el => {
-                    return {...el, deleted: false, status: false}
+                    return el.deleted
+                        ? {...el, deleted: false, status: false}
+                        : el
                 })}
             })
         })
