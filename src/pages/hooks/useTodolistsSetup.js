@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { route } from "../../data";
 
 
 export const useTodoListsSetup = () => {
@@ -38,7 +39,7 @@ export const useTodoListsSetup = () => {
             ]
         })
         setTitle("");
-        navigate(`/React-todo-list/${ initLink() }`);
+        navigate(`/${route}/${ initLink() }`);
         openHandler();
 
         localStorage.setItem(`${ title.toLowerCase().trim() } todos`, JSON.stringify([]))

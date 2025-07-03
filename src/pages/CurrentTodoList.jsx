@@ -13,6 +13,7 @@ import { SearchByNotesElement } from "../components/SearchByNotes/SearchByNotesE
 import { TodoList } from "../components/TodoList/hoc"
 import { EmptyList, FullList } from "../components/TodoList/ListTypes"
 import { ButtonIcon } from "../components/ButtonIcon"
+import { route } from "../data"
 
 export const CurrentTodoList = () => {
     const { 
@@ -29,7 +30,7 @@ export const CurrentTodoList = () => {
                 
                 <div className="header-right-part">
                     <Link 
-                        to = { '/React-todo-list' }
+                        to = { `/${route}` }
                         className="header-right-part__backward-link"
                     >
                         <ButtonIcon value={ back }/>
